@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jamal's Story - The Crossroads</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --white: #f5f5f5;
+            --gold: #fbbf24;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            background: var(--black);
+            color: var(--white);
+            font-family: 'Crimson Text', serif;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(0,0,0,0.98), rgba(15,15,25,0.95));
+            padding: 2rem;
+            border-bottom: 3px solid var(--gold);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .logo a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo a:hover {
+            color: var(--gold);
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            letter-spacing: 0.12em;
+            margin-bottom: 1rem;
+            color: var(--gold);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #aaa;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .divider {
+            border-top: 2px solid var(--gold);
+            margin: 2rem 0;
+        }
+
+        .story-text {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: #ddd;
+            margin-bottom: 2rem;
+        }
+
+        .story-text p {
+            margin-bottom: 1.2rem;
+        }
+
+        .story-text strong {
+            color: var(--gold);
+        }
+
+        /* CHARACTER CARDS */
+        .character-section {
+            background: rgba(30, 30, 40, 0.5);
+            border-left: 4px solid var(--gold);
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 2px;
+        }
+
+        .character-section h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .character-card {
+            background: rgba(20, 20, 30, 0.8);
+            border: 2px solid #555;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .character-card:hover {
+            border-color: var(--gold);
+            box-shadow: 0 0 15px rgba(251, 191, 36, 0.2);
+        }
+
+        .character-image {
+            width: 100%;
+            height: 180px;
+            background: rgba(50, 50, 70, 0.8);
+            border-radius: 2px;
+            margin-bottom: 1rem;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .character-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 0.3rem;
+        }
+
+        .character-role {
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+
+        /* TIMELINE */
+        .timeline {
+            margin: 3rem 0;
+        }
+
+        .timeline-item {
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            background: rgba(30, 30, 40, 0.6);
+            border-left: 3px solid var(--gold);
+            border-radius: 2px;
+        }
+
+        .timeline-date {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.95rem;
+            color: var(--gold);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content {
+            color: #ddd;
+            line-height: 1.8;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            border-top: 2px solid var(--gold);
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 4rem;
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .story-text {
+                font-size: 1rem;
+            }
+
+            .character-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo"><a href="index.html">The Crossroads</a></div>
+        </div>
+    </header>
+
+    <main>
+        <h1>Jamal's Story</h1>
+        <p class="subtitle">A ten-minute telling of the Crossroads occupation, June 2026</p>
+
+        <div class="divider"></div>
+
+        <div class="story-text">
+            <p>My name is Jamal Washington. I run WZRD 77.7 FM out of the Sanctuary at Jubilee. This is the story I held onto when everything else fractured.</p>
+
+            <p><strong>The Porch</strong></p>
+
+            <p>Before the occupation, there was the porch on Stone Street. My father, Peppaman, sat there for years—decades, really—just watching. Listening. Men would come by and argue about football, politics, God, women, all of it mixing together. I grew up thinking he was just an old man on a chair. But he was mapping the world. He was collecting stories like mason jars. Every conversation was a possibility saved for later.</p>
+
+            <p>When I got older, I understood: the porch was an unofficial university. No degrees. No lectures. Just knowledge moving from one generation to the next. So when I started working at the radio station, I carried that philosophy with me. Radio, like the porch, was a place where stories could travel. Where truth could move without asking for permission.</p>
+
+            <p><strong>Juneteenth, 2026</strong></p>
+
+            <p>It started as a festival. June 19th, the Sanctuary at Jubilee threw a party—music, food, people celebrating. But we were planting something else into that celebration. Language. Music that encoded what we were about to do. My best friends had a plan, and I was helping them tell the story before it happened.</p>
+
+            <p>Big Kitty—Charles Mason McCall VI—he's autistic. He hears sound at a depth most people don't understand. He'd been locked away in Jefferson Davis Hospital for psychiatric reasons that were actually political. While he was in the law library there, he learned about his family's connection to something older. Something bound beneath the Capitol building since 1901.</p>
+
+            <p>Tyra Yemeshia Washington—Dr. Washington to some, Yemmy to Big Kitty—is the most beloved person in this story. Scholar. Performer. Pregnant at the moment everything broke. She and Big Kitty had been together for years. They had conversations I was never supposed to hear, in languages that were part prayer and part code.</p>
+
+            <p>Phat Tony Pham, Bryan Jamal Washington (my sibling), Squirrel, and a dozen other friends—we were ready. We'd rehearsed. We'd planned. We'd distributed roles: Brick teams for barriers, Sticks for obstructions, Hay for visible art, Herd for communications.</p>
+
+            <p><strong>The Occupation Begins</strong></p>
+
+            <p>Just after midnight moving into June 20, we did it. We stopped traffic on I-65 at Exit 169. We blocked the off-ramp. We built a village under the interstate.</p>
+
+            <p>From the Sanctuary, I documented everything. I kept the station on the air. I amplified Tyra's voice as she moved through the streets like a roving correspondent. I made sure the tapes were safe.</p>
+
+            <p>Drivers reacted in a hundred ways. Some were angry. Some left. Some quietly joined us. Some filmed what they saw. What they filmed became iconic—the occupation growing across the Crossroads, under the 65/85 stack, a visible village of people saying: <strong>We are here. We matter. The system killing us was built on a lie. Look at us.</strong></p>
+
+            <p><strong>The Dragon</strong></p>
+
+            <p>On June 24, Big Kitty descended into the tunnels beneath the Capitol. I can't tell you exactly what happened down there. He went to confront something older than Alabama's constitution. Something that had been feeding the power structure since 1901. The records call it Bertha. A presence. An energy. A dragon that hadn't been killed—just bound.</p>
+
+            <p>What I know is this: Big Kitty spent six hours in those tunnels. And when he came out, he wasn't alone. Or he was transformed. Or something had changed in the architecture of power itself.</p>
+
+            <p><strong>The Strike</strong></p>
+
+            <p>By June 26, the government brought drones. They used nonlethal weapons first. Then they escalated.</p>
+
+            <p>My father, Peppaman—who had sat on that porch for decades just listening, just witnessing—he walked to the Crossroads. For the first time in years, he left the porch. He went to stand with the village. He was killed in the first wave of strikes.</p>
+
+            <p>I had already evacuated the archives. He made sure of it. His last act was to protect the tapes.</p>
+
+            <p>The bigger strikes came next. They destroyed Exit 169 where we'd been organizing. They hit Ridgecrest and Carver Park. They hit a public park. A school. Downtown, they hit the SPLC, Dexter Avenue Baptist Church, the Attorney General's office. The investigations never figured out who did what or why. The attribution stayed murky.</p>
+
+            <p>Big Kitty died in the tunnels when the explosives detonated. Squirrel survived. Tyra survived. I survived. Bunny—Big Kitty's grandmother, the matriarch—she survived.</p>
+
+            <p><strong>The Diaspora</strong></p>
+
+            <p>By July 4, we were running. Tyra was pregnant—she didn't even know it yet. We fled south through Lowndes County, Gee's Bend, into Mexico. We found comrades at Ayotzinapa. We found tools. We found a way to keep the story alive.</p>
+
+            <p>The interruption lasted 72 hours. The occupation lasted 72 hours. But the changes it triggered—those lasted years. The Great Division. The national uprising of occupation villages. The fracturing and refounding of the country itself.</p>
+
+            <p><strong>Now</strong></p>
+
+            <p>I'm telling you this because we won time. The ancestors at Exit 169 bought us time. They showed what was possible when a small group of people decided to tell the truth even when the system responded with violence.</p>
+
+            <p>In 3176, Elliot John Henry McCall—a descendant of all of us—will present this story to a Planning Guild. He'll argue that what we did proved something about community, resistance, and the cost of liberation.</p>
+
+            <p>This story is not finished. It is being built right now in Montgomery, Alabama. In the Sanctuary at Jubilee. In the streets where we stood. In the tapes we saved. In the dragon we released.</p>
+
+            <p>The question is: will you help us tell it?</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="character-section">
+            <h3>The Core Circle</h3>
+            <p>Six people at the center of the occupation:</p>
+
+            <div class="character-grid">
+                <div class="character-card">
+                    <div class="character-image" style="background: linear-gradient(135deg, #dc2626, #8b0000);"></div>
+                    <div class="character-name">Big Kitty</div>
+                    <div class="character-role">Charles Mason McCall VI<br>Sound Seer</div>
+                </div>
+                <div class="character-card">
+                    <div class="character-image" style="background: linear-gradient(135deg, #16a34a, #065f46);"></div>
+                    <div class="character-name">Tyra</div>
+                    <div class="character-role">Tyra Yemeshia Washington<br>Scholar & Performer</div>
+                </div>
+                <div class="character-card">
+                    <div class="character-image" style="background: linear-gradient(135deg, #eab308, #ca8a04);"></div>
+                    <div class="character-name">Bryan</div>
+                    <div class="character-role">Bryan Jamal Washington<br>Radio Host & Archivist</div>
+                </div>
+                <div class="character-card">
+                    <div class="character-image" style="background: linear-gradient(135deg, #f97316, #c2410c);"></div>
+                    <div class="character-name">Phat Tony</div>
+                    <div class="character-role">Tony Pham<br>Craftsman & Logistics</div>
+                </div>
+                <div class="character-card">
+                    <div class="character-image" style="background: linear-gradient(135deg, #8b7355, #5a4a42);"></div>
+                    <div class="character-name">Squirrel</div>
+                    <div class="character-role">Seth Taylor<br>Rationalist & Organizer</div>
+                </div>
+                <div class="character-card">
+                    <div class="character-image" style="background: linear-gradient(135deg, #f5f5f5, #d4d4d8);"></div>
+                    <div class="character-name">Peppaman</div>
+                    <div class="character-role">Booker Washington<br>Witness & Oracle</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline">
+            <h3 style="color: var(--gold); font-family: 'Space Grotesk', sans-serif; margin-bottom: 1rem;">The 72 Hours</h3>
+            
+            <div class="timeline-item">
+                <div class="timeline-date">June 19, 2026 — Juneteenth Festival</div>
+                <div class="timeline-content">The Sanctuary at Jubilee hosts a permitted Juneteenth celebration. WZRD broadcasts throughout the night. Language and music that encode the occupation's aims are seeded into the community. The circle finalizes positions.</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">June 20, Midnight — The Occupation Begins</div>
+                <div class="timeline-content">Exit 169 is blocked. Teams move into position. Brick, Sticks, Hay, and Herd coordinate across exits 168-171. The Crossroads Village forms under the 65/85 stack. Motorists react across a spectrum of responses. Jamal amplifies from WZRD.</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">June 20, 9:30 AM — Big Kitty Descends</div>
+                <div class="timeline-content">Big Kitty enters the tunnel system beneath the Capitol. He carries three words on his palm: Interstate, Conviction, Removal. He is moving toward the chamber where Bertha has been bound since 1901.</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">June 22, Midday — The Crossroads Goes Viral</div>
+                <div class="timeline-content">The occupation extends to the Day Street feeder and across the I-65 main stack. Images spread globally. Media outlets descend. Tyra moves through the streets as roving correspondent, weaving theology, memory, and political critique into performances and testimonies.</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">June 24, Morning — Nonlethal Strikes Begin</div>
+                <div class="timeline-content">Federal and state forces deploy drones and ground units using so-called nonlethal weapons. Peppaman leaves his porch on Stone Street for the first time in years and walks to the Crossroads. He is killed in the first volley.</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">June 26 — The Escalation</div>
+                <div class="timeline-content">Lethal drone strikes obliterate Exit 169 and surrounding neighborhoods. Ridgecrest, Carver Park, a public park, a high school are destroyed. Big Kitty dies in the tunnels. Coordinated strikes hit downtown. Attribution remains unclear.</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">July 4 — Diaspora & Dispersal</div>
+                <div class="timeline-content">Survivors flee in four directions: Tyra and Jamal south to Mexico and Bahia; others north to British Columbia; some remain in Montgomery; some are captured. The Great Division begins nationally. Eight years of fracturation and reshaping.</div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="story-text">
+            <p><strong>Three Words</strong></p>
+
+            <p>Big Kitty carried three words written on his palm when he descended into the tunnels:</p>
+
+            <ul style="margin: 1rem 0 1rem 2rem; color: #ddd;">
+                <li><strong>Interstate:</strong> Self-reflection. Mutual aid. Organizing across state lines.</li>
+                <li><strong>Conviction:</strong> Defending and expanding voting rights. Drawing the line.</li>
+                <li><strong>Removal:</strong> Removing ourselves from dependence on systems we oppose. Building independent energy, local data trusts, cooperative work.</li>
+            </ul>
+
+            <p>These words became the framework for everything that followed. This is what the occupation was teaching. This is what the story models for those who come after.</p>
+
+            <p><strong>Root.</strong></p>
+        </div>
+
+    </main>
+
+    <footer>
+        <p><a href="index.html">← Back to Home</a></p>
+        <p style="margin-top: 1rem;">The Crossroads: A Storyworld | Data Trust Model | © 2026</p>
+    </footer>
+</body>
+</html>

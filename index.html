@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Crossroads: A Storyworld</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --white: #f5f5f5;
+            --gold: #fbbf24;
+            --dark-gray: #1a1a1a;
+            --med-gray: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            background: var(--black);
+            color: var(--white);
+            font-family: 'Crimson Text', serif;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        /* HEADER / NAV */
+        header {
+            background: linear-gradient(135deg, rgba(0,0,0,0.98), rgba(15,15,25,0.95));
+            padding: 2rem;
+            border-bottom: 3px solid var(--gold);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.5rem 1rem;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        nav a:hover {
+            border: 1px solid var(--gold);
+            color: var(--gold);
+        }
+
+        /* MAIN CONTAINER */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 400;
+            letter-spacing: 0.12em;
+            margin-bottom: 1rem;
+            color: var(--gold);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            margin-top: 2rem;
+            font-family: 'Space Grotesk', sans-serif;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            color: #ddd;
+        }
+
+        ul li {
+            margin-bottom: 0.5rem;
+            color: #ddd;
+            font-size: 1.05rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            text-align: center;
+            padding: 2rem 0;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            margin-bottom: 0.5rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #aaa;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        /* LINK CARDS */
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .link-card {
+            background: rgba(30, 30, 40, 0.6);
+            border: 2px solid #555;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: var(--white);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 150px;
+        }
+
+        .link-card:hover {
+            border-color: var(--gold);
+            background: rgba(30, 30, 40, 0.9);
+            transform: translateY(-4px);
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.2);
+        }
+
+        .link-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--gold);
+        }
+
+        .link-card p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            color: #bbb;
+        }
+
+        /* FEATURED CONTENT */
+        .featured {
+            background: rgba(251, 191, 36, 0.05);
+            border-left: 4px solid var(--gold);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 2px;
+        }
+
+        .featured h3 {
+            color: var(--gold);
+            font-family: 'Space Grotesk', sans-serif;
+            margin-bottom: 1rem;
+        }
+
+        /* CTA BUTTONS */
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .cta-button {
+            padding: 0.9rem 2rem;
+            border: 2px solid var(--gold);
+            background: transparent;
+            color: var(--gold);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: var(--gold);
+            color: var(--black);
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            border-top: 2px solid var(--gold);
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 4rem;
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav {
+                width: 100%;
+                justify-content: center;
+            }
+
+            main {
+                padding: 1.5rem;
+            }
+
+            .link-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @keyframes fadeInDown {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">The Crossroads</div>
+            <nav>
+                <a href="jamal_story.html">Story</a>
+                <a href="characters_and_conflicts.html">Characters</a>
+                <a href="interstate_conviction_removal.html">Framework</a>
+                <a href="story_bible.html">Bible</a>
+                <a href="contribute.html">Contribute</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>The Crossroads</h1>
+            <p>A storyworld set in Montgomery, Alabama</p>
+            <p>Beginning June 2026 · Extending to Year 3176</p>
+        </section>
+
+        <section>
+            <h2>What is The Crossroads?</h2>
+            <p>On Juneteenth 2026, a circle of friends from Montgomery occupy Interstate 65 across four exits to expose a bound dragon named Bertha whose trapped energy has powered Alabama's political hierarchy since 1901. The occupation lasts 72 hours. It ends in drone strikes. It triggers a national uprising. It echoes across 1,150 years.</p>
+            <p>This is a story about the costs of power and the costs of resistance. It is told across multiple formats: as written narrative, as sound, as visual media, as lived practice, as a festival, and as a data trust.</p>
+            <p><strong>It is a story about you.</strong></p>
+        </section>
+
+        <section class="featured">
+            <h3>Start Here</h3>
+            <p>Never encountered The Crossroads before? Begin with Jamal's 10-minute telling of the story, including character photos and the core events.</p>
+            <div class="cta-group">
+                <a href="jamal_story.html" class="cta-button">Read Jamal's Story</a>
+                <a href="characters_and_conflicts.html" class="cta-button">Meet the Characters</a>
+            </div>
+        </section>
+
+        <section>
+            <h2>Explore the Archive</h2>
+            <div class="link-grid">
+                <a href="jamal_story.html" class="link-card">
+                    <h3>Jamal's Telling</h3>
+                    <p>The story in Jamal Washington's voice. 10 minutes. Character portraits. The full occupation arc.</p>
+                </a>
+                <a href="characters_and_conflicts.html" class="link-card">
+                    <h3>Characters & Conflicts</h3>
+                    <p>Meet Big Kitty, Tyra, Bryan, Peppaman, Squirrel, Elliot, and the dragon Bertha. Photos included.</p>
+                </a>
+                <a href="interstate_conviction_removal.html" class="link-card">
+                    <h3>Interstate · Conviction · Removal</h3>
+                    <p>The political and spiritual framework. Voting rights. Grassroots organizing. Community infrastructure.</p>
+                </a>
+                <a href="story_bible.html" class="link-card">
+                    <h3>Story Bible & Omniscient Telling</h3>
+                    <p>Download the complete Story Bible v5 and the omniscient third-person narrative of the entire storyworld.</p>
+                </a>
+                <a href="contribute.html" class="link-card">
+                    <h3>How to Contribute</h3>
+                    <p>Be part of building The Crossroads. Write, create sound, design visuals, or help organize. We're recruiting now.</p>
+                </a>
+            </div>
+        </section>
+
+        <section>
+            <h2>The Phase 1 Vision</h2>
+            <p>Phase 1 involves completing the writing of a 4-part story and producing it across multiple modalities:</p>
+            <ul style="margin-left: 2rem; margin-bottom: 2rem;">
+                <li><strong>Narrative:</strong> Novella or limited-series script</li>
+                <li><strong>Audio:</strong> Radio drama, studio album (Smoke & Mirrors), sound collages</li>
+                <li><strong>Digital:</strong> Interactive website and map, augmented reality scavenger hunt</li>
+                <li><strong>Visual:</strong> Photography exhibit, animated sequences, street musical</li>
+                <li><strong>Action:</strong> Toolkit for organizers and educators, community workshops, skill-up apps</li>
+                <li><strong>Festival:</strong> Annual gathering at the Sanctuary and across the Black Belt</li>
+            </ul>
+            <p>The Smoke & Mirrors album is already complete. The Story Bible is locked. We're finishing the gaps and moving into production.</p>
+        </section>
+
+        <section class="featured">
+            <h3>Built on Integrity</h3>
+            <p>The Crossroads operates as a <strong>data trust</strong>. Every person who contributes—writing, music, visuals, organizing—earns documented credit and shared revenue if this work succeeds.</p>
+            <p>This is not charity. It is infrastructure. It models what it means for a community to own and benefit from the knowledge it produces.</p>
+            <p>The story itself demonstrates this: Elliot in 3176 cannot tell the story of 2026 without crediting every porch conversation, every WZRD tape, every person who showed up.</p>
+        </section>
+
+        <section>
+            <h2>Contact & Next Steps</h2>
+            <p><strong>Evan Milligan</strong> | Creator & Executive Director</p>
+            <p>
+                📧 <a href="mailto:evan@jubileemgm.org" style="color: var(--gold);">evan@jubileemgm.org</a><br>
+                📱 334-590-1702<br>
+                🌐 <a href="https://safeplaceforart.org" target="_blank" style="color: var(--gold);">safeplaceforart.org</a><br>
+                IG: <a href="https://instagram.com/blackbeltbreeze" target="_blank" style="color: var(--gold);">@blackbeltbreeze</a>
+            </p>
+            <p style="margin-top: 2rem;">
+                <strong>The Sanctuary at Jubilee Community Center</strong><br>
+                432 Goldthwaite Street<br>
+                Montgomery, Alabama 36104<br>
+                📱 334-264-9191
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>The Crossroads: A Storyworld | Created by Evan Milligan | Data Trust Model | © 2026</p>
+        <p><a href="index.html">Home</a> · <a href="contribute.html">Contribute</a> · <a href="story_bible.html">Download</a></p>
+    </footer>
+</body>
+</html>
