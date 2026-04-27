@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>The Family Bible</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>The Family Bible</h1>
+    
+    <p>
+      You open the heavy, leather-bound book. The pages are yellowed with age, 
+      smelling of dust and old parchment. Between the Old and New Testaments, 
+      you find the family record.
+    </p>
+
+    <p>
+      Names are written in fading ink, some dating back over a century. One name, 
+      however, has been deliberately scratched out, leaving a jagged hole in the paper.
+    </p>
+
+    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Old Bible" style="width:100%;max-width:400px;margin-top:20px;border-radius:8px;">
+
+    <p>
+      <a href="study.html">Go back to the study.</a>
+    </p>
+
+  </body>
+</html>
