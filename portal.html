@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Crossroads Portal | Alabama Uprising</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0a0a0a;
+            color: #fbbf24;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0f172e 0%, #1a1a2e 50%, #0f172e 100%);
+            border-bottom: 3px solid #fbbf24;
+            padding: 40px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 8px 20px rgba(251, 191, 36, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(251, 191, 36, 0.4);
+        }
+
+        header p {
+            font-size: 0.9rem;
+            color: #aaa;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .portal-hero {
+            background: rgba(0, 0, 0, 0.8);
+            border: 3px solid #fbbf24;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            box-shadow: inset 0 0 20px rgba(251, 191, 36, 0.1), 0 0 30px rgba(251, 191, 36, 0.2);
+        }
+
+        .portal-hero img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.3));
+        }
+
+        .portal-description {
+            color: #ddd;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .portal-description strong {
+            color: #fbbf24;
+        }
+
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .character-card {
+            background: rgba(26, 26, 46, 0.8);
+            border: 2px solid #fbbf24;
+            padding: 20px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .character-card:hover {
+            background: rgba(251, 191, 36, 0.1);
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .character-card h3 {
+            color: #fbbf24;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1.1rem;
+        }
+
+        .character-card p {
+            color: #bbb;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .cardinal-section {
+            background: rgba(26, 26, 46, 0.6);
+            border-left: 4px solid #fbbf24;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+
+        .cardinal-section h2 {
+            color: #fbbf24;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .cardinal-year {
+            color: #888;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .cardinal-text {
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .center-scene {
+            background: rgba(251, 191, 36, 0.05);
+            border: 2px solid #fbbf24;
+            padding: 30px;
+            margin: 40px 0;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .center-scene h2 {
+            color: #fbbf24;
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        .fence-ascii {
+            font-size: 0.9rem;
+            line-height: 1.2;
+            color: #888;
+            margin: 20px 0;
+            font-family: monospace;
+            white-space: pre;
+        }
+
+        .center-text {
+            color: #ddd;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: 2px solid #fbbf24;
+            background: #0a0a0a;
+            color: #fbbf24;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: #fbbf24;
+            color: #0a0a0a;
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.6);
+        }
+
+        footer {
+            background: #0f0f1f;
+            border-top: 2px solid #fbbf24;
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: 60px;
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: #fbbf24;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .cardinal-section {
+                padding: 20px;
+            }
+
+            .character-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>⚔ THE CROSSROADS ⚔</h1>
+        <p>A Portal Across Time & Space | Montgomery, Alabama</p>
+    </header>
+
+    <main>
+        <!-- HERO IMAGE SECTION -->
+        <section class="portal-hero">
+            <img src="CROSSROADS_ALABAMA_PORTAL.png" alt="The Crossroads Portal: Alabama Map with Characters and Sacred Center">
+            
+            <div class="portal-description">
+                <p>
+                    This is <strong>The Crossroads.</strong> A spiritual gathering place where all timelines converge. 
+                    The map shows Alabama's counties with seven allies scattered across the state. At the center—
+                    where Interstate 65 and Interstate 85 intersect in Montgomery—glows <strong>Africa itself</strong>, 
+                    transformed into a golden portal.
+                </p>
+                <p style="margin-top: 15px;">
+                    Below the sacred fence, a sword grows upward through the wood. Trees frame the blade. A boombox 
+                    sits on the grass. Mojo jars anchor the space. And underneath it all, <strong>Bertha</strong>—
+                    the emerald dragon—coils in power.
+                </p>
+            </div>
+        </section>
+
+        <!-- CHARACTER SECTION -->
+        <section>
+            <h2 style="color: #fbbf24; font-size: 2rem; text-transform: uppercase; margin: 40px 0 30px; letter-spacing: 2px;">The Seven Allies</h2>
+            
+            <div class="character-grid">
+                <div class="character-card">
+                    <h3>Tyra Washington</h3>
+                    <p class="cardinal-year">EAST | 2026</p>
+                    <p>The visionary. The one who speaks her truth but cannot name what haunts her. She stands at the center, holding the weight of transformation.</p>
+                </div>
+
+                <div class="character-card">
+                    <h3>Big Kitty</h3>
+                    <p class="cardinal-year">CENTER | All Time</p>
+                    <p>The gentle giant. Wise, patient, holding space for all. Deep as the ocean. Present as breath. The one who knows what must happen.</p>
+                </div>
+
+                <div class="character-card">
+                    <h3>Peppaman</h3>
+                    <p class="cardinal-year">NORTH | 1996</p>
+                    <p>The caregiver. The spiritual anchor. Warmth and protection embodied. When he moves through a space, healing follows.</p>
+                </div>
+
+                <div class="character-card">
+                    <h3>Jamal</h3>
+                    <p class="cardinal-year">NORTHWEST | Throughout</p>
+                    <p>The grounded one. Builder. Witness. Keeper of stories. His presence means the truth is being told and documented with love.</p>
+                </div>
+
+                <div class="character-card">
+                    <h3>Future McFerrin</h3>
+                    <p class="cardinal-year">NORTHEAST | 2026+</p>
+                    <p>Youth. Energy. Music. The voice that broadcasts change. Covered in Peppaman's blood, the face of the uprising. Sound made flesh.</p>
+                </div>
+
+                <div class="character-card">
+                    <h3>Bunny</h3>
+                    <p class="cardinal-year">SOUTHWEST | All Time</p>
+                    <p>Small but fierce. Tender and strong. The one who carries what others cannot. Hops through dimensions, never giving up.</p>
+                </div>
+
+                <div class="character-card">
+                    <h3>Bertha (The Dragon)</h3>
+                    <p class="cardinal-year">SOUTHWEST | 1901-Present</p>
+                    <p>The bound one. Emerald power coiled beneath the earth. The energy that fuels systems of control. Now awakening. Now choosing differently.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CENTER SACRED SPACE -->
+        <section class="center-scene">
+            <h2>The Sacred Center</h2>
+            <div class="fence-ascii">
+              |||||
+              [===]  ← SWORD IN TREE
+              |||||
+         [JAR]||+||[JAR]
+              |||||
+            [BOOMBOX]
+             🎙️🎚️🎙️
+            </div>
+            <div class="center-text">
+                <p><strong>"THE CROSSROADS PRESENTS"</strong></p>
+                <p style="margin-top: 15px;">
+                    At the intersection of Interstate 65 and Interstate 85, in the heart of Montgomery, 
+                    Africa itself appears and glows. A metal fence. A sword growing upward. A tree surrounding it. 
+                    Mojo jars grounding the space. A boombox broadcasting resistance.
+                </p>
+                <p style="margin-top: 15px;">
+                    This is where the story happens. This is where choices are made. This is where old worlds end 
+                    and new ones are born.
+                </p>
+            </div>
+        </section>
+
+        <!-- CARDINAL DIRECTIONS -->
+        <section>
+            <h2 style="color: #fbbf24; font-size: 2rem; text-transform: uppercase; margin: 40px 0 30px; letter-spacing: 2px;">The Timelines</h2>
+            
+            <div class="cardinal-section">
+                <h2>⚡ EAST: 2026 | The Uprising Exposed</h2>
+                <p class="cardinal-year">Year of Rupture</p>
+                <p class="cardinal-text">
+                    Tyra Washington stands at the crossroads. An army of friends occupies the exits. 
+                    A dragon stirs beneath the city. The moment of truth arrives.
+                </p>
+            </div>
+
+            <div class="cardinal-section">
+                <h2>🌱 NORTH: 1996 | Sanctuary Grows</h2>
+                <p class="cardinal-year">Year of Foundation</p>
+                <p class="cardinal-text">
+                    Ms. Ora tends the wounds. Peppaman holds the center. A place begins to bloom. 
+                    No one yet knows this will be the anchor point for what's coming.
+                </p>
+            </div>
+
+            <div class="cardinal-section">
+                <h2>⛓️ WEST: 1901 | Bertha Bound</h2>
+                <p class="cardinal-year">Year of Binding</p>
+                <p class="cardinal-text">
+                    The dragon is bound. A constitution is written to exclude. Power is stolen, hidden, 
+                    and buried in the ground beneath Montgomery.
+                </p>
+            </div>
+
+            <div class="cardinal-section">
+                <h2>🛣️ SOUTH: 1952-1969 | Highway Cuts</h2>
+                <p class="cardinal-year">Year of Displacement</p>
+                <p class="cardinal-text">
+                    Families scatter. Communities split. Interstates divide neighborhoods. But underground 
+                    networks remain. Resistance continues.
+                </p>
+            </div>
+        </section>
+
+        <!-- CALL TO ACTION / NAVIGATION -->
+        <section style="text-align: center; margin: 60px 0;">
+            <h2 style="color: #fbbf24; font-size: 1.8rem; text-transform: uppercase; margin-bottom: 30px; letter-spacing: 2px;">
+                Ready to Enter the Portal?
+            </h2>
+            <div class="nav-buttons">
+                <a href="cosmogram.html" class="btn">🌍 The 9-Point Cosmogram</a>
+                <a href="family-bible.html" class="btn">📖 Read the Family Bible</a>
+                <a href="portfolio.html" class="btn">✨ View the Portfolio</a>
+                <a href="story-bible.html" class="btn">🎭 The Complete Story</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p><strong>The Crossroads Presents</strong></p>
+        <p>A story by Evan Milligan | The Sanctuary at Jubilee Community Center, Montgomery, Alabama</p>
+        <p style="margin-top: 15px;">
+            <a href="https://bit.ly/gtownlove">Visit the full experience</a> | 
+            <a href="https://shakethefield.org">Shake the Field</a> | 
+            <a href="https://safeplaceforart.org">Safe Place for Art</a>
+        </p>
+        <p style="margin-top: 20px; color: #666;">
+            "Walk through the time warp. Dance the 9-point. Sing the new world into being."
+        </p>
+    </footer>
+</body>
+</html>
