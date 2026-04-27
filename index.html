@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Crossroads | Entry Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #000;
+            color: #fbbf24;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #000;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+        }
+
+        .carousel-image.active {
+            opacity: 1;
+            z-index: 10;
+        }
+
+        .carousel-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 20;
+            pointer-events: none;
+        }
+
+        .carousel-text {
+            text-align: center;
+            color: #fbbf24;
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+            animation: fadeInOut 2.4s ease-in-out;
+        }
+
+        .carousel-text h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .carousel-text p {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0;
+            }
+            15% {
+                opacity: 1;
+            }
+            85% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .stage-indicator {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            z-index: 30;
+            animation: pulse 1s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .progress-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: #fbbf24;
+            z-index: 25;
+            animation: progressFill var(--duration) linear forwards;
+        }
+
+        @keyframes progressFill {
+            from {
+                width: 0%;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .carousel-text h1 {
+                font-size: 1.8rem;
+            }
+            .carousel-text p {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel-container">
+        <!-- Images will be inserted here by JavaScript -->
+    </div>
+
+    <div class="stage-indicator" id="stageIndicator">
+        BEGINNING
+    </div>
+
+    <div class="progress-bar" id="progressBar"></div>
+
+    <script>
+        // 5-slide cascade: Black → Gold → Moonlight/Smoke/Chalk
+        // 12 seconds total = 2.4 seconds per slide
+        const cascadeSequence = [
+            {
+                image: 'safeplaceforart_afrofuturist__silhouettes_black_and_white___M_bacde8a8-9b1c-4a6f-aee7-3a8465a2ac37_2.png',
+                duration: 2.4,
+                title: 'THE DEEP',
+                subtitle: 'Where all power sleeps. Ancestors watch. Roots hold fast.',
+                stage: 'ANCESTOR REALM'
+            },
+            {
+                image: 'safeplaceforart_afrofuturist__silhouettes_black_and_white___M_20ab0fcb-7393-4d43-80cb-8cd2b49d8423_2.png',
+                duration: 2.4,
+                title: 'THE GATHERING',
+                subtitle: 'Seven allies converge. The fence stands firm. The sword gleams.',
+                stage: 'CONVERGENCE'
+            },
+            {
+                image: 'safeplaceforart_afrofuturist__Map_of_Alabama_state_with_all_c_cc035596-9cc5-4b72-94a3-ddc82978e922_0.png',
+                duration: 2.4,
+                title: 'THE NIGHT VISION',
+                subtitle: 'Moonlight falls. We see what was hidden. Nocturnal knowledge blooms.',
+                stage: 'NIGHT SIGHT'
+            },
+            {
+                image: 'safeplaceforart_afrofuturist__Map_of_Alabama_state_with_all_c_cc035596-9cc5-4b72-94a3-ddc82978e922_3.png',
+                duration: 2.4,
+                title: 'THE CHALK DRAWN',
+                subtitle: 'Smoke rises. Prayers ascending. Spirits move between worlds.',
+                stage: 'THRESHOLD'
+            },
+            {
+                image: 'safeplaceforart_afrofuturist__anime__Map_of_Alabama_state_wit_f41de059-4999-4f96-973d-cf9f04512204_1.png',
+                duration: 2.4,
+                title: 'THE FULL NAMING',
+                subtitle: 'All allies visible. All forces gathered. The portal opens.',
+                stage: 'CONVERGENCE'
+            }
+        ];
+
+        let currentIndex = 0;
+        let isPlaying = true;
+
+        function createCarouselImages() {
+            const container = document.querySelector('.carousel-container');
+            
+            cascadeSequence.forEach((item, index) => {
+                const img = document.createElement('img');
+                img.src = item.image;
+                img.className = 'carousel-image';
+                if (index === 0) img.classList.add('active');
+                img.alt = item.title;
+                container.appendChild(img);
+            });
+        }
+
+        function updateCarousel() {
+            const images = document.querySelectorAll('.carousel-image');
+            const stageIndicator = document.getElementById('stageIndicator');
+            const progressBar = document.getElementById('progressBar');
+            const currentItem = cascadeSequence[currentIndex];
+
+            // Update images
+            images.forEach((img, index) => {
+                img.classList.remove('active');
+                if (index === currentIndex) {
+                    img.classList.add('active');
+                }
+            });
+
+            // Update overlay text
+            const overlayContainer = document.querySelector('.carousel-overlay');
+            if (overlayContainer) overlayContainer.remove();
+
+            const newOverlay = document.createElement('div');
+            newOverlay.className = 'carousel-overlay';
+            newOverlay.innerHTML = `
+                <div class="carousel-text">
+                    <h1>${currentItem.title}</h1>
+                    <p>${currentItem.subtitle}</p>
+                </div>
+            `;
+            document.querySelector('.carousel-container').appendChild(newOverlay);
+
+            // Update stage indicator
+            stageIndicator.textContent = currentItem.stage;
+
+            // Update progress bar
+            progressBar.style.setProperty('--duration', currentItem.duration + 's');
+            progressBar.style.width = '0%';
+            void progressBar.offsetWidth; // Trigger reflow
+            progressBar.style.width = '100%';
+
+            // Schedule next image or redirect
+            const nextTimeout = setTimeout(() => {
+                currentIndex = (currentIndex + 1) % cascadeSequence.length;
+                if (currentIndex === 0 && isPlaying) {
+                    // Cascade complete—redirect to portal
+                    setTimeout(() => {
+                        window.location.href = 'portal.html';
+                    }, 2000); // 2 second pause before redirect
+                    return;
+                }
+                updateCarousel();
+            }, currentItem.duration * 1000);
+
+            return nextTimeout;
+        }
+
+        // Initialize
+        createCarouselImages();
+        updateCarousel();
+
+        // Optional: Click to pause/play
+        document.addEventListener('click', () => {
+            isPlaying = !isPlaying;
+            if (isPlaying) {
+                updateCarousel();
+            }
+        });
+    </script>
+</body>
+</html>
