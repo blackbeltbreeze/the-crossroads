@@ -3,560 +3,294 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Crossroads: A Storyworld</title>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>The Crossroads | Entry Portal</title>
     <style>
-        :root {
-            --black: #0a0a0a;
-            --white: #f5f5f5;
-            --gold: #fbbf24;
-            --dark-gray: #1a1a1a;
-            --med-gray: #333;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html, body {
-            background: var(--black);
-            color: var(--white);
-            font-family: 'Crimson Text', serif;
-            line-height: 1.7;
-            font-size: 16px;
-        }
-
         body {
-            padding: 0;
-            margin: 0;
-        }
-
-        /* HEADER / NAV */
-        header {
-            background: linear-gradient(135deg, rgba(0,0,0,0.98), rgba(15,15,25,0.95));
-            padding: 2rem;
-            border-bottom: 3px solid var(--gold);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
+            font-family: 'Courier New', monospace;
+            background: #000;
+            color: #fbbf24;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
+            min-height: 100vh;
+            overflow: hidden;
         }
 
-        .logo {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-
-        nav {
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
             display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
         }
 
-        nav a {
-            color: var(--white);
-            text-decoration: none;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            padding: 0.5rem 1rem;
-            border: 1px solid transparent;
-            transition: all 0.3s ease;
-            font-family: 'Space Grotesk', sans-serif;
+        .carousel-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #000;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
         }
 
-        nav a:hover {
-            border: 1px solid var(--gold);
-            color: var(--gold);
+        .carousel-image.active {
+            opacity: 1;
+            z-index: 10;
         }
 
-        /* MAIN CONTAINER */
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-        }
-
-        section {
-            margin-bottom: 4rem;
-        }
-
-        h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 400;
-            letter-spacing: 0.12em;
-            margin-bottom: 1rem;
-            color: var(--gold);
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        h2 {
-            font-size: clamp(1.5rem, 3vw, 2.2rem);
-            font-weight: 400;
-            letter-spacing: 0.1em;
-            margin-bottom: 1.5rem;
-            margin-top: 2rem;
-            font-family: 'Space Grotesk', sans-serif;
-            border-bottom: 2px solid var(--gold);
-            padding-bottom: 0.5rem;
-        }
-
-        p {
-            margin-bottom: 1rem;
-            font-size: 1.05rem;
-            color: #ddd;
-        }
-
-        ul li {
-            margin-bottom: 0.5rem;
-            color: #ddd;
-            font-size: 1.05rem;
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            color: var(--gold);
-            margin-bottom: 2rem;
-            font-weight: 600;
-        }
-
-        /* HERO SECTION */
-        .hero {
-            text-align: center;
-            padding: 2rem 0;
-            margin-bottom: 3rem;
-        }
-
-        .hero h1 {
-            margin-bottom: 0.5rem;
-            animation: fadeInDown 0.8s ease-out;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: #aaa;
-            margin-bottom: 2rem;
-            animation: fadeInUp 0.8s ease-out 0.2s backwards;
-        }
-
-        /* LINK CARDS */
-        .link-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .link-card {
-            background: rgba(30, 30, 40, 0.6);
-            border: 2px solid #555;
-            padding: 1.5rem;
-            text-decoration: none;
-            color: var(--white);
-            transition: all 0.3s ease;
-            border-radius: 2px;
+        .carousel-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            min-height: 150px;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 20;
+            pointer-events: none;
         }
 
-        .link-card:hover {
-            border-color: var(--gold);
-            background: rgba(30, 30, 40, 0.9);
-            transform: translateY(-4px);
-            box-shadow: 0 0 20px rgba(251, 191, 36, 0.2);
-        }
-
-        .link-card h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--gold);
-        }
-
-        .link-card p {
-            font-size: 0.95rem;
-            margin-bottom: 0;
-            color: #bbb;
-        }
-
-        /* FEATURED CONTENT */
-        .featured {
-            background: rgba(251, 191, 36, 0.05);
-            border-left: 4px solid var(--gold);
-            padding: 2rem;
-            margin: 2rem 0;
-            border-radius: 2px;
-        }
-
-        .featured h3 {
-            color: var(--gold);
-            font-family: 'Space Grotesk', sans-serif;
-            margin-bottom: 1rem;
-        }
-
-        /* CTA BUTTONS */
-        .cta-group {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin: 2rem 0;
-        }
-
-        .cta-button {
-            padding: 0.9rem 2rem;
-            border: 2px solid var(--gold);
-            background: transparent;
-            color: var(--gold);
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .cta-button:hover {
-            background: var(--gold);
-            color: var(--black);
-            transform: translateY(-2px);
-        }
-
-        /* FOOTER */
-        footer {
-            background: rgba(0, 0, 0, 0.8);
-            border-top: 2px solid var(--gold);
-            padding: 2rem;
+        .carousel-text {
             text-align: center;
-            font-size: 0.9rem;
-            color: #888;
-            margin-top: 4rem;
+            color: #fbbf24;
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+            animation: fadeInOut 2.4s ease-in-out;
         }
 
-        footer a {
-            color: var(--gold);
-            text-decoration: none;
+        .carousel-text h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+            animation: slideUp 0.8s ease-out;
         }
 
-        footer a:hover {
-            text-decoration: underline;
+        .carousel-text p {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            max-width: 600px;
+            line-height: 1.8;
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0;
             }
+            15% {
+                opacity: 1;
+            }
+            85% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
 
-            nav {
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .stage-indicator {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            z-index: 30;
+            animation: pulse 1s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .progress-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: #fbbf24;
+            z-index: 25;
+            animation: progressFill var(--duration) linear forwards;
+        }
+
+        @keyframes progressFill {
+            from {
+                width: 0%;
+            }
+            to {
                 width: 100%;
-                justify-content: center;
-            }
-
-            main {
-                padding: 1.5rem;
-            }
-
-            .link-grid {
-                grid-template-columns: 1fr;
             }
         }
 
-        @keyframes fadeInDown {
-            0% { opacity: 0; transform: translateY(-20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
+        @media (max-width: 768px) {
+            .carousel-text h1 {
+                font-size: 1.8rem;
+            }
+            .carousel-text p {
+                font-size: 0.95rem;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <div class="logo">The Crossroads</div>
-            <nav>
-                <a href="jamal_story.html">Story</a>
-                <a href="characters_and_conflicts.html">Characters</a>
-                <a href="interstate_conviction_removal.html">Framework</a>
-                <a href="story_bible.html">Bible</a>
-                <a href="contribute.html">Contribute</a>
-            </nav>
-        </div>
-    </header>
+    <div class="carousel-container">
+        <!-- Images will be inserted here by JavaScript -->
+    </div>
 
-    <main>
-        <section class="hero">
-            <h1>The Crossroads</h1>
-            <p>A storyworld set in Montgomery, Alabama</p>
-            <p>Beginning June 2026 · Extending to Year 3176</p>
-        </section>
+    <div class="stage-indicator" id="stageIndicator">
+        BEGINNING
+    </div>
 
-        <section>
-            <h2>What is The Crossroads?</h2>
-            <p>On Juneteenth 2026, a circle of friends from Montgomery occupy Interstate 65 across four exits to expose a bound dragon named Bertha whose trapped energy has powered Alabama's political hierarchy since 1901. The occupation lasts 72 hours. It ends in drone strikes. It triggers a national uprising. It echoes across 1,150 years.</p>
-            <p>This is a story about the costs of power and the costs of resistance. It is told across multiple formats: as written narrative, as sound, as visual media, as lived practice, as a festival, and as a data trust.</p>
-            <p><strong>It is a story about you.</strong></p>
-        </section>
+    <div class="progress-bar" id="progressBar"></div>
 
-        <section class="featured">
-            <h3>Start Here</h3>
+    <script>
+        // 5-slide cascade: Black → Gold → Moonlight/Smoke/Chalk
+        // 12 seconds total = 2.4 seconds per slide
+        const cascadeSequence = [
+            {
+                image: 'safeplaceforart_afrofuturist__silhouettes_black_and_white___M_bacde8a8-9b1c-4a6f-aee7-3a8465a2ac37_2.png',
+                duration: 2.4,
+                title: 'THE DEEP',
+                subtitle: 'Where all power sleeps. Ancestors watch. Roots hold fast.',
+                stage: 'ANCESTOR REALM'
+            },
+            {
+                image: 'safeplaceforart_afrofuturist__silhouettes_black_and_white___M_20ab0fcb-7393-4d43-80cb-8cd2b49d8423_2.png',
+                duration: 2.4,
+                title: 'THE GATHERING',
+                subtitle: 'Seven allies converge. The fence stands firm. The sword gleams.',
+                stage: 'CONVERGENCE'
+            },
+            {
+                image: 'safeplaceforart_afrofuturist__Map_of_Alabama_state_with_all_c_cc035596-9cc5-4b72-94a3-ddc82978e922_0.png',
+                duration: 2.4,
+                title: 'THE NIGHT VISION',
+                subtitle: 'Moonlight falls. We see what was hidden. Nocturnal knowledge blooms.',
+                stage: 'NIGHT SIGHT'
+            },
+            {
+                image: 'safeplaceforart_afrofuturist__Map_of_Alabama_state_with_all_c_cc035596-9cc5-4b72-94a3-ddc82978e922_3.png',
+                duration: 2.4,
+                title: 'THE CHALK DRAWN',
+                subtitle: 'Smoke rises. Prayers ascending. Spirits move between worlds.',
+                stage: 'THRESHOLD'
+            },
+            {
+                image: 'safeplaceforart_afrofuturist__anime__Map_of_Alabama_state_wit_f41de059-4999-4f96-973d-cf9f04512204_1.png',
+                duration: 2.4,
+                title: 'THE FULL NAMING',
+                subtitle: 'All allies visible. All forces gathered. The portal opens.',
+                stage: 'CONVERGENCE'
+            }
+        ];
+
+        let currentIndex = 0;
+        let isPlaying = true;
+
+        function createCarouselImages() {
+            const container = document.querySelector('.carousel-container');
             
- 
-<section id="music-hub" style="background: linear-gradient(135deg, #0f172e 0%, #1a1a2e 50%, #16213e 100%); padding: 3rem 2rem; margin: 0 0 3rem 0; border-bottom: 3px solid #fbbf24; position: relative; overflow: hidden;">
-  
-  <!-- Background visual element -->
-  <div style="position: absolute; top: 0; right: 0; opacity: 0.05; font-size: 200px; z-index: 0;">🎶</div>
-  
-  <div style="position: relative; z-index: 1; max-width: 1200px; margin: 0 auto;">
-    
-    <!-- Section Title -->
-    <h1 style="color: #fbbf24; font-family: 'Space Grotesk', 'Courier New', monospace; font-size: 2.5rem; margin: 0 0 1rem 0; text-transform: uppercase; letter-spacing: 3px;">
-      🎙️ SOUL WAVES: SONGS FROM THE CROSSROADS
-    </h1>
-    <p style="color: #bbb; font-size: 1.1rem; margin: 0 0 2rem 0; line-height: 1.8; max-width: 800px;">
-      <strong style="color: #fbbf24;">Three albums. 60+ artists. One story.</strong>
-      <br><br>
-      Produced across Berlin, Birmingham, Brooklyn, Chicago, D.C., Detroit, Hanoi, Huntsville, Lansing, Montgomery, Mobile, and Portland (PDX). 
-      Every artist owns their work. Every credit is named. 
-      <br>
-      <em>Choose your timeline. Choose your soundtrack. Enter the Crossroads.</em>
-    </p>
- 
-    <!-- ─────────────────────────────────────────────────────────────── -->
-    <!-- ALBUM CARDS (3-COLUMN GRID) -->
-    <!-- ─────────────────────────────────────────────────────────────── -->
-    
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0;">
-      
-      <!-- ALBUM 1: SMOKE & MIRRORS -->
-      <div style="background: rgba(255, 255, 255, 0.05); border-left: 4px solid #fbbf24; padding: 2rem; border-radius: 4px; backdrop-filter: blur(10px);">
-        <h3 style="color: #fbbf24; margin-top: 0; margin-bottom: 1rem; font-size: 1.3rem;">
-          SMOKE & MIRRORS
-        </h3>
-        <p style="color: #ddd; margin: 0 0 1rem 0; font-size: 0.95rem;">
-          <strong>23 tracks. 60+ artists.</strong>
-          <br>
-          The full album that runs through every timeline.
-          <br><br>
-          <em>Featured characters:</em> Peppaman, Night Gods, JD, President Gump, Narissa
-        </p>
-        
-        <!-- Links Row -->
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
-          <a href="https://archive.org/details/culture-lab-from-western-states-center-smoke-mirrors" target="_blank" style="color: #fbbf24; text-decoration: none; border: 1px solid #fbbf24; padding: 0.5rem 1rem; border-radius: 3px; font-size: 0.9rem; transition: all 0.3s; display: inline-block;">
-            Archive.org
-          </a>
-          <a href="https://culturelab.bandcamp.com/album/smoke-mirrors" target="_blank" style="color: #fbbf24; text-decoration: none; border: 1px solid #fbbf24; padding: 0.5rem 1rem; border-radius: 3px; font-size: 0.9rem; transition: all 0.3s; display: inline-block;">
-            Bandcamp
-          </a>
-          <a href="https://www.westernstatescenter.org/smoke-mirrors#Album" target="_blank" style="color: #fbbf24; text-decoration: none; border: 1px solid #fbbf24; padding: 0.5rem 1rem; border-radius: 3px; font-size: 0.9rem; transition: all 0.3s; display: inline-block;">
-            Culture Lab
-          </a>
-        </div>
-        
-        <!-- Embedded Player -->
-        <div style="margin-top: 2rem; border-top: 1px solid rgba(251, 191, 36, 0.3); padding-top: 1.5rem;">
-          <iframe 
-            src="https://archive.org/embed/culture-lab-from-western-states-center-smoke-mirrors" 
-            width="100%" 
-            height="300" 
-            frameborder="0" 
-            webkitallowfullscreen="true" 
-            mozallowfullscreen="true" 
-            allowfullscreen
-            style="border-radius: 4px;">
-          </iframe>
-        </div>
-      </div>
- 
-      <!-- ALBUM 2: CAREGIVER ROAD TRIP (REMIX) - NOW WITH ARCHIVE.ORG -->
-      <div style="background: rgba(255, 255, 255, 0.05); border-left: 4px solid #fbbf24; padding: 2rem; border-radius: 4px; backdrop-filter: blur(10px);">
-        <h3 style="color: #fbbf24; margin-top: 0; margin-bottom: 1rem; font-size: 1.3rem;">
-          CAREGIVER ROAD TRIP<br><span style="font-size: 1rem; font-weight: normal;">(Remix Edition)</span>
-        </h3>
-        <p style="color: #ddd; margin: 0 0 1rem 0; font-size: 0.95rem;">
-          <strong>Remixed + Reimagined.</strong>
-          <br>
-          Artists taking care work songs into new sonic spaces.
-          <br><br>
-          <em>Featured characters:</em> Ms. Ora, Bunny, Lil Alex, Future McFerrin, Unique & Dominique
-        </p>
-        
-        <!-- Links Row -->
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
-          <a href="https://archive.org/details/shake-the-field-and-felt-five-caregiver-road-trip-remix-edition-08-revelations-s" target="_blank" style="color: #fbbf24; text-decoration: none; border: 1px solid #fbbf24; padding: 0.5rem 1rem; border-radius: 3px; font-size: 0.9rem; transition: all 0.3s; display: inline-block;">
-            Archive.org
-          </a>
-          <a href="https://shakethefield.bandcamp.com/album/caregiver-road-trip-remix-edition" target="_blank" style="color: #fbbf24; text-decoration: none; border: 1px solid #fbbf24; padding: 0.5rem 1rem; border-radius: 3px; font-size: 0.9rem; transition: all 0.3s; display: inline-block;">
-            Bandcamp
-          </a>
-             <a href="https://shakethefield.org" target="_blank" style="color: #fbbf24; text-decoration: none; border: 1px solid #fbbf24; padding: 0.5rem 1rem; border-radius: 3px; font-size: 0.9rem; transition: all 0.3s; display: inline-block;">
-            ShakeTheField.org
-          </a>
-        </div>
-        
-        <!-- Embedded Player -->
-        <div style="margin-top: 2rem; border-top: 1px solid rgba(251, 191, 36, 0.3); padding-top: 1.5rem;">
-          <iframe 
-            src="https://archive.org/embed/shake-the-field-and-felt-five-caregiver-road-trip-remix-edition-08-revelations-s" 
-            width="100%" 
-            height="300" 
-            frameborder="0" 
-            webkitallowfullscreen="true" 
-            mozallowfullscreen="true" 
-            allowfullscreen
-            style="border-radius: 4px;">
-          </iframe>
-        </div>
-      </div>
- 
-      <!-- ALBUM 3: CAREGIVER ROAD TRIP (EXTENDED) - BANDCAMP ONLY -->
-      <div style="background: rgba(255, 255, 255, 0.05); border-left: 4px solid #fbbf24; padding: 2rem; border-radius: 4px; backdrop-filter: blur(10px);">
-        <h3 style="color: #fbbf24; margin-top: 0; margin-bottom: 1rem; font-size: 1.3rem;">
-          CAREGIVER ROAD TRIP<br><span style="font-size: 1rem; font-weight: normal;">(Extended Collectors Edition)</span>
-        </h3>
-        <p style="color: #ddd; margin: 0 0 1rem 0; font-size: 0.95rem;">
-          <strong>The original adventure across a haunted state.</strong>
-          <br>
-          The firt published journey of our characters, traveling through 67 counties, writing songs while learning about care work, resistance, and survival.
-          <br><br>
-          <em>Featured characters:</em> Phat Tony, Squirrel, Jamal, Big Kitty, Tyra
-        </p>
-        
-        <!-- Links Row -->
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
-          <a href="https://shakethefield.bandcamp.com/album/caregiver-road-trip-extended-collectors-edition" target="_blank" style="color: #fbbf24; text-decoration: none; border: 1px solid #fbbf24; padding: 0.5rem 1rem; border-radius: 3px; font-size: 0.9rem; transition: all 0.3s; display: inline-block;">
-            Bandcamp
-          </a>
-             <a href="https://shakethefield.org" target="_blank" style="color: #fbbf24; text-decoration: none; border: 1px solid #fbbf24; padding: 0.5rem 1rem; border-radius: 3px; font-size: 0.9rem; transition: all 0.3s; display: inline-block;">
-            "Mae! Sum! Shake! Den!" screamed Meshia. Or Dr. Washington as her colleagues and students referred to her. "Ile Urthis Bishout! Playwhimmie Annemogot Amtime!" That was the morning she received deathhreat number 12. Also the day she hit telegram to reup on h - opened her front door - and found Big Kitty standing there holding her draw not recognizing her. 
-          </a>
-        </div>
-        
-        <!-- Embedded Player -->
-        <div style="margin-top: 2rem; border-top: 1px solid rgba(251, 191, 36, 0.3); padding-top: 1.5rem;">
-          <iframe 
-            style="border: 0; width: 100%; height: 300px; border-radius: 4px;"
-            src="https://bandcamp.com/EmbeddedPlayer/album=17644193/size=large/bgcol=ffffff/linkcol=0687f5/transparent=true/" 
-            seamless>
-          </iframe>
-        </div>
-      </div>
- 
-    </div>
- 
-    <!-- ─────────────────────────────────────────────────────────────── -->
-    <!-- BOTTOM NOTE -->
-    <!-- ─────────────────────────────────────────────────────────────── -->
-    
-    <div style="background: rgba(251, 191, 36, 0.1); border-left: 4px solid #fbbf24; padding: 1.5rem; margin-top: 2rem; border-radius: 4px;">
-      <p style="color: #bbb; margin: 0; font-size: 0.95rem;">
-        <strong style="color: #fbbf24;">Data Trust:</strong> All 100+ artists own their work. 
-        If this project generates revenue, creators keep 80%. 
-        <a href="CREDITS_AND_CONTRIBUTORS.txt" style="color: #fbbf24; text-decoration: underline;">See full credits</a>.
-      </p>
-    </div>
- 
-  </div>
-  
-</section>
-            <p>Never encountered The Crossroads before? Begin with Jamal's 10-minute telling of the story, including character photos and the core events.</p>
-            <div class="cta-group">
-                <a href="jamal_story.html" class="cta-button">Read Jamal's Story</a>
-                <a href="characters_and_conflicts.html" class="cta-button">Meet the Characters</a>
-            </div>
-        </section>
+            cascadeSequence.forEach((item, index) => {
+                const img = document.createElement('img');
+                img.src = item.image;
+                img.className = 'carousel-image';
+                if (index === 0) img.classList.add('active');
+                img.alt = item.title;
+                container.appendChild(img);
+            });
+        }
 
-        <section>
-            <h2>Explore the Archive</h2>
-            <div class="link-grid">
-                <a href="jamal_story.html" class="link-card">
-                    <h3>Jamal's Telling</h3>
-                    <p>The story in Jamal Washington's voice. 10 minutes. Character portraits. The full occupation arc.</p>
-                </a>
-                <a href="characters_and_conflicts.html" class="link-card">
-                    <h3>Characters & Conflicts</h3>
-                    <p>Meet Big Kitty, Tyra, Bryan, Peppaman, Squirrel, Elliot, and the dragon Bertha. Photos included.</p>
-                </a>
-                <a href="interstate_conviction_removal.html" class="link-card">
-                    <h3>Interstate · Conviction · Removal</h3>
-                    <p>The political and spiritual framework. Voting rights. Grassroots organizing. Community infrastructure.</p>
-                </a>
-                <a href="story_bible.html" class="link-card">
-                    <h3>Story Bible & Omniscient Telling</h3>
-                    <p>Download the complete Story Bible v5 and the omniscient third-person narrative of the entire storyworld.</p>
-                </a>
-                <a href="contribute.html" class="link-card">
-                    <h3>How to Contribute</h3>
-                    <p>Be part of building The Crossroads. Write, create sound, design visuals, or help organize. We're recruiting now.</p>
-                </a>
-            </div>
-        </section>
+        function updateCarousel() {
+            const images = document.querySelectorAll('.carousel-image');
+            const stageIndicator = document.getElementById('stageIndicator');
+            const progressBar = document.getElementById('progressBar');
+            const currentItem = cascadeSequence[currentIndex];
 
-        <section>
-            <h2>The Phase 1 Vision</h2>
-            <p>Phase 1 involves completing the writing of a 4-part story and producing it across multiple modalities:</p>
-            <ul style="margin-left: 2rem; margin-bottom: 2rem;">
-                <li><strong>Narrative:</strong> Novella or limited-series script</li>
-                <li><strong>Audio:</strong> Radio drama, studio album (Smoke & Mirrors), sound collages</li>
-                <li><strong>Digital:</strong> Interactive website and map, augmented reality scavenger hunt</li>
-                <li><strong>Visual:</strong> Photography exhibit, animated sequences, street musical</li>
-                <li><strong>Action:</strong> Toolkit for organizers and educators, community workshops, skill-up apps</li>
-                <li><strong>Festival:</strong> Annual gathering at the Sanctuary and across the Black Belt</li>
-            </ul>
-            <p>The Smoke & Mirrors album is already complete. The Story Bible is locked. We're finishing the gaps and moving into production.</p>
-        </section>
+            // Update images
+            images.forEach((img, index) => {
+                img.classList.remove('active');
+                if (index === currentIndex) {
+                    img.classList.add('active');
+                }
+            });
 
-        <section class="featured">
-            <h3>Built on Integrity</h3>
-            <p>The Crossroads operates as a <strong>data trust</strong>. Every person who contributes—writing, music, visuals, organizing—earns documented credit and shared revenue if this work succeeds.</p>
-            <p>This is not charity. It is infrastructure. It models what it means for a community to own and benefit from the knowledge it produces.</p>
-            <p>The story itself demonstrates this: Elliot in 3176 cannot tell the story of 2026 without crediting every porch conversation, every WZRD tape, every person who showed up.</p>
-        </section>
+            // Update overlay text
+            const overlayContainer = document.querySelector('.carousel-overlay');
+            if (overlayContainer) overlayContainer.remove();
 
-        <section>
-            <h2>Contact & Next Steps</h2>
-            <p><strong>Evan Milligan</strong> | Creator & Executive Director</p>
-            <p>
-                📧 <a href="mailto:evan@jubileemgm.org" style="color: var(--gold);">evan@jubileemgm.org</a><br>
-                📱 334-590-1702<br>
-                🌐 <a href="https://safeplaceforart.org" target="_blank" style="color: var(--gold);">safeplaceforart.org</a><br>
-                IG: <a href="https://instagram.com/blackbeltbreeze" target="_blank" style="color: var(--gold);">@blackbeltbreeze</a>
-            </p>
-            <p style="margin-top: 2rem;">
-                <strong>The Sanctuary at Jubilee Community Center</strong><br>
-                432 Goldthwaite Street<br>
-                Montgomery, Alabama 36104<br>
-                📱 334-264-9191
-            </p>
-        </section>
-    </main>
-    <footer>
-        <p>The Crossroads: A Storyworld | Created by Evan Milligan | Data Trust Model | © 2026</p>
-        <p><a href="index.html">Home</a> · <a href="contribute.html">Contribute</a> · <a href="story_bible.html">Download</a></p>
-    </footer>
+            const newOverlay = document.createElement('div');
+            newOverlay.className = 'carousel-overlay';
+            newOverlay.innerHTML = `
+                <div class="carousel-text">
+                    <h1>${currentItem.title}</h1>
+                    <p>${currentItem.subtitle}</p>
+                </div>
+            `;
+            document.querySelector('.carousel-container').appendChild(newOverlay);
+
+            // Update stage indicator
+            stageIndicator.textContent = currentItem.stage;
+
+            // Update progress bar
+            progressBar.style.setProperty('--duration', currentItem.duration + 's');
+            progressBar.style.width = '0%';
+            void progressBar.offsetWidth; // Trigger reflow
+            progressBar.style.width = '100%';
+
+            // Schedule next image or redirect
+            const nextTimeout = setTimeout(() => {
+                currentIndex = (currentIndex + 1) % cascadeSequence.length;
+                if (currentIndex === 0 && isPlaying) {
+                    // Cascade complete—redirect to portal
+                    setTimeout(() => {
+                        window.location.href = 'portal.html';
+                    }, 2000); // 2 second pause before redirect
+                    return;
+                }
+                updateCarousel();
+            }, currentItem.duration * 1000);
+
+            return nextTimeout;
+        }
+
+        // Initialize
+        createCarouselImages();
+        updateCarousel();
+
+        // Optional: Click to pause/play
+        document.addEventListener('click', () => {
+            isPlaying = !isPlaying;
+            if (isPlaying) {
+                updateCarousel();
+            }
+        });
+    </script>
 </body>
 </html>
