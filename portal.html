@@ -50,6 +50,275 @@
             padding: 40px 20px;
         }
 
+        /* === FIRST TIME HERE BLOCK === */
+        .first-time-block {
+            background: rgba(15, 23, 46, 0.9);
+            border: 2px solid #fbbf24;
+            border-radius: 8px;
+            padding: 30px 35px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(251, 191, 36, 0.15);
+        }
+
+        .first-time-block h2 {
+            color: #fbbf24;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 18px;
+            border-bottom: 1px solid rgba(251, 191, 36, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .first-time-block p {
+            color: #e5e5e5;
+            font-size: 1rem;
+            line-height: 1.75;
+            margin-bottom: 14px;
+        }
+
+        .first-time-block .whats-real {
+            background: rgba(0, 0, 0, 0.4);
+            border-left: 3px solid #fbbf24;
+            padding: 16px 20px;
+            margin: 18px 0;
+        }
+
+        .first-time-block .whats-real-item {
+            color: #ddd;
+            font-size: 0.98rem;
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+
+        .first-time-block em {
+            color: #fbbf24;
+            font-style: italic;
+        }
+
+        .first-time-block strong {
+            color: #fbbf24;
+        }
+
+        .welcome-line {
+            font-size: 1.1rem;
+            color: #fbbf24;
+            margin-top: 18px;
+            font-weight: bold;
+        }
+
+        /* === REAL WORLD ACTION BUTTONS (cosmogram positioning) === */
+        .real-world-actions {
+            margin: 50px 0;
+            padding: 30px 20px;
+            background: rgba(26, 26, 46, 0.4);
+            border-radius: 8px;
+        }
+
+        .actions-label {
+            text-align: center;
+            color: #888;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .action-cosmogram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .action-button {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            border: 2px solid #fbbf24;
+            background: #0a0a0a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 2.5rem;
+            text-decoration: none;
+            color: #fbbf24;
+        }
+
+        .action-button:hover {
+            background: #fbbf24;
+            color: #0a0a0a;
+            box-shadow: 0 0 30px rgba(251, 191, 36, 0.7);
+            transform: scale(1.08);
+        }
+
+        .action-tooltip {
+            position: absolute;
+            top: 120%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #0a0a0a;
+            border: 1px solid #fbbf24;
+            color: #fbbf24;
+            padding: 8px 14px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+            border-radius: 4px;
+        }
+
+        .action-button:hover .action-tooltip,
+        .action-button:focus .action-tooltip {
+            opacity: 1;
+        }
+
+        /* === CHOOSER OVERLAY === */
+        .chooser-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .chooser-overlay.active {
+            display: flex;
+        }
+
+        .chooser-box {
+            background: #0f172e;
+            border: 3px solid #fbbf24;
+            border-radius: 8px;
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        .chooser-close {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: #fbbf24;
+            font-size: 1.8rem;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .chooser-box h3 {
+            color: #fbbf24;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+        }
+
+        .chooser-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .chooser-option {
+            display: block;
+            padding: 14px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #fbbf24;
+            color: #fbbf24;
+            text-decoration: none;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .chooser-option:hover {
+            background: #fbbf24;
+            color: #0a0a0a;
+        }
+
+        .chooser-option-small {
+            font-size: 0.8rem;
+            color: #aaa;
+            display: block;
+            margin-top: 4px;
+            text-transform: none;
+            letter-spacing: 0.5px;
+        }
+
+        .chooser-option:hover .chooser-option-small {
+            color: #1a1a2e;
+        }
+
+        /* === EMAIL FORM === */
+        .email-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .email-form input {
+            padding: 12px 14px;
+            background: #0a0a0a;
+            border: 1px solid #fbbf24;
+            color: #fbbf24;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            border-radius: 4px;
+        }
+
+        .email-form input::placeholder {
+            color: #888;
+        }
+
+        .email-form button {
+            padding: 14px;
+            background: #fbbf24;
+            color: #0a0a0a;
+            border: none;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .email-form button:hover {
+            background: #fff;
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.8);
+        }
+
+        .form-note {
+            color: #888;
+            font-size: 0.8rem;
+            margin-top: 12px;
+            line-height: 1.5;
+        }
+
+        /* === ORIGINAL PORTAL HERO === */
         .portal-hero {
             background: rgba(0, 0, 0, 0.8);
             border: 3px solid #fbbf24;
@@ -77,6 +346,17 @@
 
         .portal-description strong {
             color: #fbbf24;
+        }
+
+        .section-intro {
+            color: #ccc;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            padding: 14px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-left: 3px solid #fbbf24;
+            font-style: italic;
         }
 
         .character-grid {
@@ -237,6 +517,20 @@
             .character-grid {
                 grid-template-columns: 1fr;
             }
+
+            .action-cosmogram {
+                gap: 30px;
+            }
+
+            .action-button {
+                width: 90px;
+                height: 90px;
+                font-size: 2rem;
+            }
+
+            .first-time-block {
+                padding: 22px 20px;
+            }
         }
     </style>
 </head>
@@ -247,29 +541,165 @@
     </header>
 
     <main>
-        <!-- HERO IMAGE SECTION -->
+        <!-- === FIRST TIME HERE BLOCK === -->
+        <section class="first-time-block">
+            <h2>First time here? Read this.</h2>
+            <p>
+                The Crossroads is an arts and organizing project based in Montgomery, Alabama. 
+                Created by <strong>Evan Milligan</strong> — organizer, named plaintiff in 
+                <em>Allen v. Milligan</em>, and artist in residence at the Sanctuary at Jubilee 
+                Community Center — together with a growing team of artist-organizers across the 
+                Black Belt and beyond.
+            </p>
+
+            <p style="margin-top: 14px;">Here's what's real and available right now:</p>
+
+            <div class="whats-real">
+                <p class="whats-real-item">🎵 <strong>Two albums you can listen to today</strong> — <em>Caregiver Road Trip</em> and <em>Smoke &amp; Mirrors</em></p>
+                <p class="whats-real-item">🏛 <strong>A live performance series</strong> at the Sanctuary at Jubilee Community Center in Montgomery</p>
+                <p class="whats-real-item">📰 <strong>Writing and op-eds</strong> about voting rights, the Black Belt, and what comes next</p>
+                <p class="whats-real-item">🤝 <strong>A team of real artists, organizers, lawyers, and neighbors</strong> building something together</p>
+            </div>
+
+            <p>
+                What you're about to read below is the <strong>playworld</strong> — a fictional 
+                layer called The Crossroads that ties all of the above together. It includes a 
+                musical called <em>Narissa's Home</em>, a radio station called WZRD 77.7 FM, and 
+                a cast of characters set across Montgomery in 2026 and across time. The story is 
+                real-life arts work; the characters live inside the story.
+            </p>
+
+            <p style="margin-top: 14px;">
+                Think of this whole site as the playbill for a show that hasn't quite started yet, 
+                but already has the band warming up.
+            </p>
+
+            <p class="welcome-line">Welcome to the Crossroads.</p>
+        </section>
+
+        <!-- === REAL WORLD ACTION BUTTONS (icon-only, hover-to-reveal) === -->
+        <section class="real-world-actions">
+            <p class="actions-label">⊹ Choose your way in ⊹</p>
+            <div class="action-cosmogram">
+                <a href="#" class="action-button" onclick="openChooser('listen'); return false;" aria-label="Listen to the music">
+                    🎵
+                    <span class="action-tooltip">Listen</span>
+                </a>
+                <a href="#" class="action-button" onclick="openChooser('read'); return false;" aria-label="Read the writing">
+                    📖
+                    <span class="action-tooltip">Read</span>
+                </a>
+                <a href="#" class="action-button" onclick="openChooser('join'); return false;" aria-label="Join the work">
+                    ✉️
+                    <span class="action-tooltip">Join</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- === CHOOSER OVERLAYS === -->
+
+        <!-- LISTEN CHOOSER (nested: project → edition) -->
+        <div class="chooser-overlay" id="chooser-listen">
+            <div class="chooser-box">
+                <button class="chooser-close" onclick="closeChooser()" aria-label="Close">×</button>
+                <h3>🎵 Listen</h3>
+                <div class="chooser-options" id="listen-projects">
+                    <a href="#" class="chooser-option" onclick="showListenEditions('caregiver'); return false;">
+                        Caregiver Road Trip
+                        <span class="chooser-option-small">Two editions available</span>
+                    </a>
+                    <a href="https://culturelab.bandcamp.com/album/smoke-mirrors" target="_blank" rel="noopener" class="chooser-option">
+                        Smoke &amp; Mirrors
+                        <span class="chooser-option-small">Culture Lab from Western States Center</span>
+                    </a>
+                </div>
+                <div class="chooser-options" id="listen-caregiver-editions" style="display:none;">
+                    <a href="https://shakethefield.bandcamp.com/album/caregiver-road-trip-extended-collectors-edition" target="_blank" rel="noopener" class="chooser-option">
+                        Extended Collector's Edition
+                        <span class="chooser-option-small">Shake the Field</span>
+                    </a>
+                    <a href="https://shakethefield.bandcamp.com/album/caregiver-road-trip-remix-edition" target="_blank" rel="noopener" class="chooser-option">
+                        Remix Edition
+                        <span class="chooser-option-small">Shake the Field</span>
+                    </a>
+                    <a href="#" class="chooser-option" onclick="showListenProjects(); return false;" style="background: transparent; border-style: dashed;">
+                        ← Back
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- READ CHOOSER -->
+        <div class="chooser-overlay" id="chooser-read">
+            <div class="chooser-box">
+                <button class="chooser-close" onclick="closeChooser()" aria-label="Close">×</button>
+                <h3>📖 Read</h3>
+                <div class="chooser-options">
+                    <a href="https://www.al.com/politics/2026/05/visions-of-victory-evan-milligan-reflects-on-voting-rights-setbacks-after-court-decision-op-ed.html" target="_blank" rel="noopener" class="chooser-option">
+                        Visions of Victory
+                        <span class="chooser-option-small">Op-ed in AL.com, May 2026</span>
+                    </a>
+                    <a href="tell-it.html" class="chooser-option">
+                        Tell It
+                        <span class="chooser-option-small">Essay on a marble wall, a phone, and a story worth telling</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- JOIN CHOOSER -->
+        <div class="chooser-overlay" id="chooser-join">
+            <div class="chooser-box">
+                <button class="chooser-close" onclick="closeChooser()" aria-label="Close">×</button>
+                <h3>✉️ Join the Work</h3>
+                <p style="color: #ccc; font-size: 0.95rem; line-height: 1.6; margin-bottom: 16px;">
+                    Drop your email below. You'll be the first to receive the 
+                    <strong style="color:#fbbf24;">Crossroads Reading Kit</strong> when it's ready — 
+                    a downloadable packet for hosting a table reading with three friends.
+                </p>
+                <form class="email-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+                    <input type="text" name="name" placeholder="Your name" required>
+                    <input type="email" name="email" placeholder="Your email" required>
+                    <input type="text" name="interest" placeholder="What do you most want to learn or do? (optional)">
+                    <button type="submit">Send the Kit When Ready</button>
+                </form>
+                <p class="form-note">
+                    We use your email only to send you the Kit and occasional updates from the project. 
+                    We do not share it.
+                </p>
+            </div>
+        </div>
+
+        <!-- === EXISTING HERO IMAGE SECTION === -->
         <section class="portal-hero">
             <img src="CROSSROADS_ALABAMA_PORTAL.png" alt="The Crossroads Portal: Alabama Map with Characters and Sacred Center">
-            
+
             <div class="portal-description">
                 <p>
-                    This is <strong>The Crossroads.</strong> A spiritual gathering place where all timelines converge. 
+                    This is <strong>The Crossroads.</strong> A spiritual gathering place where all timelines converge.
                     The map shows Alabama's counties with seven allies scattered across the state. At the center—
-                    where Interstate 65 and Interstate 85 intersect in Montgomery—glows <strong>Africa itself</strong>, 
+                    where Interstate 65 and Interstate 85 intersect in Montgomery—glows <strong>Africa itself</strong>,
                     transformed into a golden portal.
                 </p>
                 <p style="margin-top: 15px;">
-                    Below the sacred fence, a sword grows upward through the wood. Trees frame the blade. A boombox 
+                    Below the sacred fence, a sword grows upward through the wood. Trees frame the blade. A boombox
                     sits on the grass. Mojo jars anchor the space. And underneath it all, <strong>Bertha</strong>—
                     the emerald dragon—coils in power.
                 </p>
             </div>
         </section>
 
-        <!-- CHARACTER SECTION -->
+        <!-- === CHARACTER SECTION (now labeled) === -->
         <section>
-            <h2 style="color: #fbbf24; font-size: 2rem; text-transform: uppercase; margin: 40px 0 30px; letter-spacing: 2px;">The Seven Allies</h2>
-            
+            <h2 style="color: #fbbf24; font-size: 2rem; text-transform: uppercase; margin: 40px 0 20px; letter-spacing: 2px;">The Seven Allies</h2>
+
+            <p class="section-intro">
+                These are the seven main characters who live inside the Crossroads story. 
+                They are inspired by real ancestors, neighbors, and creative collaborators — 
+                but they are characters in the playworld, not people you can email. The real 
+                team is named in the Playbill.
+            </p>
+
             <div class="character-grid">
                 <div class="character-card">
                     <h3>Tyra Washington</h3>
@@ -315,7 +745,7 @@
             </div>
         </section>
 
-        <!-- CENTER SACRED SPACE -->
+        <!-- === CENTER SACRED SPACE === -->
         <section class="center-scene">
             <h2>The Sacred Center</h2>
             <div class="fence-ascii">
@@ -330,26 +760,26 @@
             <div class="center-text">
                 <p><strong>"THE CROSSROADS PRESENTS"</strong></p>
                 <p style="margin-top: 15px;">
-                    At the intersection of Interstate 65 and Interstate 85, in the heart of Montgomery, 
-                    Africa itself appears and glows. A metal fence. A sword growing upward. A tree surrounding it. 
+                    At the intersection of Interstate 65 and Interstate 85, in the heart of Montgomery,
+                    Africa itself appears and glows. A metal fence. A sword growing upward. A tree surrounding it.
                     Mojo jars grounding the space. A boombox broadcasting resistance.
                 </p>
                 <p style="margin-top: 15px;">
-                    This is where the story happens. This is where choices are made. This is where old worlds end 
+                    This is where the story happens. This is where choices are made. This is where old worlds end
                     and new ones are born.
                 </p>
             </div>
         </section>
 
-        <!-- CARDINAL DIRECTIONS -->
+        <!-- === CARDINAL DIRECTIONS === -->
         <section>
             <h2 style="color: #fbbf24; font-size: 2rem; text-transform: uppercase; margin: 40px 0 30px; letter-spacing: 2px;">The Timelines</h2>
-            
+
             <div class="cardinal-section">
                 <h2>⚡ EAST: 2026 | The Uprising Exposed</h2>
                 <p class="cardinal-year">Year of Rupture</p>
                 <p class="cardinal-text">
-                    Tyra Washington stands at the crossroads. An army of friends occupies the exits. 
+                    Tyra Washington stands at the crossroads. An army of friends occupies the exits.
                     A dragon stirs beneath the city. The moment of truth arrives.
                 </p>
             </div>
@@ -358,7 +788,7 @@
                 <h2>🌱 NORTH: 1996 | Sanctuary Grows</h2>
                 <p class="cardinal-year">Year of Foundation</p>
                 <p class="cardinal-text">
-                    Ms. Ora tends the wounds. Peppaman holds the center. A place begins to bloom. 
+                    Ms. Ora tends the wounds. Peppaman holds the center. A place begins to bloom.
                     No one yet knows this will be the anchor point for what's coming.
                 </p>
             </div>
@@ -367,7 +797,7 @@
                 <h2>⛓️ WEST: 1901 | Bertha Bound</h2>
                 <p class="cardinal-year">Year of Binding</p>
                 <p class="cardinal-text">
-                    The dragon is bound. A constitution is written to exclude. Power is stolen, hidden, 
+                    The dragon is bound. A constitution is written to exclude. Power is stolen, hidden,
                     and buried in the ground beneath Montgomery.
                 </p>
             </div>
@@ -376,20 +806,20 @@
                 <h2>🛣️ SOUTH: 1952-1969 | Highway Cuts</h2>
                 <p class="cardinal-year">Year of Displacement</p>
                 <p class="cardinal-text">
-                    Families scatter. Communities split. Interstates divide neighborhoods. But underground 
+                    Families scatter. Communities split. Interstates divide neighborhoods. But underground
                     networks remain. Resistance continues.
                 </p>
             </div>
         </section>
 
-        <!-- CALL TO ACTION / NAVIGATION -->
+        <!-- === STORYWORLD NAVIGATION (preserved, with Family Bible → Playbill rename) === -->
         <section style="text-align: center; margin: 60px 0;">
             <h2 style="color: #fbbf24; font-size: 1.8rem; text-transform: uppercase; margin-bottom: 30px; letter-spacing: 2px;">
-                Ready to Enter the Portal?
+                Ready to Go Deeper?
             </h2>
             <div class="nav-buttons">
                 <a href="cosmogram.html" class="btn">🌍 The 9-Point Cosmogram</a>
-                <a href="family-bible.html" class="btn">📖 Read the Family Bible</a>
+                <a href="family-bible.html" class="btn">📖 Read the Playbill</a>
                 <a href="portfolio.html" class="btn">✨ View the Portfolio</a>
                 <a href="story-bible.html" class="btn">🎭 The Complete Story</a>
             </div>
@@ -400,13 +830,50 @@
         <p><strong>The Crossroads Presents</strong></p>
         <p>A story by Evan Milligan | The Sanctuary at Jubilee Community Center, Montgomery, Alabama</p>
         <p style="margin-top: 15px;">
-            <a href="https://bit.ly/gtownlove">Visit the full experience</a> | 
-            <a href="https://shakethefield.org">Shake the Field</a> | 
+            <a href="https://bit.ly/gtownlove">Visit the full experience</a> |
+            <a href="https://shakethefield.org">Shake the Field</a> |
             <a href="https://safeplaceforart.org">Safe Place for Art</a>
         </p>
         <p style="margin-top: 20px; color: #666;">
             "Walk through the time warp. Dance the 9-point. Sing the new world into being."
         </p>
     </footer>
+
+    <script>
+        function openChooser(name) {
+            closeChooser();
+            const el = document.getElementById('chooser-' + name);
+            if (el) el.classList.add('active');
+            // reset listen sub-state on each open
+            if (name === 'listen') showListenProjects();
+        }
+
+        function closeChooser() {
+            document.querySelectorAll('.chooser-overlay').forEach(el => el.classList.remove('active'));
+        }
+
+        function showListenEditions(project) {
+            if (project === 'caregiver') {
+                document.getElementById('listen-projects').style.display = 'none';
+                document.getElementById('listen-caregiver-editions').style.display = 'flex';
+            }
+        }
+
+        function showListenProjects() {
+            document.getElementById('listen-projects').style.display = 'flex';
+            document.getElementById('listen-caregiver-editions').style.display = 'none';
+        }
+
+        // Close on overlay click (outside box) or Escape key
+        document.querySelectorAll('.chooser-overlay').forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) closeChooser();
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeChooser();
+        });
+    </script>
 </body>
 </html>
