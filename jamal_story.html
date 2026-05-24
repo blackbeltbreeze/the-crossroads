@@ -3,405 +3,455 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jamal's Story - The Crossroads</title>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Jamal's Story // The Crossroads Archive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --black: #0a0a0a;
-            --white: #f5f5f5;
+            --bg-deep: #030307;
+            --terminal-dark: #090a15;
             --gold: #fbbf24;
+            --crimson: #cf2121;
+            --cyan: #06b6d4;
+            --text-muted: #9ca3af;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         html, body {
-            background: var(--black);
-            color: var(--white);
+            background: var(--bg-deep);
+            color: #e5e7eb;
             font-family: 'Crimson Text', serif;
-            line-height: 1.8;
-            font-size: 16px;
-        }
-
-        body {
-            padding: 0;
-            margin: 0;
+            line-height: 1.9;
+            font-size: 18px;
         }
 
         header {
-            background: linear-gradient(135deg, rgba(0,0,0,0.98), rgba(15,15,25,0.95));
-            padding: 2rem;
+            background: var(--terminal-dark);
             border-bottom: 3px solid var(--gold);
+            padding: 1.5rem 2rem;
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
         .header-content {
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo {
+        .logo { font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+        .logo a { color: #fff; text-decoration: none; }
+        .logo a:hover { color: var(--gold); }
+        
+        .broadcast-badge {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-
-        .logo a {
-            color: var(--white);
-            text-decoration: none;
-        }
-
-        .logo a:hover {
-            color: var(--gold);
+            font-size: 11px;
+            font-weight: bold;
+            color: var(--crimson);
+            border: 1px solid var(--crimson);
+            padding: 3px 8px;
+            letter-spacing: 1px;
         }
 
         main {
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
-            padding: 3rem 2rem;
+            padding: 4rem 2rem;
+        }
+
+        .title-block {
+            margin-bottom: 3rem;
         }
 
         h1 {
-            font-size: 2.5rem;
-            font-weight: 400;
-            letter-spacing: 0.12em;
-            margin-bottom: 1rem;
-            color: var(--gold);
             font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
         }
 
         .subtitle {
-            font-size: 1.1rem;
-            color: #aaa;
-            margin-bottom: 2rem;
-            font-style: italic;
-        }
-
-        .divider {
-            border-top: 2px solid var(--gold);
-            margin: 2rem 0;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            color: var(--gold);
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .story-text {
-            font-size: 1.05rem;
-            line-height: 1.9;
-            color: #ddd;
-            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            line-height: 1.85;
+            color: #f3f4f6;
+            margin-bottom: 3rem;
         }
 
         .story-text p {
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .story-heading {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fff;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-left: 3px solid var(--gold);
+            padding-left: 10px;
         }
 
         .story-text strong {
             color: var(--gold);
+            font-weight: 600;
         }
 
-        /* CHARACTER CARDS */
+        /* CHARACTER GRID SECTION */
         .character-section {
-            background: rgba(30, 30, 40, 0.5);
-            border-left: 4px solid var(--gold);
-            padding: 2rem;
-            margin: 3rem 0;
-            border-radius: 2px;
+            background: linear-gradient(180deg, #090a15 0%, #04050a 100%);
+            border: 1px solid #1e293b;
+            border-top: 4px solid var(--gold);
+            padding: 2.5rem;
+            margin: 4rem 0;
         }
 
-        .character-section h3 {
+        .character-section h2 {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 1.5rem;
-            color: var(--gold);
-            margin-bottom: 1rem;
+            color: #fff;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .character-section > p {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
         }
 
         .character-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 1.5rem;
-            margin: 2rem 0;
         }
 
         .character-card {
-            background: rgba(20, 20, 30, 0.8);
-            border: 2px solid #555;
-            padding: 1rem;
-            text-align: center;
-            border-radius: 2px;
-            transition: all 0.3s ease;
+            background: #020306;
+            border: 1px solid #1e293b;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            transition: all 0.2s ease;
         }
 
         .character-card:hover {
             border-color: var(--gold);
-            box-shadow: 0 0 15px rgba(251, 191, 36, 0.2);
+            transform: translateY(-2px);
         }
 
-        .character-image {
+        .character-image-placeholder {
             width: 100%;
-            height: 180px;
-            background: rgba(50, 50, 70, 0.8);
-            border-radius: 2px;
-            margin-bottom: 1rem;
-            object-fit: cover;
-            object-position: center;
+            height: 120px;
+            margin-bottom: 1.2rem;
+            opacity: 0.85;
         }
 
         .character-name {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 1.1rem;
-            font-weight: 600;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.2rem;
+        }
+
+        .character-alias {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.75rem;
             color: var(--gold);
-            margin-bottom: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
         }
 
         .character-role {
             font-size: 0.9rem;
-            color: #bbb;
+            color: #cbd5e1;
+            line-height: 1.5;
         }
 
-        /* TIMELINE */
-        .timeline {
-            margin: 3rem 0;
+        /* TIMELINE COMPONENT */
+        .timeline-container {
+            margin: 4rem 0;
+        }
+
+        .timeline-container h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            color: #fff;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #1e293b;
+            padding-bottom: 0.5rem;
         }
 
         .timeline-item {
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            background: rgba(30, 30, 40, 0.6);
-            border-left: 3px solid var(--gold);
-            border-radius: 2px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            background: var(--terminal-dark);
+            border: 1px solid #1e293b;
+            border-left: 4px solid var(--gold);
         }
+
+        .timeline-item.escalation-phase { border-left-color: var(--crimson); }
+        .timeline-item.diaspora-phase { border-left-color: var(--cyan); }
 
         .timeline-date {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: var(--gold);
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.6rem;
         }
+        .timeline-item.escalation-phase .timeline-date { color: #f87171; }
+        .timeline-item.diaspora-phase .timeline-date { color: var(--cyan); }
 
         .timeline-content {
-            color: #ddd;
-            line-height: 1.8;
+            font-size: 1rem;
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        /* INLINE CORE MANIFESTO BOX */
+        .manifesto-callout {
+            background: linear-gradient(90deg, #0c0d1a 0%, #04050a 100%);
+            border: 1px solid #1e293b;
+            border-left: 4px solid var(--cyan);
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+        .manifesto-callout h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            color: #fff;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+        .manifesto-callout ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .manifesto-callout li {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+        .manifesto-callout li strong {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--cyan);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-right: 0.5rem;
         }
 
         footer {
-            background: rgba(0, 0, 0, 0.8);
-            border-top: 2px solid var(--gold);
-            padding: 2rem;
+            border-top: 1px solid #1e293b;
+            padding: 3rem 2rem;
             text-align: center;
-            font-size: 0.9rem;
-            color: #888;
-            margin-top: 4rem;
+            font-size: 0.85rem;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-muted);
+            margin-top: 6rem;
         }
-
-        footer a {
-            color: var(--gold);
-            text-decoration: none;
-        }
+        footer a { color: var(--gold); text-decoration: none; }
 
         @media (max-width: 768px) {
-            h1 {
-                font-size: 1.8rem;
-            }
-
-            .story-text {
-                font-size: 1rem;
-            }
-
-            .character-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            h1 { font-size: 2.2rem; }
+            .story-text { font-size: 1.1rem; }
+            .character-grid { grid-template-columns: 1fr; }
+            .character-section, .timeline-item { padding: 1.5rem; }
         }
     </style>
 </head>
 <body>
+
     <header>
         <div class="header-content">
             <div class="logo"><a href="index.html">The Crossroads</a></div>
+            <div class="broadcast-badge">WZRD SIGNAL INTELLIGENCE // WIRE DETONATION RECON[span_2](start_span)[span_2](end_span)</div>
         </div>
     </header>
 
     <main>
-        <h1>Jamal's Story</h1>
-        <p class="subtitle">A ten-minute telling of the Crossroads occupation, June 2026</p>
-
-        <div class="divider"></div>
-
-        <div class="story-text">
-            <p>My name is Jamal Washington. I run WZRD 77.7 FM out of the Sanctuary at Jubilee. This is the story I held onto when everything else fractured.</p>
-
-            <p><strong>The Porch</strong></p>
-
-            <p>Before the occupation, there was the porch on Stone Street. My father, Peppaman, sat there for years—decades, really—just watching. Listening. Men would come by and argue about football, politics, God, women, all of it mixing together. I grew up thinking he was just an old man on a chair. But he was mapping the world. He was collecting stories like mason jars. Every conversation was a possibility saved for later.</p>
-
-            <p>When I got older, I understood: the porch was an unofficial university. No degrees. No lectures. Just knowledge moving from one generation to the next. So when I started working at the radio station, I carried that philosophy with me. Radio, like the porch, was a place where stories could travel. Where truth could move without asking for permission.</p>
-
-            <p><strong>Juneteenth, 2026</strong></p>
-
-            <p>It started as a festival. June 19th, the Sanctuary at Jubilee threw a party—music, food, people celebrating. But we were planting something else into that celebration. Language. Music that encoded what we were about to do. My best friends had a plan, and I was helping them tell the story before it happened.</p>
-
-            <p>Big Kitty—Charles Mason McCall VI—he's autistic. He hears sound at a depth most people don't understand. He'd been locked away in Jefferson Davis Hospital for psychiatric reasons that were actually political. While he was in the law library there, he learned about his family's connection to something older. Something bound beneath the Capitol building since 1901.</p>
-
-            <p>Tyra Yemeshia Washington—Dr. Washington to some, Yemmy to Big Kitty—is the most beloved person in this story. Scholar. Performer. Pregnant at the moment everything broke. She and Big Kitty had been together for years. They had conversations I was never supposed to hear, in languages that were part prayer and part code.</p>
-
-            <p>Phat Tony Pham, Bryan Jamal Washington (my sibling), Squirrel, and a dozen other friends—we were ready. We'd rehearsed. We'd planned. We'd distributed roles: Brick teams for barriers, Sticks for obstructions, Hay for visible art, Herd for communications.</p>
-
-            <p><strong>The Occupation Begins</strong></p>
-
-            <p>Just after midnight moving into June 20, we did it. We stopped traffic on I-65 at Exit 169. We blocked the off-ramp. We built a village under the interstate.</p>
-
-            <p>From the Sanctuary, I documented everything. I kept the station on the air. I amplified Tyra's voice as she moved through the streets like a roving correspondent. I made sure the tapes were safe.</p>
-
-            <p>Drivers reacted in a hundred ways. Some were angry. Some left. Some quietly joined us. Some filmed what they saw. What they filmed became iconic—the occupation growing across the Crossroads, under the 65/85 stack, a visible village of people saying: <strong>We are here. We matter. The system killing us was built on a lie. Look at us.</strong></p>
-
-            <p><strong>The Dragon</strong></p>
-
-            <p>On June 24, Big Kitty descended into the tunnels beneath the Capitol. I can't tell you exactly what happened down there. He went to confront something older than Alabama's constitution. Something that had been feeding the power structure since 1901. The records call it Bertha. A presence. An energy. A dragon that hadn't been killed—just bound.</p>
-
-            <p>What I know is this: Big Kitty spent six hours in those tunnels. And when he came out, he wasn't alone. Or he was transformed. Or something had changed in the architecture of power itself.</p>
-
-            <p><strong>The Strike</strong></p>
-
-            <p>By June 26, the government brought drones. They used nonlethal weapons first. Then they escalated.</p>
-
-            <p>My father, Peppaman—who had sat on that porch for decades just listening, just witnessing—he walked to the Crossroads. For the first time in years, he left the porch. He went to stand with the village. He was killed in the first wave of strikes.</p>
-
-            <p>I had already evacuated the archives. He made sure of it. His last act was to protect the tapes.</p>
-
-            <p>The bigger strikes came next. They destroyed Exit 169 where we'd been organizing. They hit Ridgecrest and Carver Park. They hit a public park. A school. Downtown, they hit the SPLC, Dexter Avenue Baptist Church, the Attorney General's office. The investigations never figured out who did what or why. The attribution stayed murky.</p>
-
-            <p>Big Kitty died in the tunnels when the explosives detonated. Squirrel survived. Tyra survived. I survived. Bunny—Big Kitty's grandmother, the matriarch—she survived.</p>
-
-            <p><strong>The Diaspora</strong></p>
-
-            <p>By July 4, we were running. Tyra was pregnant—she didn't even know it yet. We fled south through Lowndes County, Gee's Bend, into Mexico. We found comrades at Ayotzinapa. We found tools. We found a way to keep the story alive.</p>
-
-            <p>The interruption lasted 72 hours. The occupation lasted 72 hours. But the changes it triggered—those lasted years. The Great Division. The national uprising of occupation villages. The fracturing and refounding of the country itself.</p>
-
-            <p><strong>Now</strong></p>
-
-            <p>I'm telling you this because we won time. The ancestors at Exit 169 bought us time. They showed what was possible when a small group of people decided to tell the truth even when the system responded with violence.</p>
-
-            <p>In 3176, Elliot John Henry McCall—a descendant of all of us—will present this story to a Planning Guild. He'll argue that what we did proved something about community, resistance, and the cost of liberation.</p>
-
-            <p>This story is not finished. It is being built right now in Montgomery, Alabama. In the Sanctuary at Jubilee. In the streets where we stood. In the tapes we saved. In the dragon we released.</p>
-
-            <p>The question is: will you help us tell it?</p>
+        
+        <div class="title-block">
+            <h1>Jamal's Story</h1>
+            <div class="subtitle">An Oral History Transmission of the 72-Hour Crossroads Occupation // June 2026[span_3](start_span)[span_3](end_span)</div>
         </div>
 
-        <div class="divider"></div>
+        <div class="story-text">
+            <p>My name is Jamal Washington[span_4](start_span)[span_4](end_span). I run WZRD 77.7 FM directly out of the architectural substrate of the Sanctuary at Jubilee[span_5](start_span)[span_5](end_span). This is the precise sequence of operations I preserved when the surrounding communications lines completely fractured[span_6](start_span)[span_6](end_span).</p>
 
+            <div class="story-heading">01. The Porch Architecture</div>
+            <p>Before the tactical occupation ever materialized, there was the primary tracking porch situated cleanly on Stone Street[span_7](start_span)[span_7](end_span). My father, Peppaman, sat on that elevated wood platform for consecutive decades—just witnessing[span_8](start_span)[span_8](end_span). Just parsing the acoustic signals of the block[span_9](start_span)[span_9](end_span). Neighbors would cycle through to debate logistics, football grid dynamics, municipal politics, divinity frameworks, and local unions—everything dissolving into a collective intelligence cache[span_10](start_span)[span_10](end_span). I grew up under the impression that he was simply an elder resting in a dynamic chair[span_11](start_span)[span_11](end_span). In reality, he was rendering a living map of the systemic world[span_12](start_span)[span_12](end_span). He collected ongoing human narratives like mason jars stacked away inside a vault[span_13](start_span)[span_13](end_span). Every casual debate was an alternative tactical blueprint stored safely for a later horizon[span_14](start_span)[span_14](end_span).</p>
+            <p>As my own understanding matured, the baseline truth became apparent: the Stone Street porch functioned as an unofficial, unaccredited university grid[span_15](start_span)[span_15](end_span). Zero institutional degrees, zero clinical lectures[span_16](start_span)[span_16](end_span). Pure generational knowledge transfers moving organically down the ancestral line[span_17](start_span)[span_17](end_span). Consequently, when I assumed control of our independent broadcast terminal, I imported that exact structural methodology[span_18](start_span)[span_18](end_span). Radio frequencies, much like those old porch boards, provide a physical vector where critical stories can travel fast without requesting system permission to occupy the airwaves[span_19](start_span)[span_19](end_span).</p>
+
+            <div class="story-heading">02. Juneteenth Inversion Arrays</div>
+            <p>The initialization originally presented as a standard community festival[span_20](start_span)[span_20](end_span). On June 19, 2026, the Sanctuary at Jubilee organized an open-air celebration—live breaks, food reserves, public joy[span_21](start_span)[span_21](end_span). Yet underneath the standard celebratory performance, we were intentionally seeding operational code coordinates[span_22](start_span)[span_22](end_span). Tactical nomenclature[span_23](start_span)[span_23](end_span). Audio arrangements that systematically prepared our listeners for the physical shifts scheduled for the subsequent midnight block[span_24](start_span)[span_24](end_span). My closest circle had finalized an alternative structural layout, and my role was ensuring the broadcast network carried the frame before the actual hardware locks went down[span_25](start_span)[span_25](end_span).</p>
+            <p>Big Kitty—Charles Mason McCall VI—exists on an intense spectrum of deep acoustic perception[span_26](start_span)[span_26](end_span). He processes sound waves at frequencies standard biological monitoring tools completely miss[span_27](start_span)[span_27](end_span). He had previously been held inside the Jefferson Davis complex under medical classifications that were transparently political maneuvers[span_28](start_span)[span_28](end_span). While navigating their law repository, he deciphered historical documentation detailing an ancient, binding structural anomaly anchored directly beneath the state capitol foundation since the constitution of 1901[span_29](start_span)[span_29](end_span).</p>
+            <p>Dr. Tyra Yemeshia Washington—known to the inner circle as Yemmy—stands as the vital strategic center of our collective network[span_30](start_span)[span_30](end_span). Scholar, operational performer, and heavily pregnant during the exact week the systemic grid split wide open[span_31](start_span)[span_31](end_span). She and Big Kitty exchanged strategic algorithms in a localized dialogic dialect that functioned simultaneously as an ancestral invocation and a highly encrypted system code[span_32](start_span)[span_32](end_span).</p>
+            <p>Phat Tony Pham, my sibling Bryan Jamal Washington, Squirrel, and a broad network of decentralized neighborhood organizers were set[span_33](start_span)[span_33](end_span). We had mapped the logistics[span_34](start_span)[span_34](end_span). We had drilled the positions[span_35](start_span)[span_35](end_span). Every cell knew its explicit tactical tiering: **Brick** units handled physical lane blocks; **Sticks** orchestrated obstruction logistics; **Hay** managed visible environmental set-pieces; **Herd** directed localized emergency communications[span_36](start_span)[span_36](end_span).</p>
+
+            <div class="story-heading">03. Lane Interception & Ground Villages</div>
+            <p>Directly following the midnight line shift on June 20, the perimeter went active[span_37](start_span)[span_37](end_span). We intercepted standard commercial transit vectors along I-65 at Exit 169, sealing off the off-ramp corridor completely[span_38](start_span)[span_38](end_span). Within hours, we erected a self-contained autonomous village directly underneath the standard interstate concrete frames[span_39](start_span)[span_39](end_span).</p>
+            <p>From the central console at the Sanctuary, I logged every unfolding system parameter[span_40](start_span)[span_40](end_span). I kept the WZRD signal pushed to peak amplification, feeding Tyra's incoming field transmissions directly into the main feed as she navigated the grid as a mobile correspondent[span_41](start_span)[span_41](end_span). I manually duplicated all magnetic media to guarantee our archives remained safe from local interference[span_42](start_span)[span_42](end_span).</p>
+            <p>Commuter responses scattered across an unpredictable spectrum[span_43](start_span)[span_43](end_span). Some drivers reacted with immediate hostility; many abandoned their vehicle frames; a surprising fraction unhooked their logistics and integrated with our camps[span_44](start_span)[span_44](end_span). The digital files they generated went viral instantly—the physical view of an unauthorized city layout spreading beneath the 65/85 multi-tiered interchange[span_45](start_span)[span_45](end_span). A real-time community manifesto declaring: <em>We are physically present. We choose to stay here. The extractive system layout you built across our neighborhoods is fundamentally illegitimate. Bear witness[span_46](start_span)[span_46](end_span).</em></p>
+
+            <div class="story-heading">04. The Subterranean Vault</div>
+            <p>On June 24, Big Kitty initiated his drop into the forgotten tunnel networks yawning directly beneath the Capitol complex floors[span_47](start_span)[span_47](end_span). The absolute granularity of what he encountered down there remains difficult to transmit over open frequencies[span_48](start_span)[span_48](end_span). He moved specifically to engage an ancient institutional anomaly that predated the modern state framework—a dense, binding power reservoir feeding systemic actors since 1901[span_49](start_span)[span_49](end_span). Local lore calls the anomaly Bertha: a raw, non-human structural presence; a dragon entity that was never neutralized, but instead bound inside the deep architectural layers to anchor extraction[span_50](start_span)[span_50](end_span).</p>
+            <p>The verified data logs show Big Kitty maintained a six-hour operational window deep inside that subterranean space[span_51](start_span)[span_51](end_span). When his tracking signal finally registered a shift, he had either integrated with the presence, or the fundamental physics of his own biology had drastically altered[span_52](start_span)[span_52](end_span). Either way, the underlying architecture of regional power shifted permanently[span_53](start_span)[span_53](end_span).</p>
+
+            <div class="story-heading">05. Kinetic Intervention & Strategic Dispersion</div>
+            <p>By June 26, institutional forces responded via un-crewed aerial drone swarms[span_54](start_span)[span_54](end_span). They deployed low-impact kinetic charges initially, before scaling rapidly to lethal ordnance[span_55](start_span)[span_55](end_span).</p>
+            <p>My father, Peppaman—the silent witness who spent half his life recording the block from that old porch—stood up, stepped off Stone Street, and walked directly into the center of the Interstate Crossroads[span_56](start_span)[span_56](end_span). For the first time in my living memory, he left his post[span_57](start_span)[span_57](end_span). He positioned his body as a physical shield for the camp village[span_58](start_span)[span_58](end_span). He was taken out in the initial wave of aerial drone strikes[span_59](start_span)[span_59](end_span).</p>
+            <p>Fortunately, he had already ordered me to evacuate our core physical archives[span_60](start_span)[span_60](end_span). His final tactical maneuver was creating a time window so the media tapes could clear the perimeter safely[span_61](start_span)[span_61](end_span).</p>
+            <p>The heavy escalation followed immediately after[span_62](start_span)[span_62](end_span). Targeted strikes systematically reduced Exit 169 to absolute rubble, wiping out neighboring support zones at Ridgecrest and Carver Park[span_63](start_span)[span_63](end_span). They hit public school zones, open parks, and historic downtown landmarks—including the SPLC offices and Dexter Avenue Baptist Church[span_64](start_span)[span_64](end_span). Official state investigations never clarified attribution coordinates; the source of the strikes was intentionally kept murky inside state records[span_65](start_span)[span_65](end_span).</p>
+            <p>Big Kitty was lost beneath the foundation when the structural charges detonated[span_66](start_span)[span_66](end_span). Squirrel pulled through[span_67](start_span)[span_67](end_span). Tyra cleared the line[span_68](start_span)[span_68](end_span). I managed to slip past the blockade[span_69](start_span)[span_69](end_span). Mother Bunny—our primary generational matriarch—survived the blast wave[span_70](start_span)[span_70](end_span).</p>
+
+            <div class="story-heading">06. The Diaspora Transmissions</div>
+            <p>By July 4, our remaining cells were operating in deep transit mode[span_71](start_span)[span_71](end_span). Tyra was carrying new life—an internal reality she hadn't even processed during the kinetic escape window[span_72](start_span)[span_72](end_span). We routed south, threading through the rural loops of Lowndes County, crossing the water at Gee's Bend, and pushing directly across the border into Mexico[span_73](start_span)[span_73](end_span). We connected with specialized resistance networks at Ayotzinapa, acquiring technical tools and decentralized server space to maintain our media loops[span_74](start_span)[span_74](end_span).</p>
+            <p>The initial structural interruption on the highway lasted exactly 72 hours[span_75](start_span)[span_75](end_span). The autonomous village held the line for 72 hours[span_76](start_span)[span_76](end_span). Yet the chain reaction that short window initiated has transformed entire decades: **The Great Division**, the simultaneous national formation of autonomous highway occupations, and the eventual fragmentation and structural refounding of the continental borders[span_77](start_span)[span_77](end_span).</p>
+
+            <div class="story-heading">07. Current State Matrix</div>
+            <p>I am pushing this data packet to your console because those ancestors at Exit 169 successfully bought us time[span_78](start_span)[span_78](end_span). They provided proof of concept[span_79](start_span)[span_79](end_span). They mapped what happens when a localized collective refuses to compromise their truth, even when the state apparatus answers with total kinetic violence[span_80](start_span)[span_80](end_span).</p>
+            <p>In the distant year 3176, Elliot John Henry McCall—a direct descendant of this exact line—will project this media log before the High Planning Guild[span_81](start_span)[span_81](end_span). He will leverage this file to prove that autonomous community design, unyielding resistance, and the severe price of systemic liberation are worth the structural cost[span_82](start_span)[span_82](end_span).</p>
+            <p>This entry is far from closed[span_83](start_span)[span_83](end_span). It is being actively generated right now inside the Montgomery grid, within the server racks at the Jubilee Sanctuary, and inside the very streets where the concrete still carries the heat of our presence[span_84](start_span)[span_84](end_span).</p>
+            <p>The terminal is open: will you help us distribute the signal[span_85](start_span)[span_85](end_span)?</p>
+        </div>
+
+        <!-- RE-ENGINEERED CHARACTER DIRECTORY MODULE -->
         <div class="character-section">
-            <h3>The Core Circle</h3>
-            <p>Six people at the center of the occupation:</p>
+            <h2>The Active Resistance Cell</h2>
+            <p>The primary tactical operators positioned at the center of the Exit 169 highway interception:[span_86](start_span)[span_86](end_span)</p>
 
+            <!-- Tier 1: The Core Active Characters -->
             <div class="character-grid">
                 <div class="character-card">
-                    <div class="character-image" style="background: linear-gradient(135deg, #dc2626, #8b0000);"></div>
+                    <div class="character-image-placeholder" style="background: linear-gradient(135deg, #b91c1c, #450a0a);"></div>
                     <div class="character-name">Big Kitty</div>
-                    <div class="character-role">Charles Mason McCall VI<br>Sound Seer</div>
+                    <div class="character-alias">Charles Mason McCall VI[span_87](start_span)[span_87](end_span)</div>
+                    <div class="character-role">Deep Sound Seer. Decoded the subterranean layout and entered the Capitol vault nodes[span_88](start_span)[span_88](end_span).</div>
                 </div>
                 <div class="character-card">
-                    <div class="character-image" style="background: linear-gradient(135deg, #16a34a, #065f46);"></div>
+                    <div class="character-image-placeholder" style="background: linear-gradient(135deg, #15803d, #14532d);"></div>
                     <div class="character-name">Tyra</div>
-                    <div class="character-role">Tyra Yemeshia Washington<br>Scholar & Performer</div>
+                    <div class="character-alias">Dr. T. Y. Washington[span_89](start_span)[span_89](end_span)</div>
+                    <div class="character-role">Scholar, core movement orator, and roving street correspondent[span_90](start_span)[span_90](end_span). Organizes historical memory structures[span_91](start_span)[span_91](end_span).</div>
                 </div>
                 <div class="character-card">
-                    <div class="character-image" style="background: linear-gradient(135deg, #eab308, #ca8a04);"></div>
-                    <div class="character-name">Bryan</div>
-                    <div class="character-role">Bryan Jamal Washington<br>Radio Host & Archivist</div>
+                    <div class="character-image-placeholder" style="background: linear-gradient(135deg, #eab308, #713f12);"></div>
+                    <div class="character-name">Jamal</div>
+                    <div class="character-alias">Bryan Jamal Washington[span_92](start_span)[span_92](end_span)</div>
+                    <div class="character-role">Radio Controller & Head Archivist[span_93](start_span)[span_93](end_span). Preserved the WZRD master media vault during kinetic strikes[span_94](start_span)[span_94](end_span).</div>
                 </div>
                 <div class="character-card">
-                    <div class="character-image" style="background: linear-gradient(135deg, #f97316, #c2410c);"></div>
+                    <div class="character-image-placeholder" style="background: linear-gradient(135deg, #ea580c, #7c2d12);"></div>
                     <div class="character-name">Phat Tony</div>
-                    <div class="character-role">Tony Pham<br>Craftsman & Logistics</div>
+                    <div class="character-alias">Tony Pham[span_95](start_span)[span_95](end_span)</div>
+                    <div class="character-role">Master Craftsman & Tactical Logistics lead[span_96](start_span)[span_96](end_span). Engineered the highway barricade frameworks[span_97](start_span)[span_97](end_span).</div>
                 </div>
                 <div class="character-card">
-                    <div class="character-image" style="background: linear-gradient(135deg, #8b7355, #5a4a42);"></div>
+                    <div class="character-image-placeholder" style="background: linear-gradient(135deg, #78716c, #292524);"></div>
                     <div class="character-name">Squirrel</div>
-                    <div class="character-role">Seth Taylor<br>Rationalist & Organizer</div>
+                    <div class="character-alias">Seth Taylor[span_98](start_span)[span_98](end_span)</div>
+                    <div class="character-role">Rationalist, tactical organizer, and systems planner[span_99](start_span)[span_99](end_span). Survived the Exit 169 dispersal sequence[span_100](start_span)[span_100](end_span).</div>
                 </div>
+            </div>
+
+            <!-- Tier 2: Generational Witnesses / Anchors -->
+            <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; color: #fff; text-transform: uppercase; margin-top: 3rem; margin-bottom: 0.5rem; border-bottom: 1px dashed #1e293b; padding-bottom: 0.5rem;">Generational Anchors & Witnesses</h3>
+            <p style="font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">The lineage holders who protected the memory and paid the ultimate price for the signal:[span_101](start_span)[span_101](end_span)</p>
+
+            <div class="character-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); max-width: 600px;">
                 <div class="character-card">
-                    <div class="character-image" style="background: linear-gradient(135deg, #f5f5f5, #d4d4d8);"></div>
+                    <div class="character-image-placeholder" style="background: linear-gradient(135deg, #d4d4d8, #3f3f46);"></div>
                     <div class="character-name">Peppaman</div>
-                    <div class="character-role">Booker Washington<br>Witness & Oracle</div>
+                    <div class="character-alias">Booker Washington[span_102](start_span)[span_102](end_span)</div>
+                    <div class="character-role">The Stone Street Witness and Oracle[span_103](start_span)[span_103](end_span). Jamal's father[span_104](start_span)[span_104](end_span). Sacrificed his body at the highway perimeter during drone volleys[span_105](start_span)[span_105](end_span).</div>
                 </div>
             </div>
         </div>
 
-        <div class="timeline">
-            <h3 style="color: var(--gold); font-family: 'Space Grotesk', sans-serif; margin-bottom: 1rem;">The 72 Hours</h3>
+        <!-- TIMELINE COMPONENT MATRIX -->
+        <div class="timeline-container">
+            <h2>The 72-Hour Tactical Sequence</h2>
             
             <div class="timeline-item">
-                <div class="timeline-date">June 19, 2026 — Juneteenth Festival</div>
-                <div class="timeline-content">The Sanctuary at Jubilee hosts a permitted Juneteenth celebration. WZRD broadcasts throughout the night. Language and music that encode the occupation's aims are seeded into the community. The circle finalizes positions.</div>
+                <div class="timeline-date">June 19, 2026 // Juneteenth Preparation Array[span_106](start_span)[span_106](end_span)</div>
+                <div class="timeline-content">The Sanctuary at Jubilee hosts an authorized cultural festival[span_107](start_span)[span_107](end_span). WZRD coordinates an all-night broadcast loop, transmission-testing specific phrasing and rhythmic breaks that map out operational locations for the coming highway shift[span_108](start_span)[span_108](end_span).</div>
             </div>
 
             <div class="timeline-item">
-                <div class="timeline-date">June 20, Midnight — The Occupation Begins</div>
-                <div class="timeline-content">Exit 169 is blocked. Teams move into position. Brick, Sticks, Hay, and Herd coordinate across exits 168-171. The Crossroads Village forms under the 65/85 stack. Motorists react across a spectrum of responses. Jamal amplifies from WZRD.</div>
+                <div class="timeline-date">June 20, 00:00 // Highway Interception Deployed[span_109](start_span)[span_109](end_span)</div>
+                <div class="timeline-content">Exit 169 lane structures are systematically blocked[span_110](start_span)[span_110](end_span). Brick, Sticks, Hay, and Herd groups deploy across Exits 168-171, converting the interstate stack into an active autonomous community village[span_111](start_span)[span_111](end_span). Jamal begins live archiving from the console[span_112](start_span)[span_112](end_span).</div>
             </div>
 
             <div class="timeline-item">
-                <div class="timeline-date">June 20, 9:30 AM — Big Kitty Descends</div>
-                <div class="timeline-content">Big Kitty enters the tunnel system beneath the Capitol. He carries three words on his palm: Interstate, Conviction, Removal. He is moving toward the chamber where Bertha has been bound since 1901.</div>
+                <div class="timeline-date">June 20, 09:30 // The Subterranean Ingress[span_113](start_span)[span_113](end_span)</div>
+                <div class="timeline-content">Big Kitty initiates entry into the tunnel systems beneath the state Capitol[span_114](start_span)[span_114](end_span). He carries the three core words—Interstate, Conviction, Removal—penned directly onto his hand, tracking the chamber housing the 1901 Bertha entity[span_115](start_span)[span_115](end_span).</div>
             </div>
 
             <div class="timeline-item">
-                <div class="timeline-date">June 22, Midday — The Crossroads Goes Viral</div>
-                <div class="timeline-content">The occupation extends to the Day Street feeder and across the I-65 main stack. Images spread globally. Media outlets descend. Tyra moves through the streets as roving correspondent, weaving theology, memory, and political critique into performances and testimonies.</div>
+                <div class="timeline-date">June 22, 12:00 // Network Amplification Phase[span_116](start_span)[span_116](end_span)</div>
+                <div class="timeline-content">The physical footprint expands to the Day Street feeder corridors[span_117](start_span)[span_117](end_span). Media feeds track globally as Tyra moves through active lane checkpoints, weaving together theology and structural political critiques during live field reporting[span_118](start_span)[span_118](end_span).</div>
             </div>
 
-            <div class="timeline-item">
-                <div class="timeline-date">June 24, Morning — Nonlethal Strikes Begin</div>
-                <div class="timeline-content">Federal and state forces deploy drones and ground units using so-called nonlethal weapons. Peppaman leaves his porch on Stone Street for the first time in years and walks to the Crossroads. He is killed in the first volley.</div>
+            <div class="timeline-item escalation-phase">
+                <div class="timeline-date">June 24, 06:00 // Kinetic Suppression Layer[span_119](start_span)[span_119](end_span)</div>
+                <div class="timeline-content">State authorities deploy unmanned tactical drone configurations along the highway stack[span_120](start_span)[span_120](end_span). Booker "Peppaman" Washington breaks his decades-long post on Stone Street to stand as a perimeter shield[span_121](start_span)[span_121](end_span). He is lost during the initial kinetic surge[span_122](start_span)[span_122](end_span).</div>
             </div>
 
-            <div class="timeline-item">
-                <div class="timeline-date">June 26 — The Escalation</div>
-                <div class="timeline-content">Lethal drone strikes obliterate Exit 169 and surrounding neighborhoods. Ridgecrest, Carver Park, a public park, a high school are destroyed. Big Kitty dies in the tunnels. Coordinated strikes hit downtown. Attribution remains unclear.</div>
+            <div class="timeline-item escalation-phase">
+                <div class="timeline-date">June 26 // High-Ordnance Erasure Sequence[span_123](start_span)[span_123](end_span)</div>
+                <div class="timeline-content">Lethal aerial strikes reduce Exit 169, Carver Park, and surrounding community sectors[span_124](start_span)[span_124](end_span). Big Kitty passes away inside the detonating vault layers[span_125](start_span)[span_125](end_span). Heavy hits clear key downtown civil centers; state documentation obscures final attribution loops[span_126](start_span)[span_126](end_span).</div>
             </div>
 
-            <div class="timeline-item">
-                <div class="timeline-date">July 4 — Diaspora & Dispersal</div>
-                <div class="timeline-content">Survivors flee in four directions: Tyra and Jamal south to Mexico and Bahia; others north to British Columbia; some remain in Montgomery; some are captured. The Great Division begins nationally. Eight years of fracturation and reshaping.</div>
+            <div class="timeline-item diaspora-phase">
+                <div class="timeline-date">July 4 // Dispersal & Diaspora Vectors[span_127](start_span)[span_127](end_span)</div>
+                <div class="timeline-content">Surviving actors scatter in four coordinates[span_128](start_span)[span_128](end_span). Tyra and Jamal push south into Lowndes and Mexico to preserve the master tapes, while others route north to BC[span_129](start_span)[span_129](end_span). The Great Division initiates a national fracturing of state maps over an eight-year curve[span_130](start_span)[span_130](end_span).</div>
             </div>
         </div>
 
-        <div class="divider"></div>
-
-        <div class="story-text">
-            <p><strong>Three Words</strong></p>
-
-            <p>Big Kitty carried three words written on his palm when he descended into the tunnels:</p>
-
-            <ul style="margin: 1rem 0 1rem 2rem; color: #ddd;">
-                <li><strong>Interstate:</strong> Self-reflection. Mutual aid. Organizing across state lines.</li>
-                <li><strong>Conviction:</strong> Defending and expanding voting rights. Drawing the line.</li>
-                <li><strong>Removal:</strong> Removing ourselves from dependence on systems we oppose. Building independent energy, local data trusts, cooperative work.</li>
+        <!-- CORE MANIFESTO METRIC CALLOUT -->
+        <div class="manifesto-callout">
+            <h3>The Direct Framework from the Palm[span_131](start_span)[span_131](end_span)</h3>
+            <ul>
+                <li><strong>Interstate:</strong> Intentional self-reflection, decentralized mutual aid arrays, and resource organizing across municipal borders[span_132](start_span)[span_132](end_span).</li>
+                <li><strong>Conviction:</strong> Active defense of voting access networks, expansion of the franchise, and refusing structural dilution lines[span_133](start_span)[span_133](end_span).</li>
+                <li><strong>Removal:</strong> Systemic decoupling from extractive platforms; building autonomous solar microgrids, community data trusts, and cooperative work hubs[span_134](start_span)[span_134](end_span).</li>
             </ul>
-
-            <p>These words became the framework for everything that followed. This is what the occupation was teaching. This is what the story models for those who come after.</p>
-
-            <p><strong>Root.</strong></p>
         </div>
 
     </main>
 
     <footer>
-        <p><a href="index.html">← Back to Home</a></p>
-        <p style="margin-top: 1rem;">The Crossroads: A Storyworld | Data Trust Model | © 2026</p>
+        <p><a href="index.html">← RETURN TO CENTRAL ROUTER MASTER HUB</a></p>
+        <p style="margin-top: 1.5rem; font-size: 11px; letter-spacing: 1px; color: var(--text-muted);">THE CROSSROADS STORYWORLD // TRANSCRIPT CORE MATRIX © 2026[span_135](start_span)[span_135](end_span)</p>
     </footer>
+
 </body>
 </html>
