@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Crossroads Portal | Alabama Uprising</title><script src="https://assets.prd.heyflow.com/builder/widget/latest/webview.js"></script>
+    <title>The Crossroads: Tactical Portal | WZRD 77.7 FM</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;700&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -12,886 +14,425 @@
         }
 
         body {
-            font-family: 'Courier New', monospace;
-            background: #0a0a0a;
-            color: #fbbf24;
+            font-family: 'Space Grotesk', sans-serif;
+            background: #03030c;
+            color: #ddd;
+            overflow-x: hidden;
             line-height: 1.6;
         }
 
-        header {
-            background: linear-gradient(135deg, #0f172e 0%, #1a1a2e 50%, #0f172e 100%);
-            border-bottom: 3px solid #fbbf24;
-            padding: 40px 20px;
+        /* 8-BIT ALERT STRIP */
+        .drone-alert-ticker {
+            background: #cf2121;
+            color: #fff;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 9px;
+            padding: 8px;
             text-align: center;
+            letter-spacing: 2px;
+            border-bottom: 3px solid #fbbf24;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { background: #cf2121; }
+            50% { background: #000; }
+        }
+
+        /* AUDIO SYSTEM BANNER */
+        .audio-override-banner {
+            background: #0f172e;
+            border-bottom: 2px solid #fbbf24;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             position: sticky;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 8px 20px rgba(251, 191, 36, 0.2);
+            z-index: 200;
         }
 
-        header h1 {
-            font-size: 2.5rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 10px rgba(251, 191, 36, 0.4);
+        .radio-status {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 10px;
+            color: #fbbf24;
         }
 
-        header p {
-            font-size: 0.9rem;
-            color: #aaa;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+        .tune-in-btn {
+            background: #fbbf24;
+            color: #000;
+            border: none;
+            padding: 8px 16px;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 10px;
+            cursor: pointer;
+            box-shadow: 3px 3px 0 #cf2121;
         }
 
+        .tune-in-btn.active {
+            background: #065f46;
+            color: #fff;
+            box-shadow: 3px 3px 0 #000;
+        }
+
+        /* SCREEN GLITCH EFFECTS FROM EVAN MILLIGAN'S DRONES */
+        .glitch-active {
+            animation: screenShake 0.15s infinite;
+            filter: hue-rotate(90deg) contrast(150%);
+        }
+
+        @keyframes screenShake {
+            0% { transform: translate(2px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(0px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+        }
+
+        /* MAIN CONTAINER MATRIX */
         main {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        /* === FIRST TIME HERE BLOCK === */
-        .first-time-block {
-            background: rgba(15, 23, 46, 0.9);
-            border: 2px solid #fbbf24;
-            border-radius: 8px;
-            padding: 30px 35px;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 20px rgba(251, 191, 36, 0.15);
-        }
-
-        .first-time-block h2 {
-            color: #fbbf24;
-            font-size: 1.4rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 18px;
-            border-bottom: 1px solid rgba(251, 191, 36, 0.3);
-            padding-bottom: 10px;
-        }
-
-        .first-time-block p {
-            color: #e5e5e5;
-            font-size: 1rem;
-            line-height: 1.75;
-            margin-bottom: 14px;
-        }
-
-        .first-time-block .whats-real {
-            background: rgba(0, 0, 0, 0.4);
-            border-left: 3px solid #fbbf24;
-            padding: 16px 20px;
-            margin: 18px 0;
-        }
-
-        .first-time-block .whats-real-item {
-            color: #ddd;
-            font-size: 0.98rem;
-            margin: 8px 0;
-            line-height: 1.6;
-        }
-
-        .first-time-block em {
-            color: #fbbf24;
-            font-style: italic;
-        }
-
-        .first-time-block strong {
-            color: #fbbf24;
-        }
-
-        .welcome-line {
-            font-size: 1.1rem;
-            color: #fbbf24;
-            margin-top: 18px;
-            font-weight: bold;
-        }
-
-        /* === REAL WORLD ACTION BUTTONS (cosmogram positioning) === */
-        .real-world-actions {
-            margin: 50px 0;
-            padding: 30px 20px;
-            background: rgba(26, 26, 46, 0.4);
-            border-radius: 8px;
-        }
-
-        .actions-label {
-            text-align: center;
-            color: #888;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
-        }
-
-        .action-cosmogram {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 60px;
-            flex-wrap: wrap;
-        }
-
-        .action-button {
-            position: relative;
-            width: 110px;
-            height: 110px;
-            border: 2px solid #fbbf24;
-            background: #0a0a0a;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 2.5rem;
-            text-decoration: none;
-            color: #fbbf24;
-        }
-
-        .action-button:hover {
-            background: #fbbf24;
-            color: #0a0a0a;
-            box-shadow: 0 0 30px rgba(251, 191, 36, 0.7);
-            transform: scale(1.08);
-        }
-
-        .action-tooltip {
-            position: absolute;
-            top: 120%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #0a0a0a;
-            border: 1px solid #fbbf24;
-            color: #fbbf24;
-            padding: 8px 14px;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.2s ease;
-            border-radius: 4px;
-        }
-
-        .action-button:hover .action-tooltip,
-        .action-button:focus .action-tooltip {
-            opacity: 1;
-        }
-
-        /* === CHOOSER OVERLAY === */
-        .chooser-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.92);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .chooser-overlay.active {
-            display: flex;
-        }
-
-        .chooser-box {
-            background: #0f172e;
-            border: 3px solid #fbbf24;
-            border-radius: 8px;
-            padding: 40px;
-            max-width: 500px;
-            width: 100%;
-            text-align: center;
-            position: relative;
-        }
-
-        .chooser-close {
-            position: absolute;
-            top: 12px;
-            right: 16px;
-            background: none;
-            border: none;
-            color: #fbbf24;
-            font-size: 1.8rem;
-            cursor: pointer;
-            font-family: inherit;
-        }
-
-        .chooser-box h3 {
-            color: #fbbf24;
-            font-size: 1.4rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 24px;
-        }
-
-        .chooser-options {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .chooser-option {
-            display: block;
-            padding: 14px 20px;
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid #fbbf24;
-            color: #fbbf24;
-            text-decoration: none;
-            font-family: 'Courier New', monospace;
-            font-size: 0.95rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            border-radius: 4px;
-            transition: all 0.2s ease;
-            cursor: pointer;
-        }
-
-        .chooser-option:hover {
-            background: #fbbf24;
-            color: #0a0a0a;
-        }
-
-        .chooser-option-small {
-            font-size: 0.8rem;
-            color: #aaa;
-            display: block;
-            margin-top: 4px;
-            text-transform: none;
-            letter-spacing: 0.5px;
-        }
-
-        .chooser-option:hover .chooser-option-small {
-            color: #1a1a2e;
-        }
-
-        /* === EMAIL FORM === */
-        .email-form {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 16px;
-        }
-
-        .email-form input {
-            padding: 12px 14px;
-            background: #0a0a0a;
-            border: 1px solid #fbbf24;
-            color: #fbbf24;
-            font-family: 'Courier New', monospace;
-            font-size: 0.95rem;
-            border-radius: 4px;
-        }
-
-        .email-form input::placeholder {
-            color: #888;
-        }
-
-        .email-form button {
-            padding: 14px;
-            background: #fbbf24;
-            color: #0a0a0a;
-            border: none;
-            font-family: 'Courier New', monospace;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: all 0.2s ease;
-        }
-
-        .email-form button:hover {
-            background: #fff;
-            box-shadow: 0 0 20px rgba(251, 191, 36, 0.8);
-        }
-
-        .form-note {
-            color: #888;
-            font-size: 0.8rem;
-            margin-top: 12px;
-            line-height: 1.5;
-        }
-
-        /* === ORIGINAL PORTAL HERO === */
-        .portal-hero {
-            background: rgba(0, 0, 0, 0.8);
-            border: 3px solid #fbbf24;
-            padding: 30px;
-            margin-bottom: 40px;
-            border-radius: 8px;
-            box-shadow: inset 0 0 20px rgba(251, 191, 36, 0.1), 0 0 30px rgba(251, 191, 36, 0.2);
-        }
-
-        .portal-hero img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.3));
-        }
-
-        .portal-description {
-            color: #ddd;
-            font-size: 1rem;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .portal-description strong {
-            color: #fbbf24;
-        }
-
-        .section-intro {
-            color: #ccc;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 25px;
-            padding: 14px 20px;
-            background: rgba(0, 0, 0, 0.5);
-            border-left: 3px solid #fbbf24;
-            font-style: italic;
-        }
-
-        .character-grid {
+            padding: 2rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 40px 0;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
         }
 
-        .character-card {
-            background: rgba(26, 26, 46, 0.8);
-            border: 2px solid #fbbf24;
-            padding: 20px;
-            border-radius: 4px;
-            transition: all 0.3s ease;
+        @media (max-width: 1024px) {
+            main { grid-template-columns: 1fr; }
         }
 
-        .character-card:hover {
-            background: rgba(251, 191, 36, 0.1);
-            box-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
-            transform: translateY(-5px);
+        /* TACTICAL MAP CONTAINER */
+        #map-wrapper {
+            background: #070714;
+            border: 3px solid #fbbf24;
+            padding: 2rem;
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.1);
+            position: relative;
         }
 
-        .character-card h3 {
+        .map-header {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 12px;
             color: #fbbf24;
-            margin-bottom: 10px;
+            margin-bottom: 1.5rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 1.1rem;
         }
 
-        .character-card p {
-            color: #bbb;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .cardinal-section {
-            background: rgba(26, 26, 46, 0.6);
-            border-left: 4px solid #fbbf24;
-            padding: 30px;
-            margin: 30px 0;
-            border-radius: 4px;
-        }
-
-        .cardinal-section h2 {
-            color: #fbbf24;
-            font-size: 1.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-        }
-
-        .cardinal-year {
-            color: #888;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-
-        .cardinal-text {
-            color: #ccc;
-            font-size: 1rem;
-            line-height: 1.8;
-        }
-
-        .center-scene {
-            background: rgba(251, 191, 36, 0.05);
-            border: 2px solid #fbbf24;
-            padding: 30px;
-            margin: 40px 0;
-            border-radius: 4px;
-            text-align: center;
-        }
-
-        .center-scene h2 {
-            color: #fbbf24;
-            font-size: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
-        }
-
-        .fence-ascii {
-            font-size: 0.9rem;
-            line-height: 1.2;
-            color: #888;
-            margin: 20px 0;
-            font-family: monospace;
-            white-space: pre;
-        }
-
-        .center-text {
-            color: #ddd;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .nav-buttons {
+        #cosmogram-container {
             display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
             justify-content: center;
-            margin: 40px 0;
+            align-items: center;
+            background: rgba(0,0,0,0.4);
+            border: 1px dashed #333;
+            padding: 1rem;
         }
 
-        .btn {
-            padding: 12px 24px;
-            border: 2px solid #fbbf24;
-            background: #0a0a0a;
-            color: #fbbf24;
+        svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .cosmogram-point {
             cursor: pointer;
-            font-family: 'Courier New', monospace;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            border-radius: 4px;
-            display: inline-block;
-            text-decoration: none;
         }
 
-        .btn:hover {
-            background: #fbbf24;
-            color: #0a0a0a;
-            box-shadow: 0 0 20px rgba(251, 191, 36, 0.6);
+        .cosmogram-point circle {
+            fill: #03030c;
+            stroke: #fbbf24;
+            stroke-width: 3;
+            transition: all 0.2s steps(4);
         }
 
-        footer {
-            background: #0f0f1f;
-            border-top: 2px solid #fbbf24;
-            padding: 30px 20px;
-            text-align: center;
-            margin-top: 60px;
-            color: #888;
-            font-size: 0.85rem;
+        .cosmogram-point:hover circle, .cosmogram-point.active circle {
+            fill: #cf2121;
+            stroke: #fff;
+            r: 10;
         }
 
-        footer a {
+        .cosmogram-label {
+            fill: #fbbf24;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 8px;
+            text-anchor: middle;
+        }
+
+        /* REAL-TIME TRANSMISSION CONTENT */
+        #transmission-feed {
+            background: #020205;
+            border: 3px solid #cf2121;
+            padding: 2rem;
+            box-shadow: 5px 5px 0 #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .feed-header {
+            border-bottom: 2px dashed #cf2121;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feed-title {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .feed-meta {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 8px;
             color: #fbbf24;
+            margin-top: 5px;
+        }
+
+        .feed-body {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #e2e8f0;
+            margin-bottom: 2rem;
+        }
+
+        .feed-body strong {
+            color: #fbbf24;
+        }
+
+        .feed-body em {
+            color: #ff6b6b;
+            font-style: normal;
+            border-bottom: 1px dotted #ff6b6b;
+        }
+
+        /* THE ACTION/PUNCHLINE CARDS */
+        .tactical-card {
+            background: rgba(251, 191, 36, 0.05);
+            border: 1px solid #fbbf24;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .tactical-card h4 {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 10px;
+            color: #fbbf24;
+            margin-bottom: 0.5rem;
+        }
+
+        .action-link {
+            display: inline-block;
+            margin-top: 1rem;
+            background: #cf2121;
+            color: #fff;
             text-decoration: none;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 9px;
+            padding: 10px 15px;
+            box-shadow: 2px 2px 0 #fff;
         }
 
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.8rem;
-            }
-
-            .cardinal-section {
-                padding: 20px;
-            }
-
-            .character-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .action-cosmogram {
-                gap: 30px;
-            }
-
-            .action-button {
-                width: 90px;
-                height: 90px;
-                font-size: 2rem;
-            }
-
-            .first-time-block {
-                padding: 22px 20px;
-            }
+        .action-link:hover {
+            background: #fbbf24;
+            color: #000;
+            box-shadow: 2px 2px 0 #cf2121;
         }
     </style>
 </head>
-<body>
-    <header>
-        <h1>⚔ THE CROSSROADS ⚔</h1>
-        <p>A Portal Across Time & Space | Montgomery, Alabama</p>
-    </header>
+<body id="game-viewport">
+
+    <!-- SIGNAL DISRUPTION TICKER -->
+    <div class="drone-alert-ticker" id="droneTicker">
+        ⚠️ ALERT: MILLIGAN DRONE SWARM DETECTED // FREQUENCY JAMMING ACTIVE ⚠️
+    </div>
+
+    <!-- AUDIO DRIVER BRIDGE -->
+    <div class="audio-override-banner">
+        <div class="radio-status" id="radioStatus">RADIO: DISCONNECTED (77.7 FM)</div>
+        <button class="tune-in-btn" id="audioBtn" onclick="toggleAudioStream()">TUNE IN TO TRANSMISSION</button>
+    </div>
 
     <main>
-        <!-- === FIRST TIME HERE BLOCK === -->
-        <section class="first-time-block">
-            <h2>First time here? Read this.</h2>
-            <p>
-                The Crossroads is an arts and organizing project based in Montgomery, Alabama. 
-                Created by <strong>Evan Milligan</strong> — organizer, named plaintiff in 
-                <em>Allen v. Milligan</em>, and artist in residence at the Sanctuary at Jubilee 
-                Community Center — together with a growing team of artist-organizers across the 
-                Black Belt and beyond.
-            </p>
+        <!-- LEFT: INTUITIVE TACTICAL TRANSMISSION ROUTER -->
+        <section id="map-wrapper">
+            <div class="map-header">INTERSTATE 65 OCCUPATION RADAR</div>
+            <div id="cosmogram-container">
+                <svg viewBox="0 0 500 500">
+                    <circle cx="250" cy="250" r="180" fill="none" stroke="#222" stroke-width="2" stroke-dasharray="8,8"/>
+                    
+                    <!-- HIGHWAY PATHWAY GRAPHICS -->
+                    <line x1="70" y1="250" x2="430" y2="250" stroke="#333" stroke-width="8"/>
+                    <line x1="70" y1="250" x2="430" y2="250" stroke="#fbbf24" stroke-width="2" stroke-dasharray="6,6"/>
 
-            <p style="margin-top: 14px;">Here's what's real and available right now:</p>
+                    <!-- NODE 01: ON RAMP -->
+                    <g class="cosmogram-point" data-point="on-ramp" onclick="loadNode('on-ramp')">
+                        <circle cx="430" cy="250" r="8"/>
+                        <text class="cosmogram-label" x="430" y="230">01_ON-RAMP</text>
+                    </g>
 
-            <div class="whats-real">
-                <p class="whats-real-item">🎵 <strong>Two albums you can listen to today</strong> — <em>Caregiver Road Trip</em> and <em>Smoke &amp; Mirrors</em></p>
-                <p class="whats-real-item">🏛 <strong>A live performance series</strong> at the Sanctuary at Jubilee Community Center in Montgomery</p>
-                <p class="whats-real-item">📰 <strong>Writing and op-eds</strong> about voting rights, the Black Belt, and what comes next</p>
-                <p class="whats-real-item">🤝 <strong>A team of real artists, organizers, lawyers, and neighbors</strong> building something together</p>
-            </div>
+                    <!-- NODE 02: EXIT 168 (1996) -->
+                    <g class="cosmogram-point" data-point="exit-168" onclick="loadNode('exit-168')">
+                        <circle cx="250" cy="70" r="8"/>
+                        <text class="cosmogram-label" x="250" y="50">02_EXIT-168<tspan x="250" dy="10">(1996)</tspan></text>
+                    </g>
 
-            <p>
-                What you're about to read below is the <strong>playworld</strong> — a fictional 
-                layer called The Crossroads that ties all of the above together. It includes a 
-                musical called <em>Narissa's Home</em>, a radio station called WZRD 77.7 FM, and 
-                a cast of characters set across Montgomery in 2026 and across time. The story is 
-                real-life arts work; the characters live inside the story.
-            </p>
+                    <!-- NODE 03: EXIT 169 (2026 - MAIN TEETH) -->
+                    <g class="cosmogram-point" data-point="exit-169" onclick="loadNode('exit-169')">
+                        <circle cx="250" cy="250" r="12"/>
+                        <text class="cosmogram-label" x="250" y="225">03_EXIT-169<tspan x="250" dy="10">(2026)</tspan></text>
+                    </g>
 
-            <p style="margin-top: 14px;">
-                Think of this whole site as the playbill for a show that hasn't quite started yet, 
-                but already has the band warming up.
-            </p>
+                    <!-- NODE 04: EXIT 170 (2118) -->
+                    <g class="cosmogram-point" data-point="exit-170" onclick="loadNode('exit-170')">
+                        <circle cx="70" cy="250" r="8"/>
+                        <text class="cosmogram-label" x="70" y="280">04_EXIT-170<tspan x="70" dy="10">(2118)</tspan></text>
+                    </g>
 
-            <p class="welcome-line">Welcome to the Crossroads.</p>
-        </section>
+                    <!-- NODE 05: EXIT 171 (FUTURE) -->
+                    <g class="cosmogram-point" data-point="exit-171" onclick="loadNode('exit-171')">
+                        <circle cx="250" cy="430" r="8"/>
+                        <text class="cosmogram-label" x="250" y="465">05_EXIT-171<tspan x="250" dy="10">(FUTURE)</tspan></text>
+                    </g>
 
-        <!-- === REAL WORLD ACTION BUTTONS (icon-only, hover-to-reveal) === -->
-        <section class="real-world-actions">
-            <p class="actions-label">⊹ Choose your way in ⊹</p>
-            <div class="action-cosmogram">
-                <a href="#" class="action-button" onclick="openChooser('listen'); return false;" aria-label="Listen to the music">
-                    🎵
-                    <span class="action-tooltip">Listen</span>
-                </a>
-                <a href="#" class="action-button" onclick="openChooser('read'); return false;" aria-label="Read the writing">
-                    📖
-                    <span class="action-tooltip">Read</span>
-                </a>
-                <a href="#" class="action-button" onclick="openChooser('join'); return false;" aria-label="Join the work">
-                    ✉️
-                    <span class="action-tooltip">Join</span>
-                </a>
+                    <!-- NODE 06: OFF RAMP -->
+                    <g class="cosmogram-point" data-point="off-ramp" onclick="loadNode('off-ramp')">
+                        <circle cx="370" cy="370" r="8"/>
+                        <text class="cosmogram-label" x="370" y="395">06_OFF-RAMP</text>
+                    </g>
+                </svg>
             </div>
         </section>
 
-        <!-- === CHOOSER OVERLAYS === -->
-
-        <!-- LISTEN CHOOSER (nested: project → edition) -->
-        <div class="chooser-overlay" id="chooser-listen">
-            <div class="chooser-box">
-                <button class="chooser-close" onclick="closeChooser()" aria-label="Close">×</button>
-                <h3>🎵 Listen</h3>
-                <div class="chooser-options" id="listen-projects">
-                    <a href="#" class="chooser-option" onclick="showListenEditions('caregiver'); return false;">
-                        Caregiver Road Trip
-                        <span class="chooser-option-small">Two editions available</span>
-                    </a>
-                    <a href="https://culturelab.bandcamp.com/album/smoke-mirrors" target="_blank" rel="noopener" class="chooser-option">
-                        Smoke &amp; Mirrors
-                        <span class="chooser-option-small">Culture Lab from Western States Center</span>
-                    </a>
+        <!-- RIGHT: LIVE INTERACTIVE TRANSMISSION INJECTOR -->
+        <section id="transmission-feed">
+            <div>
+                <div class="feed-header">
+                    <div class="feed-title" id="nodeTitle">SIGNAL INTERCEPTED</div>
+                    <div class="feed-meta" id="nodeMeta">FREQUENCY LOCKED</div>
                 </div>
-                <div class="chooser-options" id="listen-caregiver-editions" style="display:none;">
-                    <a href="https://shakethefield.bandcamp.com/album/caregiver-road-trip-extended-collectors-edition" target="_blank" rel="noopener" class="chooser-option">
-                        Extended Collector's Edition
-                        <span class="chooser-option-small">Shake the Field</span>
-                    </a>
-                    <a href="https://shakethefield.bandcamp.com/album/caregiver-road-trip-remix-edition" target="_blank" rel="noopener" class="chooser-option">
-                        Remix Edition
-                        <span class="chooser-option-small">Shake the Field</span>
-                    </a>
-                    <a href="#" class="chooser-option" onclick="showListenProjects(); return false;" style="background: transparent; border-style: dashed;">
-                        ← Back
-                    </a>
+                <div class="feed-body" id="nodeText">
+                    <!-- Dynamic text loads here -->
                 </div>
             </div>
-        </div>
 
-        <!-- READ CHOOSER -->
-        <div class="chooser-overlay" id="chooser-read">
-            <div class="chooser-box">
-                <button class="chooser-close" onclick="closeChooser()" aria-label="Close">×</button>
-                <h3>📖 Read</h3>
-                <div class="chooser-options">
-                    <a href="https://www.al.com/politics/2026/05/visions-of-victory-evan-milligan-reflects-on-voting-rights-setbacks-after-court-decision-op-ed.html" target="_blank" rel="noopener" class="chooser-option">
-                        Visions of Victory
-                        <span class="chooser-option-small">Op-ed in AL.com, May 2026</span>
-                    </a>
-                    <span class="chooser-option" style="opacity: 0.5; cursor: default;">
-    Tell It
-    <span class="chooser-option-small">Coming next week</span>
-</span>  
-                </div>
-            </div>
-        </div>
-
-        <!-- JOIN CHOOSER -->
-        <div class="chooser-overlay" id="chooser-join">
-            <div class="chooser-box">
-                <button class="chooser-close" onclick="closeChooser()" aria-label="Close">×</button>
-                <h3>✉️ Join the Work</h3>
-                <p style="color: #ccc; font-size: 0.95rem; line-height: 1.6; margin-bottom: 16px;">
-                    Drop your email below. You'll be the first to receive the 
-                    <strong style="color:#fbbf24;">Crossroads Reading Kit</strong> when it's ready — 
-                    a downloadable packet for hosting a table reading with three friends.
-                </p><heyflow-wrapper flow-id="w9jxgZIAZwfoLiCseFaq" dynamic-height scroll-up-on-navigation style-config='{"width":"100%"}'></heyflow-wrapper>
-                <p class="form-note">
-                    We use your email only to send you the Kit and occasional updates from the project. 
-                    We do not share it.
-                </p>
-            </div>
-        </div>
-
-        <!-- === EXISTING HERO IMAGE SECTION === -->
-        <section class="portal-hero">
-            <img src="CROSSROADS_ALABAMA_PORTAL.png" alt="The Crossroads Portal: Alabama Map with Characters and Sacred Center">
-
-            <div class="portal-description">
-                <p>
-                    This is <strong>The Crossroads.</strong> A spiritual gathering place where all timelines converge.
-                    The map shows Alabama's counties with seven allies scattered across the state. At the center—
-                    where Interstate 65 and Interstate 85 intersect in Montgomery—glows <strong>Africa itself</strong>,
-                    transformed into a golden portal.
-                </p>
-                <p style="margin-top: 15px;">
-                    Below the sacred fence, a sword grows upward through the wood. Trees frame the blade. A boombox
-                    sits on the grass. Mojo jars anchor the space. And underneath it all, <strong>Bertha</strong>—
-                    the emerald dragon—coils in power.
-                </p>
-            </div>
-        </section>
-
-        <!-- === CHARACTER SECTION (now labeled) === -->
-        <section>
-            <h2 style="color: #fbbf24; font-size: 2rem; text-transform: uppercase; margin: 40px 0 20px; letter-spacing: 2px;">The Seven Allies</h2>
-
-            <p class="section-intro">
-                These are the seven main characters who live inside the Crossroads story. 
-                They are inspired by real ancestors, neighbors, and creative collaborators — 
-                but they are characters in the playworld, not people you can email. The real 
-                team is named in the Playbill.
-            </p>
-
-            <div class="character-grid">
-                <div class="character-card">
-                    <h3>Tyra Washington</h3>
-                    <p class="cardinal-year">EAST | 2026</p>
-                    <p>The visionary. The one who speaks her truth but cannot name what haunts her. She stands at the center, holding the weight of transformation.</p>
-                </div>
-
-                <div class="character-card">
-                    <h3>Big Kitty</h3>
-                    <p class="cardinal-year">CENTER | All Time</p>
-                    <p>The gentle giant. Wise, patient, holding space for all. Deep as the ocean. Present as breath. The one who knows what must happen.</p>
-                </div>
-
-                <div class="character-card">
-                    <h3>Peppaman</h3>
-                    <p class="cardinal-year">NORTH | 1996</p>
-                    <p>The caregiver. The spiritual anchor. Warmth and protection embodied. When he moves through a space, healing follows.</p>
-                </div>
-
-                <div class="character-card">
-                    <h3>Jamal</h3>
-                    <p class="cardinal-year">NORTHWEST | Throughout</p>
-                    <p>The grounded one. Builder. Witness. Keeper of stories. His presence means the truth is being told and documented with love.</p>
-                </div>
-
-                <div class="character-card">
-                    <h3>Future McFerrin</h3>
-                    <p class="cardinal-year">NORTHEAST | 2026+</p>
-                    <p>Youth. Energy. Music. The voice that broadcasts change. Covered in Peppaman's blood, the face of the uprising. Sound made flesh.</p>
-                </div>
-
-                <div class="character-card">
-                    <h3>Bunny</h3>
-                    <p class="cardinal-year">SOUTHWEST | All Time</p>
-                    <p>Small but fierce. Tender and strong. The one who carries what others cannot. Hops through dimensions, never giving up.</p>
-                </div>
-
-                <div class="character-card">
-                    <h3>Bertha (The Dragon)</h3>
-                    <p class="cardinal-year">SOUTHWEST | 1901-Present</p>
-                    <p>The bound one. Emerald power coiled beneath the earth. The energy that fuels systems of control. Now awakening. Now choosing differently.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- === CENTER SACRED SPACE === -->
-        <section class="center-scene">
-            <h2>The Sacred Center</h2>
-            <div class="fence-ascii">
-              |||||
-              [===]  ← SWORD IN TREE
-              |||||
-         [JAR]||+||[JAR]
-              |||||
-            [BOOMBOX]
-             🎙️🎚️🎙️
-            </div>
-            <div class="center-text">
-                <p><strong>"THE CROSSROADS PRESENTS"</strong></p>
-                <p style="margin-top: 15px;">
-                    At the intersection of Interstate 65 and Interstate 85, in the heart of Montgomery,
-                    Africa itself appears and glows. A metal fence. A sword growing upward. A tree surrounding it.
-                    Mojo jars grounding the space. A boombox broadcasting resistance.
-                </p>
-                <p style="margin-top: 15px;">
-                    This is where the story happens. This is where choices are made. This is where old worlds end
-                    and new ones are born.
-                </p>
-            </div>
-        </section>
-
-        <!-- === CARDINAL DIRECTIONS === -->
-        <section>
-            <h2 style="color: #fbbf24; font-size: 2rem; text-transform: uppercase; margin: 40px 0 30px; letter-spacing: 2px;">The Timelines</h2>
-
-            <div class="cardinal-section">
-                <h2>⚡ EAST: 2026 | The Uprising Exposed</h2>
-                <p class="cardinal-year">Year of Rupture</p>
-                <p class="cardinal-text">
-                    Tyra Washington stands at the crossroads. An army of friends occupies the exits.
-                    A dragon stirs beneath the city. The moment of truth arrives.
-                </p>
-            </div>
-
-            <div class="cardinal-section">
-                <h2>🌱 NORTH: 1996 | Sanctuary Grows</h2>
-                <p class="cardinal-year">Year of Foundation</p>
-                <p class="cardinal-text">
-                    Ms. Ora tends the wounds. Peppaman holds the center. A place begins to bloom.
-                    No one yet knows this will be the anchor point for what's coming.
-                </p>
-            </div>
-
-            <div class="cardinal-section">
-                <h2>⛓️ WEST: 1901 | Bertha Bound</h2>
-                <p class="cardinal-year">Year of Binding</p>
-                <p class="cardinal-text">
-                    The dragon is bound. A constitution is written to exclude. Power is stolen, hidden,
-                    and buried in the ground beneath Montgomery.
-                </p>
-            </div>
-
-            <div class="cardinal-section">
-                <h2>🛣️ SOUTH: 1952-1969 | Highway Cuts</h2>
-                <p class="cardinal-year">Year of Displacement</p>
-                <p class="cardinal-text">
-                    Families scatter. Communities split. Interstates divide neighborhoods. But underground
-                    networks remain. Resistance continues.
-                </p>
-            </div>
-        </section>
-
-        <!-- === STORYWORLD NAVIGATION (preserved, with Family Bible → Playbill rename) === -->
-        <section style="text-align: center; margin: 60px 0;">
-            <h2 style="color: #fbbf24; font-size: 1.8rem; text-transform: uppercase; margin-bottom: 30px; letter-spacing: 2px;">
-                Ready to Go Deeper?
-            </h2>
-            <div class="nav-buttons">
-                <a href="cosmogram.html" class="btn">🌍 The 9-Point Cosmogram</a>
-                <a href="family-bible.html" class="btn">📖 Read the Playbill</a>
-                <a href="portfolio.html" class="btn">✨ View the Portfolio</a>
-                <a href="story-bible.html" class="btn">🎭 The Complete Story</a>
+            <div class="tactical-card">
+                <h4 id="cardLeader">OPERATIONAL MANAGER:</h4>
+                <p id="cardDesc">Awaiting frequency alignment sync parameters.</p>
+                <a href="#" class="action-link" id="actionBtn">INTERCEPT LIVE INTERACTION →</a>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p><strong>The Crossroads Presents</strong></p>
-        <p>A story by Evan Milligan | The Sanctuary at Jubilee Community Center, Montgomery, Alabama</p>
-        <p style="margin-top: 15px;">
-            <a href="https://bit.ly/gtownlove">Visit the full experience</a> |
-            <a href="https://shakethefield.org">Shake the Field</a> |
-            <a href="https://safeplaceforart.org">Safe Place for Art</a>
-        </p>
-        <p style="margin-top: 20px; color: #666;">
-            "Walk through the time warp. Dance the 9-point. Sing the new world into being."
-        </p>
-    </footer>
-
     <script>
-        function openChooser(name) {
-            closeChooser();
-            const el = document.getElementById('chooser-' + name);
-            if (el) el.classList.add('active');
-            // reset listen sub-state on each open
-            if (name === 'listen') showListenProjects();
-        }
+        // THE RECALIBRATED 6-POINT TRANSMISSION DATA ARRAY
+        const corridorTransmissions = {
+            'on-ramp': {
+                title: "01 // THE ON RAMP",
+                meta: "YEAR: 2026 | BOUNDARY ENTRY",
+                text: "The threshold vectors are spinning up. The blockade is formalized. We are building the initial line across the highway boundaries. If you don't declare your lineage right here at the marker, the system defense flags you as a target.",
+                leader: "TACTICAL HUB: PEPPAMAN",
+                desc: "Initializing the raw djembe ground loops across the network registers.",
+                actionText: "LOCK LINEAGE SIGNAL"
+            },
+            'exit-168': {
+                title: "02 // EXIT 168 [1996]",
+                meta: "YEAR: 1996 | THE CHALK DRAWN",
+                text: "Inside the high school assembly hall, the bass drops clean from the djembe heads. Tape decks are recording ancestral logs on hidden cassettes right under the administration's noses. The blueprints are distributed.",
+                leader: "POV: MS. ORA & YOUTH RESISTANCE",
+                desc: "Securing care networks before the state initiates physical retaliation.",
+                actionText: "EXTRACT CASSETTE TAPE LOGS"
+            },
+            'exit-169': {
+                title: "03 // EXIT 169 [2026]",
+                meta: "YEAR: 2026 | THE HIGHWAY OCCUPATION",
+                text: "<strong>Tyra Washington</strong> stands dead center on the Interstate 65 asphalt[span_16](start_span)[span_16](end_span)[span_17](start_span)[span_17](end_span). Bumper to bumper cars line the village grid. <em>Evan Milligan is running corporate drone sweeps overhead</em> trying to break the perimeter. Jamal's WZRD 77.7 pirate tower is hotwired directly into the power main. Tyra is leading, but she's hiding a pregnancy, and she's visibly shaking when the community mentions the dragon bound underneath the city streets.",
+                leader: "POV: JAMAL & TYRA WASHINGTON",
+                desc: "The real-time rupture. The pirate tower is blazing.",
+                actionText: "HOTWIRE THE TRANSMITTER"
+            },
+            'exit-170': {
+                title: "04 // EXIT 170 [2118]",
+                meta: "YEAR: 2118 | THE OAK SANCTUARY",
+                text: "The concrete has crumbled but the memory stays. The skyscraper oak tree has completely grown through the core of the highway footprint. Archive files are processed directly inside the organic computing infrastructure.",
+                leader: "POV: THE MEMORY ENGINEERS",
+                desc: "Retrieval of historical records suppressed during the 2026 corporate emergency.",
+                actionText: "SYNC ORGANIC LOG RESIDUE"
+            },
+            'exit-171': {
+                title: "05 // EXIT 171 [FURTHEST FUTURE]",
+                meta: "YEAR: 3176+ | THE PILLAR HALL",
+                text: "Narissa stands in front of the high council guild. She hums the ancestral lineage melody perfectly, delivering a hard, absolute structural refusal to the Federation's extraction terms.",
+                leader: "POV: NARISSA (THE UNBORN FUTURE)",
+                desc: "The timeline loop seals itself completely via vocal harmonic codes.",
+                actionText: "EXECUTE THE ULTIMATE REFUSAL"
+            },
+            'off-ramp': {
+                title: "06 // THE OFF RAMP",
+                meta: "YEAR: UNSTABLE | INVERSION COMPLETION",
+                text: "The main transit vector dissolves. The database metrics are calculated. The actions you took across the 1996 blueprints and the 2026 highway blockades compile to determine your historical alignment code.",
+                leader: "SYSTEM CONTROL: THE DRAGON BERTHA",
+                desc: "The final tally of the anti-dichotomy parameters.",
+                actionText: "DEPILE DATA SUMMARY SYSTEM"
+            }
+        };
 
-        function closeChooser() {
-            document.querySelectorAll('.chooser-overlay').forEach(el => el.classList.remove('active'));
-        }
+        let audioActive = false;
+        let audioCtx = null;
 
-        function showListenEditions(project) {
-            if (project === 'caregiver') {
-                document.getElementById('listen-projects').style.display = 'none';
-                document.getElementById('listen-caregiver-editions').style.display = 'flex';
+        function toggleAudioStream() {
+            const btn = document.getElementById('audioBtn');
+            const status = document.getElementById('radioStatus');
+            
+            if (!audioActive) {
+                // Initialize Web Audio Context to legally unlock browser sounds on click
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                btn.textContent = "STATION TUNED // BLASTING 77.7";
+                btn.classList.add('active');
+                status.textContent = "RADIO: LIVE FEED CONNECTED [WZRD 77.7 FM]";
+                audioActive = true;
+                // playStream('assets/audio/narissas_home.mp3');
+            } else {
+                btn.textContent = "TUNE IN TO TRANSMISSION";
+                btn.classList.remove('active');
+                status.textContent = "RADIO: DISCONNECTED (77.7 FM)";
+                audioActive = false;
             }
         }
 
-        function showListenProjects() {
-            document.getElementById('listen-projects').style.display = 'flex';
-            document.getElementById('listen-caregiver-editions').style.display = 'none';
+        function loadNode(nodeId) {
+            const data = corridorTransmissions[nodeId];
+            if (!data) return;
+
+            // Trigger visual drone glitch interference during transitions
+            const viewport = document.getElementById('game-viewport');
+            viewport.classList.add('glitch-active');
+            document.getElementById('droneTicker').textContent = "⚠️ WARNING: EVAN MILLIGAN SWARM OVERRIDE IN PROGRESS... SCANNING SECTOR... ⚠️";
+            
+            setTimeout(() => {
+                viewport.classList.remove('glitch-active');
+                document.getElementById('droneTicker').textContent = "⚠️ ALERT: MILLIGAN DRONE SWARM DETECTED // FREQUENCY JAMMING ACTIVE ⚠️";
+            }, 4000);
+
+            // Update Text Node Blocks
+            document.getElementById('nodeTitle').innerHTML = data.title;
+            document.getElementById('nodeMeta').innerHTML = data.meta;
+            document.getElementById('nodeText').innerHTML = data.text;
+            document.getElementById('cardLeader').innerHTML = data.leader;
+            document.getElementById('cardDesc').innerHTML = data.desc;
+            document.getElementById('actionBtn').innerHTML = data.actionText + " →";
+
+            // Toggle active visual highlight rings on SVG map
+            document.querySelectorAll('.cosmogram-point').forEach(p => p.classList.remove('active'));
+            document.querySelector(`[data-point="${nodeId}"]`).classList.add('active');
         }
 
-        // Close on overlay click (outside box) or Escape key
-        document.querySelectorAll('.chooser-overlay').forEach(overlay => {
-            overlay.addEventListener('click', (e) => {
-                if (e.target === overlay) closeChooser();
-            });
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeChooser();
-        });
+        // Initialize state on initial execution load
+        // Automatically reads if a starting coordinate was selected from your landing index page!
+        window.onload = () => {
+            const initialSelection = localStorage.getItem('selected_initial_exit') || 'exit-169';
+            loadNode(initialSelection);
+        };
     </script>
-    document.addEventListener("DOMContentLoaded", () => {
-    // 1. Check if the user selected a starting exit at the gate
-    const startingExit = localStorage.getItem('selected_initial_exit');
-    
-    if (startingExit) {
-        console.log(`System Boot: User entered via Exit ${startingExit}`);
-        
-        // 2. Execute layout focus based on their choice
-        // (Assuming your timeline columns have IDs like 'exit-168', 'exit-169', etc.)
-        const targetColumn = document.getElementById(`exit-${startingExit}`);
-        
-        if (targetColumn) {
-            // Smoothly bring their chosen era into primary focus
-            targetColumn.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            targetColumn.classList.add('primary-focus'); 
-        }
-        
-        // 3. Update the progressive audio track based on where they initiated entry
-        // initializeAudioForExit(startingExit);
-    } else {
-        // Fallback if they bypassed the index page directly
-        console.log("System Boot: Direct entry detected. Initializing default view.");
-    }
-});
 </body>
 </html>
