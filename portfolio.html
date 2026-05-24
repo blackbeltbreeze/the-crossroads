@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Crossroads: Complete Portfolio | Narissa's Home</title>
+    <title>The Crossroads: Complete Project Blueprint | WZRD 77.7 FM</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;700&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -17,18 +19,30 @@
         }
 
         body {
-            font-family: 'Space Grotesk', 'Courier New', monospace;
-            background: #0a0e27;
+            font-family: 'Space Grotesk', sans-serif;
+            background: #03030c;
             color: #ddd;
             overflow-x: hidden;
             line-height: 1.6;
+        }
+
+        /* FIXED ALERT STRIP */
+        .top-alert-ticker {
+            background: #cf2121;
+            color: #fff;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 9px;
+            padding: 8px;
+            text-align: center;
+            letter-spacing: 2px;
+            border-bottom: 3px solid #fbbf24;
         }
 
         /* STICKY NAVIGATION */
         nav {
             position: sticky;
             top: 0;
-            background: linear-gradient(135deg, #0f172e 0%, #1a1a2e 50%, #16213e 100%);
+            background: #0f172e;
             padding: 1rem 2rem;
             border-bottom: 3px solid #fbbf24;
             z-index: 200;
@@ -41,39 +55,40 @@
         nav a {
             color: #fbbf24;
             text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.85rem;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 9px;
             letter-spacing: 1px;
             border-bottom: 2px solid transparent;
-            transition: all 0.3s ease;
+            transition: all 0.2s steps(4);
             padding: 0.5rem 0;
         }
 
         nav a:hover {
-            border-bottom-color: #fbbf24;
-            transform: translateY(-2px);
+            border-bottom-color: #cf2121;
+            color: #fff;
         }
 
         /* HEADER */
         header {
-            background: linear-gradient(135deg, #0f172e 0%, #1a1a2e 50%, #16213e 100%);
+            background: #070714;
             padding: 4rem 2rem;
             text-align: center;
-            border-bottom: 3px solid #fbbf24;
+            border-bottom: 3px solid #cf2121;
         }
 
         header h1 {
-            color: #fbbf24;
-            font-size: 3rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+            color: #fff;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px 0 #cf2121;
         }
 
         header p {
-            color: #aaa;
-            font-size: 1.1rem;
+            color: #fbbf24;
+            font-size: 1.2rem;
+            font-weight: 700;
             max-width: 800px;
             margin: 0 auto;
             line-height: 1.8;
@@ -81,144 +96,136 @@
 
         /* MAIN CONTAINER */
         main {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 3rem 2rem;
         }
 
         /* SECTION STYLING */
         section {
-            margin-bottom: 5rem;
-            background: rgba(26, 26, 46, 0.5);
-            border: 1px solid rgba(251, 191, 36, 0.2);
-            padding: 3rem;
-            border-radius: 8px;
-            backdrop-filter: blur(10px);
+            margin-bottom: 4rem;
+            background: #020205;
+            border: 3px solid #fbbf24;
+            padding: 2.5rem;
+            box-shadow: 6px 6px 0 #000;
         }
 
         section h2 {
-            color: #fbbf24;
-            font-size: 2rem;
+            color: #fff;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 1.3rem;
             margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-bottom: 2px solid #fbbf24;
+            border-bottom: 3px dashed #cf2121;
             padding-bottom: 1rem;
         }
 
         section h3 {
             color: #fbbf24;
-            font-size: 1.5rem;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 11px;
             margin-top: 2rem;
             margin-bottom: 1rem;
         }
 
         section p {
-            color: #bbb;
+            color: #e2e8f0;
             margin-bottom: 1.5rem;
-            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        section strong {
+            color: #fbbf24;
+        }
+
+        section em {
+            color: #ff6b6b;
+            font-style: normal;
+            border-bottom: 1px dotted #ff6b6b;
         }
 
         .stat-box {
-            background: rgba(251, 191, 36, 0.1);
-            border-left: 4px solid #fbbf24;
-            padding: 2rem;
+            background: rgba(207, 33, 33, 0.1);
+            border: 1px solid #cf2121;
+            padding: 1.5rem;
             margin: 2rem 0;
-            border-radius: 4px;
+            box-shadow: 4px 4px 0 #000;
         }
 
         .stat-box h4 {
-            color: #fbbf24;
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
+            color: #cf2121;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 10px;
+            margin-bottom: 0.8rem;
         }
 
         .stat-box p {
             color: #ddd;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
         }
 
         /* GALLERY */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin: 2rem 0;
         }
 
         .gallery-item {
-            background: rgba(251, 191, 36, 0.05);
-            border: 1px solid rgba(251, 191, 36, 0.3);
-            border-radius: 8px;
+            background: #070714;
+            border: 2px solid #fbbf24;
+            box-shadow: 4px 4px 0 #000;
             overflow: hidden;
-            transition: all 0.3s ease;
-            cursor: pointer;
+            transition: all 0.2s steps(4);
         }
 
         .gallery-item:hover {
-            transform: translateY(-10px);
-            border-color: #fbbf24;
-            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.2);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
+            border-color: #cf2121;
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 #fbbf24;
         }
 
         .gallery-item-text {
             padding: 1.5rem;
+            border-top: 2px solid #fbbf24;
+        }
+
+        .gallery-item:hover .gallery-item-text {
+            border-top-color: #cf2121;
         }
 
         .gallery-item-text h4 {
-            color: #fbbf24;
+            color: #fff;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 10px;
             margin-bottom: 0.5rem;
         }
 
         .gallery-item-text p {
             color: #aaa;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         /* ARTIST PROFILE CARD */
         .artist-card {
-            background: rgba(251, 191, 36, 0.08);
-            border: 1px solid rgba(251, 191, 36, 0.3);
-            border-radius: 8px;
+            background: #070714;
+            border: 2px solid #cf2121;
             padding: 2rem;
             margin-bottom: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .artist-card:hover {
-            background: rgba(251, 191, 36, 0.15);
-            border-color: #fbbf24;
+            box-shadow: 4px 4px 0 #000;
         }
 
         .artist-header {
             display: flex;
             gap: 2rem;
             margin-bottom: 1.5rem;
-        }
-
-        .artist-photo {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 3px solid #fbbf24;
-            object-fit: cover;
-            flex-shrink: 0;
+            align-items: center;
         }
 
         .artist-info h4 {
-            color: #fbbf24;
-            font-size: 1.3rem;
+            color: #fff;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 12px;
             margin-bottom: 0.5rem;
         }
 
@@ -229,16 +236,16 @@
 
         .artist-role {
             color: #fbbf24;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 0.85rem;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 9px;
             margin-top: 0.5rem;
         }
 
         .artist-bio {
             color: #bbb;
-            margin-top: 1.5rem;
-            line-height: 1.8;
+            border-top: 1px dashed #cf2121;
+            padding-top: 1rem;
+            line-height: 1.7;
         }
 
         /* TIMELINE */
@@ -254,36 +261,37 @@
             left: 0;
             top: 0;
             bottom: 0;
-            width: 2px;
-            background: #fbbf24;
+            width: 3px;
+            background: #cf2121;
         }
 
         .timeline-item {
             position: relative;
-            margin-bottom: 2rem;
-            padding-left: 2rem;
+            margin-bottom: 2.5rem;
+            padding-left: 1.5rem;
         }
 
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -12px;
-            top: 5px;
-            width: 10px;
-            height: 10px;
+            left: -29px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
             background: #fbbf24;
-            border-radius: 50%;
+            border: 2px solid #000;
         }
 
         .timeline-year {
+            font-family: 'Press Start 2P', monospace;
             color: #fbbf24;
-            font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 11px;
         }
 
         .timeline-text {
             color: #bbb;
             margin-top: 0.5rem;
+            font-size: 1.05rem;
         }
 
         /* STATS GRID */
@@ -295,55 +303,113 @@
         }
 
         .stat-item {
-            background: rgba(251, 191, 36, 0.1);
-            border: 1px solid #fbbf24;
+            background: #070714;
+            border: 2px solid #fbbf24;
             padding: 1.5rem;
-            border-radius: 4px;
             text-align: center;
+            box-shadow: 4px 4px 0 #000;
         }
 
         .stat-number {
-            color: #fbbf24;
-            font-size: 2rem;
-            font-weight: bold;
+            color: #cf2121;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 1.8rem;
             margin-bottom: 0.5rem;
         }
 
         .stat-label {
-            color: #aaa;
-            font-size: 0.95rem;
-            text-transform: uppercase;
+            color: #fff;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 8px;
             letter-spacing: 1px;
         }
 
         /* FOOTER */
         footer {
-            background: linear-gradient(135deg, #0f172e 0%, #1a1a2e 50%, #16213e 100%);
-            padding: 3rem 2rem;
+            background: #070714;
+            padding: 4rem 2rem;
             text-align: center;
-            border-top: 3px solid #fbbf24;
+            border-top: 4px solid #cf2121;
             color: #aaa;
             margin-top: 5rem;
         }
 
         footer p {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
         }
 
         .credits-link {
             color: #fbbf24;
             text-decoration: none;
-            border-bottom: 1px solid #fbbf24;
+            border-bottom: 2px solid #fbbf24;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 9px;
+            padding-bottom: 2px;
         }
 
         .credits-link:hover {
             color: #fff;
+            border-bottom-color: #cf2121;
+        }
+
+        /* COSMOGRAM REFERENCE */
+        .cosmogram-callout {
+            background: rgba(251, 191, 36, 0.05);
+            border: 2px dashed #fbbf24;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .cosmogram-callout h4 {
+            color: #fbbf24;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .cosmogram-callout p {
+            color: #e2e8f0;
+        }
+
+        /* BUTTON STYLES */
+        .btn {
+            display: inline-block;
+            background: #fbbf24;
+            color: #000;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 10px;
+            transition: all 0.2s steps(4);
+            margin-top: 1rem;
+            border: none;
+            cursor: pointer;
+            box-shadow: 4px 4px 0 #cf2121;
+        }
+
+        .btn:hover {
+            background: #fff;
+            color: #000;
+            box-shadow: 4px 4px 0 #000;
+            transform: translate(-2px, -2px);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        ul li::before {
+            content: "→ ";
+            color: #cf2121;
+            font-weight: bold;
         }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
             header h1 {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
 
             nav {
@@ -358,7 +424,6 @@
 
             .artist-header {
                 flex-direction: column;
-                align-items: center;
                 text-align: center;
             }
 
@@ -366,69 +431,32 @@
                 grid-template-columns: 1fr;
             }
         }
-
-        /* COSMOGRAM REFERENCE */
-        .cosmogram-callout {
-            background: rgba(251, 191, 36, 0.15);
-            border: 2px solid #fbbf24;
-            padding: 2rem;
-            border-radius: 8px;
-            margin: 2rem 0;
-            text-align: center;
-        }
-
-        .cosmogram-callout h4 {
-            color: #fbbf24;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .cosmogram-callout p {
-            color: #bbb;
-            font-style: italic;
-        }
-
-        /* BUTTON STYLES */
-        .btn {
-            display: inline-block;
-            background: #fbbf24;
-            color: #0a0e27;
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
-            border: none;
-            cursor: pointer;
-            font-family: 'Space Grotesk', 'Courier New', monospace;
-        }
-
-        .btn:hover {
-            background: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(251, 191, 36, 0.3);
-        }
     </style>
 </head>
 <body>
+
+    <!-- TOP ALERT TICKER -->
+    <div class="top-alert-ticker">
+        ⚠️ ALERT: WZRD 77.7 FM BROADCAST ARCHIVE // SYSTEM IS ONLINE ⚠️
+    </div>
+
     <!-- NAVIGATION -->
     <nav>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#vision">Vision</a>
-        <a href="#artists">Artists</a>
-        <a href="#music">Music</a>
-        <a href="#history">History</a>
-        <a href="#impact">Impact</a>
+        <a href="#portfolio">The Gear</a>
+        <a href="#vision">The Maps</a>
+        <a href="#artists">The Crew</a>
+        <a href="#music">The Tapes</a>
+        <a href="#history">The Log</a>
+        <a href="#impact">The Proof</a>
     </nav>
 
     <!-- HEADER -->
     <header>
-        <h1>🌍 The Crossroads</h1>
+        <h1>THE CROSSROADS</h1>
         <p>
-            A multi-format Afrofuturist narrative spanning 1,150+ years.<br>
-            100+ artists. 6 years of development. Tested with real communities.<br>
-            <strong>Narissa's Home: Exit 168, 169, 170, 171</strong>
+            An explosive storytelling universe tracking a 1,150+ year sci-fi rebellion.<br>
+            100+ artists. 3 massive albums. Built and tested directly on the streets.<br>
+            <strong>Current Transmission: Exit 168, 169, 170, 171</strong>
         </p>
     </header>
 
@@ -436,355 +464,288 @@
     <main>
         <!-- PORTFOLIO OVERVIEW -->
         <section id="portfolio">
-            <h2>📋 Portfolio Overview</h2>
+            <h2>THE BLUEPRINT OVERVIEW</h2>
             
             <p>
-                <strong>The Crossroads</strong> is not a single work. It's a <strong>cultural infrastructure system</strong>—a tested methodology for storytelling, community organizing, and collective healing rooted in Kongo cosmology.
+                <strong>The Crossroads</strong> isn't a boring book or a standard movie. It's an entire <strong>underground network</strong>—a massive project combining music, secret website portals, live street theater, and sci-fi world-building.
             </p>
 
             <div class="stat-box">
-                <h4>What You're Looking At</h4>
+                <h4>WHAT IS THIS?</h4>
                 <p>
-                    A complete, documented artistic vision that has been developed iteratively over 6 years, 
-                    tested with real communities (including 200+ children), and is ready for immediate production 
-                    and distribution across multiple modalities: narrative (novella/script), audio drama, interactive 
-                    website, augmented reality, live performance, studio albums, and more.
+                    This is a fully realized sci-fi world that we've been building for 6 years. It's already been tested with real crowds, including over 200 kids. Everything is locked, loaded, and ready to drop right now: including audio dramas, interactive map sites, live shows, hip-hop albums, and more.
                 </p>
             </div>
 
             <div class="stats-grid">
                 <div class="stat-item">
                     <div class="stat-number">100+</div>
-                    <div class="stat-label">Artists & Crew</div>
+                    <div class="stat-label">REBELS & CREW</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">23</div>
-                    <div class="stat-label">Recorded Tracks</div>
+                    <div class="stat-label">BANGER TRACKS</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">6</div>
-                    <div class="stat-label">Years Development</div>
+                    <div class="stat-label">YEARS BUILDING</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">7</div>
-                    <div class="stat-label">Interconnected Timelines</div>
+                    <div class="stat-label">TIMELINES RUNNING</div>
                 </div>
             </div>
         </section>
 
         <!-- VISION STATEMENT -->
         <section id="vision">
-            <h2>✨ Vision & Methodology</h2>
+            <h2>HOW THE MAP WORKS</h2>
             
-            <h3>The 9-Point Kongo Cosmogram</h3>
+            <h3>The 9-Point Map System</h3>
             <p>
-                Rather than telling a linear story, <strong>The Crossroads</strong> uses the ancient Kongo Cosmogram 
-                as a navigational guide. This 9-point system (East, North, West, South, Center, Lower, Higher, Center, Zig-Zag) 
-                works as:
+                We don't tell a boring, straight-line story. <strong>The Crossroads</strong> uses a legendary 9-point map layout (East, North, West, South, Center, Lower, Higher, and a Zig-Zag path). It functions as:
             </p>
 
-            <ul style="margin-left: 2rem; color: #bbb;">
-                <li style="margin-bottom: 1rem;"><strong>A dance step sequence</strong> — literally choreographed movement</li>
-                <li style="margin-bottom: 1rem;"><strong>A hand motion pattern</strong> — embodied spiritual practice</li>
-                <li style="margin-bottom: 1rem;"><strong>A narrative architecture</strong> — guides how the story unfolds across 7 timelines</li>
-                <li style="margin-bottom: 1rem;"><strong>A universal thinking tool</strong> — applicable to any community, culture, location, or life journey</li>
+            <ul style="margin-left: 1rem; color: #bbb;">
+                <li style="margin-bottom: 1rem; font-size: 1.05rem;"><strong>Real dance steps</strong> — choreography that moves people in real life.</li>
+                <li style="margin-bottom: 1rem; font-size: 1.05rem;"><strong>Hand signs</strong> — actual physical movements used by the actors.</li>
+                <li style="margin-bottom: 1rem; font-size: 1.05rem;"><strong>Story architecture</strong> — how the entire plot connects across 7 different eras.</li>
+                <li style="margin-bottom: 1rem; font-size: 1.05rem;"><strong>A tool for life</strong> — a simple way for anyone to find their direction when lost.</li>
             </ul>
 
             <div class="cosmogram-callout">
-                <h4>The Cosmogram is Not Dogma</h4>
+                <h4>This Map Isn't Rules—It's a Compass</h4>
                 <p>
-                    It doesn't claim to answer everything. It's one of infinite ways to think.<br>
-                    It forces travelers to define direction, understand their position, and make collective decisions.<br>
-                    It's been tested iteratively for 6+ years. It works.
+                    It doesn't claim to have every answer. It's a way to train your brain.<br>
+                    It forces players to pick a direction, know where they stand, and make moves together.<br>
+                    We've tested it on the ground for 6 years. It works every time.
                 </p>
             </div>
 
-            <h3>Why This Matters</h3>
+            <h3>Why This Rules</h3>
             <p>
-                Traditional storytelling centers linear narrative. <strong>The Crossroads</strong> centers 
-                <strong>participation, discovery, and spiritual grounding</strong>. People don't passively consume the story—they 
-                move through it, like the Time Warp dance at Rocky Horror. Only those who walk the full journey catch all the 
-                revelations (especially Tyra's hidden connection to becoming Bertha in the far future).
+                Normal stories make you sit still and watch. <strong>The Crossroads</strong> forces you to 
+                <strong>explore, hunt for clues, and jump in</strong>. Audiences don't just sit there—they move through the story like a massive live game. Only the people who follow the map to the very end catch the wildest plot twists (like how Tyra is secretly connected to the giant dragon Bertha in the deep future).
             </p>
         </section>
 
-        <!-- CHARACTER SKETCHES (PLACEHOLDER FOR MIDJOURNEY IMAGES) -->
+        <!-- CHARACTER SKETCHES -->
         <section id="characters">
-            <h2>🎨 Character Sketches</h2>
+            <h2>THE REBEL LINEUP</h2>
             <p>
-                Midjourney-generated character studies for the in-story protagonists. These visual interpretations inform 
-                production design, casting references, and community engagement materials.
+                Concept art studies for the main heroes. These visual designs guide our casting, costumes, and posters.
             </p>
 
             <div class="gallery">
                 <div class="gallery-item">
-                    <div style="width: 100%; height: 250px; background: linear-gradient(135deg, #1a1a2e, #16213e); display: flex; align-items: center; justify-content: center; color: #fbbf24; font-size: 2rem;">
-                        [Tyra Washington - 2026 Leader]
+                    <div style="width: 100%; height: 250px; background: #070714; display: flex; align-items: center; justify-content: center; color: #cf2121; font-family: 'Press Start 2P', monospace; font-size: 12px; text-align: center; padding: 10px;">
+                        [TYRA WASHINGTON - 2026]
                     </div>
                     <div class="gallery-item-text">
                         <h4>Tyra Washington</h4>
-                        <p>The visionary. The leader. The woman who can't name what she feels about the dragon.</p>
+                        <p>The crew leader. The strategist. She's leading the blockades but hiding a massive secret.</p>
                     </div>
                 </div>
 
                 <div class="gallery-item">
-                    <div style="width: 100%; height: 250px; background: linear-gradient(135deg, #1a1a2e, #16213e); display: flex; align-items: center; justify-content: center; color: #fbbf24; font-size: 2rem;">
-                        [Big Kitty / Kit McFerrin]
+                    <div style="width: 100%; height: 250px; background: #070714; display: flex; align-items: center; justify-content: center; color: #cf2121; font-family: 'Press Start 2P', monospace; font-size: 12px; text-align: center; padding: 10px;">
+                        [BIG KITTY]
                     </div>
                     <div class="gallery-item-text">
                         <h4>Big Kitty</h4>
-                        <p>Dragon guardian. Spiritual sentinel. Connected to Bertha across time.</p>
+                        <p>The frontline guardian. Spiritual muscle. Tracks the dragon across time.</p>
                     </div>
                 </div>
 
                 <div class="gallery-item">
-                    <div style="width: 100%; height: 250px; background: linear-gradient(135deg, #1a1a2e, #16213e); display: flex; align-items: center; justify-content: center; color: #fbbf24; font-size: 2rem;">
-                        [Peppaman / Booker T. Johnson]
+                    <div style="width: 100%; height: 250px; background: #070714; display: flex; align-items: center; justify-content: center; color: #cf2121; font-family: 'Press Start 2P', monospace; font-size: 12px; text-align: center; padding: 10px;">
+                        [PEPPAMAN]
                     </div>
                     <div class="gallery-item-text">
                         <h4>Peppaman</h4>
-                        <p>Healer. Spiritual center. Dies shielding Future McFerrin from drone blast.</p>
+                        <p>The healer. Spiritual anchor. Takes a drone hit to shield the future generation.</p>
                     </div>
                 </div>
 
                 <div class="gallery-item">
-                    <div style="width: 100%; height: 250px; background: linear-gradient(135deg, #1a1a2e, #16213e); display: flex; align-items: center; justify-content: center; color: #fbbf24; font-size: 2rem;">
-                        [Jamal Washington - Archivist]
+                    <div style="width: 100%; height: 250px; background: #070714; display: flex; align-items: center; justify-content: center; color: #cf2121; font-family: 'Press Start 2P', monospace; font-size: 12px; text-align: center; padding: 10px;">
+                        [JAMAL - ARCHIVIST]
                     </div>
                     <div class="gallery-item-text">
                         <h4>Jamal Washington</h4>
-                        <p>The keeper of stories. The archivist who records the uprising.</p>
+                        <p>The pirate radio host. Captures and broadcasts the rebellion as it happens.</p>
                     </div>
                 </div>
 
                 <div class="gallery-item">
-                    <div style="width: 100%; height: 250px; background: linear-gradient(135deg, #1a1a2e, #16213e); display: flex; align-items: center; justify-content: center; color: #fbbf24; font-size: 2rem;">
-                        [Ms. Ora - Caregiver]
+                    <div style="width: 100%; height: 250px; background: #070714; display: flex; align-items: center; justify-content: center; color: #cf2121; font-family: 'Press Start 2P', monospace; font-size: 12px; text-align: center; padding: 10px;">
+                        [MS. ORA]
                     </div>
                     <div class="gallery-item-text">
                         <h4>Ms. Ora</h4>
-                        <p>The elder. Healer of visible and invisible wounds.</p>
+                        <p>The block elder. Fixes physical injuries and patches up broken spirits.</p>
                     </div>
                 </div>
 
                 <div class="gallery-item">
-                    <div style="width: 100%; height: 250px; background: linear-gradient(135deg, #1a1a2e, #16213e); display: flex; align-items: center; justify-content: center; color: #fbbf24; font-size: 2rem;">
-                        [Narissa - The Unborn Future]
+                    <div style="width: 100%; height: 250px; background: #070714; display: flex; align-items: center; justify-content: center; color: #cf2121; font-family: 'Press Start 2P', monospace; font-size: 12px; text-align: center; padding: 10px;">
+                        [NARISSA - THE FUTURE]
                     </div>
                     <div class="gallery-item-text">
                         <h4>Narissa</h4>
-                        <p>The one who only exists if the story is told correctly. Year 3176+.</p>
+                        <p>Year 3176+. She only gets born if the current team beats the system.</p>
                     </div>
                 </div>
             </div>
-
-            <p style="margin-top: 2rem; font-style: italic; color: #aaa;">
-                <strong>Note:</strong> Add your Midjourney character sketches here. Upload images to this gallery section 
-                to showcase the visual identity of the story's protagonists.
-            </p>
         </section>
 
         <!-- ARTISTS SECTION -->
         <section id="artists">
-            <h2>🎤 100+ Artists & Crew</h2>
+            <h2>THE CREW (100+ ARTISTS)</h2>
             
             <p>
-                The Crossroads is a collective creation. The following artists, engineers, producers, vocalists, and 
-                community members contributed to the recorded work, design, direction, and community testing.
+                The Crossroads is built by a massive squad. Producers, MCs, designers, engineers, and local community leaders all have hands on this project.
             </p>
 
-            <h3>Crew Travelers (Main Hip-Hop Collective)</h3>
-            <p>The primary voice ensemble that carries the narrative through the albums:</p>
+            <h3>The Main Mic Lineup</h3>
+            <p>The lead voices carrying the story through our music catalog:</p>
 
             <div class="artist-card">
                 <div class="artist-header">
-                    <div style="width: 120px; height: 120px; background: rgba(251, 191, 36, 0.2); border-radius: 50%; border: 3px solid #fbbf24; flex-shrink: 0;"></div>
+                    <div style="width: 80px; height: 80px; background: #cf2121; border: 2px solid #fbbf24; flex-shrink: 0; box-shadow: 3px 3px 0 #000;"></div>
                     <div class="artist-info">
                         <h4>Brezzy Monroe</h4>
                         <p class="artist-role">The Pink Traveler</p>
-                        <p style="margin-top: 0.5rem;">Featured on: "Act 1: Show Up", "Shake the Field", "Freedom"</p>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #fbbf24;">Tracks: "Act 1: Show Up", "Shake the Field", "Freedom"</p>
                     </div>
                 </div>
                 <div class="artist-bio">
-                    One of the lead voices carrying the story's emotional and narrative arc. Brings the joy, 
-                    the urgency, and the hope of the travelers throughout the journey.
+                    The emotional heart of the crew. Delivers the ultimate energy, hype, and hope across the main narrative tracks.
                 </div>
             </div>
 
             <div class="artist-card">
                 <div class="artist-header">
-                    <div style="width: 120px; height: 120px; background: rgba(251, 191, 36, 0.2); border-radius: 50%; border: 3px solid #fbbf24; flex-shrink: 0;"></div>
+                    <div style="width: 80px; height: 80px; background: #cf2121; border: 2px solid #fbbf24; flex-shrink: 0; box-shadow: 3px 3px 0 #000;"></div>
                     <div class="artist-info">
                         <h4>PremRock</h4>
                         <p class="artist-role">The Olive Green Traveler</p>
-                        <p style="margin-top: 0.5rem;">Featured on: "We Traveling", "Act 1: Show Up"</p>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #fbbf24;">Tracks: "We Traveling", "Act 1: Show Up"</p>
                     </div>
                 </div>
                 <div class="artist-bio">
-                    Lyrical sophistication and flow that weave intricate narratives about displacement, 
-                    migration, and hidden networks of resistance.
+                    Intricate lyricism tracking underground resistance grids, midnight escapes, and tactical maneuvers.
                 </div>
             </div>
 
-            <h3>Production & Engineering</h3>
+            <h3>Behind the Boards</h3>
             <p>
-                <strong>Recording Studios:</strong> Audiostate 55 (Birmingham, AL), Strident Trax (Montgomery, AL), 
-                Steel Tipped Dove (Brooklyn, NY), Studioland (Montgomery, AL), and home studios across the country.
+                <strong>Studios on the Grid:</strong> Audiostate 55 (Birmingham), Strident Trax (Montgomery), Steel Tipped Dove (Brooklyn), Studioland (Montgomery), and bedroom setups worldwide.
             </p>
 
             <p>
-                <strong>Mixing & Mastering:</strong> Bao Pham (Mixology Studios, Hanoi, Vietnam), Cope Till (Strident Trax, Montgomery, AL), 
-                Rob Shimp (Technical Earth Recorders, Montgomery, AL).
+                <strong>Sound Design & Mixing:</strong> Bao Pham (Hanoi, Vietnam), Cope Till (Montgomery), Rob Shimp (Montgomery).
             </p>
 
             <p>
-                <strong>Production Team:</strong> evan milligan (creative direction, Narrator 1, multiple performance roles), 
-                Joseph Fusaro (composition writing, production), Steel Tipped Dove (production, mixing guidance).
-            </p>
-
-            <h3>Community & Supporting Cast</h3>
-            <p>
-                The story also features contributions from community members, Alabama State University Marching Hornets, 
-                Birmingham Southern College Alumni Choir, PSALM 91, and dozens of individual singers, dancers, and storytellers 
-                who participated in the recording process.
-            </p>
-
-            <p style="margin-top: 2rem; color: #aaa;">
-                <strong>For complete artist credits, song-by-song breakdowns, and contact information, see the full 
-                <a href="#music" style="color: #fbbf24; text-decoration: none; border-bottom: 1px solid #fbbf24;">Music & Credits</a> section.</strong>
+                <strong>Project leads:</strong> evan milligan (Creative Director / Voice of Narrator 1), Joseph Fusaro (Composer), Steel Tipped Dove (Producer).
             </p>
         </section>
 
         <!-- MUSIC SECTION -->
         <section id="music">
-            <h2>🎵 Three Albums: The Soundtrack</h2>
+            <h2>THE TAPES (3 COMPLETE ALBUMS)</h2>
 
-            <h3>Album 1: Smoke & Mirrors (23 tracks, 60+ artists)</h3>
+            <h3>Tape 1: Smoke & Mirrors (23 Tracks)</h3>
             <p>
-                The full album that runs through every timeline. Features the complete narrative journey from 
-                "Act 1: Show Up" through the reconstruction period and beyond.
+                The primary soundtrack mapping the entire multi-era timeline. Cuts through the whole narrative arc.
             </p>
 
-            <p><strong>Featured Voices:</strong> KBlocks (Narrator 2), Brezzy Monroe (The Pink Traveler), 
-            PremRock (The Olive Green Traveler), Miles Cooke (The Sky Blue Traveler), SKECH185, Rich Jones, 
-            Juicyy Da Master, Steel Tipped Dove, James Gardin, and many others.</p>
+            <p><strong>Voices on Tape:</strong> KBlocks (Narrator 2), Brezzy Monroe, PremRock, Miles Cooke, SKECH185, Rich Jones, Juicyy Da Master, James Gardin, and more.</p>
 
             <p>
-                <strong>Available on:</strong>
+                <strong>Listen Here:</strong>
                 <a href="https://archive.org/details/culture-lab-from-western-states-center-smoke-mirrors" target="_blank" class="credits-link">Archive.org</a> |
-                <a href="https://culturelab.bandcamp.com/album/smoke-mirrors" target="_blank" class="credits-link">Bandcamp</a> |
-                <a href="https://www.westernstatescenter.org/smoke-mirrors" target="_blank" class="credits-link">Western States Center</a>
+                <a href="https://culturelab.bandcamp.com/album/smoke-mirrors" target="_blank" class="credits-link">Bandcamp</a>
             </p>
 
-            <h3>Album 2: Caregiver Road Trip (Remix Edition)</h3>
+            <h3>Tape 2: Caregiver Road Trip (The Remixes)</h3>
             <p>
-                Artists remixing and reimagining care work songs into new sonic spaces. Features Ms. Ora, Bunny, 
-                Lil Alex, Future McFerrin perspectives as central voices.
+                Heavy electronic and hip-hop flips of our underground survival anthems. Centers the perspectives of Ms. Ora, Bunny, Lil Alex, and Future McFerrin.
             </p>
 
             <p>
-                <strong>Available on:</strong>
+                <strong>Listen Here:</strong>
                 <a href="https://archive.org/details/shake-the-field-and-felt-five-caregiver-road-trip-remix-edition-08-revelations-s" target="_blank" class="credits-link">Archive.org</a> |
                 <a href="https://shakethefield.bandcamp.com/album/caregiver-road-trip-remix-edition" target="_blank" class="credits-link">Bandcamp</a>
             </p>
 
-            <h3>Album 3: Caregiver Road Trip (Extended Collectors Edition)</h3>
+            <h3>Tape 3: Caregiver Road Trip (Collector's Cut)</h3>
             <p>
-                The complete unreleased material. Full journey of care work, resistance, and survival. 
-                Features Phat Tony, Squirrel, JD, Night Gods.
+                The deep vault tracks. Raw, unreleased records tracking baseline survival and defense maneuvers. Features Phat Tony, Squirrel, JD, and the Night Gods.
             </p>
 
             <p>
-                <strong>Available on:</strong>
+                <strong>Listen Here:</strong>
                 <a href="https://shakethefield.bandcamp.com/album/caregiver-road-trip-extended-collectors-edition" target="_blank" class="credits-link">Bandcamp</a>
             </p>
 
             <div class="stat-box">
-                <h4>Music Production Details</h4>
+                <h4>THE CREATOR CODE (DATA TRUST)</h4>
                 <p>
-                    <strong>23 total tracks</strong> across the three albums. Recorded in 8+ studios across Berlin, 
-                    Hanoi, Oakland, Chicago, Houston, Birmingham, Montgomery, Brooklyn, and Port Gibson.
-                    <br><br>
-                    <strong>Production hubs:</strong> Audiostate 55, Strident Trax, Steel Tipped Dove, Studioland, 
-                    Rich Jones Studio, Tre Da Joker Studio, and multiple home studios.
-                    <br><br>
-                    <strong>Data Trust Agreement:</strong> All 100+ artists own their work 100%. Revenue sharing 
-                    when project earns. Annual accounting starting 2027. Descendants inherit rights.
+                    <strong>We don't steal art.</strong> All 100+ creators own 100% of their work. Split sheets are signed. Annual payouts trigger starting in 2027. If an artist passes down, their family inherits their shares. No corporate record label games.
                 </p>
             </div>
         </section>
 
         <!-- DEVELOPMENT HISTORY -->
         <section id="history">
-            <h2>📅 6-Year Development Timeline</h2>
+            <h2>THE MISSION LOG (6-YEAR TIMELINE)</h2>
 
             <p>
-                This isn't a project that was conceived and built in isolation. It's been tested, refined, 
-                performed, and iterated with real communities over six years.
+                We didn't just cook this up overnight. This project has been battle-tested on the blacktop and in community halls for six years straight.
             </p>
 
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-year">2018-2019</div>
                     <div class="timeline-text">
-                        Initial concept development. Evan begins testing the Kongo Cosmogram as a thinking tool 
-                        with local community groups and at the Sanctuary.
+                        The spark. Evan starts testing the 9-point map system with real neighborhood groups at the Sanctuary.
                     </div>
                 </div>
 
                 <div class="timeline-item">
                     <div class="timeline-year">2020-2021</div>
                     <div class="timeline-text">
-                        First creative workshops. Story framework emerges. Characters and timelines begin to take shape. 
-                        Pandemic pivot: work becomes more introspective and digital-first.
+                        First writing workshops. The sci-fi world locks into place. When the pandemic hit, we went digital-first to keep the crew connected.
                     </div>
                 </div>
 
                 <div class="timeline-item">
                     <div class="timeline-year">2022-2023</div>
                     <div class="timeline-text">
-                        Music production begins. Partnership with Western States Center and Culture Lab established. 
-                        23 tracks recorded across multiple studios and cities. 100+ artists engaged.
+                        Microphones hot. Partnered with Western States Center and Culture Lab. Recorded 23 tracks across home setups and pro studios with 100+ artists.
                     </div>
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-year">2024 (Spring)</div>
+                    <div class="timeline-year">2024 (SPRING)</div>
                     <div class="timeline-text">
-                        <strong>"Smoke & Mirrors" album released.</strong> Public debut of the core narrative through music. 
-                        Street performances and story circles begin. Community feedback informs refinements.
+                        <strong>"Smoke & Mirrors" drops.</strong> The world hears the universe for the first time. We start holding block parties and story circles to gather feedback.
                     </div>
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-year">2024 (Summer-Fall)</div>
+                    <div class="timeline-year">2024 (SUMMER)</div>
                     <div class="timeline-text">
-                        Live performances. School assembly with 200+ children (K-5th grade). Kids learn and sing "Shake the Field" 
-                        on the spot. Testing shows the story works across ages and contexts.
+                        Live tests. Hit an elementary school assembly with over 200 kids. They learned the hook to "Shake the Field" in 2 minutes and sang it live. The story works for all ages.
                     </div>
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-year">2024 (Fall-Winter)</div>
+                    <div class="timeline-year">2025</div>
                     <div class="timeline-text">
-                        Document proof of concept. Gather artist profiles, testimonies, and community feedback. 
-                        Begin building multimedia presentation materials.
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-year">2025 (Winter)</div>
-                    <div class="timeline-text">
-                        <strong>Website launch.</strong> Interactive cosmogram portal built. Character sketches created. 
-                        Pitch documents prepared for funders and institutional partners.
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-year">2025 (Spring)</div>
-                    <div class="timeline-text">
-                        <strong>Phase 2 & 3 Planning.</strong> Sol R LLC established. Expansion to additional Black Belt 
-                        communities. Technology infrastructure begins (e-waste recycling arm, Sanctuary expansion).
+                        Launch phase. Built the interactive map site, dropped character designs, and established Sol R LLC to fund the expansion into 3 more Alabama towns.
                     </div>
                 </div>
             </div>
@@ -792,117 +753,84 @@
 
         <!-- PROOF OF IMPACT -->
         <section id="impact">
-            <h2>🌟 Proof of Concept & Real Impact</h2>
+            <h2>REAL WORLD PROOF</h2>
 
             <div class="stat-box">
-                <h4>200+ Children Engaged</h4>
+                <h4>200+ KIDS LIVE ACTION</h4>
                 <p>
-                    School assembly at K-5th grade elementary school. Kids learned "Shake the Field" lyrics 
-                    on the spot and sang together. Demonstrated the story's ability to move audiences of all ages 
-                    across cultural backgrounds.
+                    Ran a full school takeover assembly. Kids learned our anthems instantly and joined the performance. Shows our universe connects immediately without needing a manual.
                 </p>
             </div>
 
             <div class="stat-box">
-                <h4>6-Year Iterative Testing</h4>
+                <h4>6 YEARS OF BOOTLEG TESTING</h4>
                 <p>
-                    Not a one-off project. The Kongo Cosmogram methodology and narrative concepts have been 
-                    tested continuously with community groups, artists, and storytelling circles. Each iteration 
-                    has strengthened the core framework.
+                    Not a theoretical pitch deck. The map mechanics and scripts have been run through dozens of youth groups and block associations. We refined it based on real reactions.
                 </p>
             </div>
 
             <div class="stat-box">
-                <h4>100+ Artists Committed</h4>
+                <h4>100+ CREW LOCKED IN</h4>
                 <p>
-                    This isn't just Evan's vision. It's a collective work with verifiable credits, contractual 
-                    agreements (Data Trust Agreement), and ongoing community participation. Artists own their work. 
-                    Revenue shares are documented and tracked.
+                    This is a massive collective. Every artist has signed paperwork, explicit credit tracking, and an absolute equity stake via the Data Trust.
                 </p>
             </div>
 
-            <div class="stat-box">
-                <h4>Multi-Format Production Ready</h4>
-                <p>
-                    The story exists in: recorded music (3 albums, 23 tracks), narrative outline, character sketches, 
-                    interactive website, script framework, and live performance documentation. Each format reinforces 
-                    and extends the others.
-                </p>
-            </div>
-
-            <h3>What Comes Next</h3>
+            <h3>THE NEXT MOVES</h3>
 
             <p>
-                <strong>Phase 1 (Now):</strong> Website live. Music accessible. Pitches ready for institutional partners, 
-                foundations, and potential investors.
+                <strong>Phase 1 (Right Now):</strong> Website is active. Music is streaming. We are taking meetings to back the tour.
             </p>
 
             <p>
-                <strong>Phase 2 (6-18 months):</strong> Sol R LLC formalized. Street musical premiere. First tour 
-                (Houston, Atlanta, New Orleans, DC, New York). Tech recycling arm launched. Sanctuary expansion begins.
+                <strong>Phase 2 (Next 6-18 Months):</strong> Lock down the street musical premiere. Hit the highway tour: Houston, Atlanta, New Orleans, DC, New York. Kick off our e-waste tech recycling arm.
             </p>
 
             <p>
-                <strong>Phase 3 (18+ months):</strong> Scale to 3 additional Black Belt Alabama communities using 
-                the same methodology. Build local production teams and creative hubs.
-            </p>
-
-            <p>
-                <strong>Phase 4 (4+ years):</strong> 100-year strategic plan for Black Belt region. Track metrics: 
-                literacy, joy, creative output, health. Apply methodology across the diaspora.
+                <strong>Phase 3 (18+ Months):</strong> Scale the system to 3 brand-new Black Belt Alabama communities. Set up local production hubs so they can record their own timelines.
             </p>
         </section>
 
         <!-- CALL TO ACTION -->
-        <section style="text-align: center; background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(251, 191, 36, 0.05)); border: 2px solid #fbbf24;">
-            <h2>🚀 Ready to Partner</h2>
+        <section style="text-align: center; background: #070714; border: 3px solid #cf2121;">
+            <h2>🚀 JOIN THE CIRCUIT</h2>
             
             <p>
-                The Crossroads is ready for the next level. We're looking for:
+                The system is ready to scale. We are actively scouting for:
             </p>
 
-            <ul style="margin: 2rem auto; color: #bbb; text-align: left; max-width: 600px;">
-                <li style="margin-bottom: 1rem;"><strong>Project Management Partners</strong> (tour logistics, revenue modeling, institutional partnerships)</li>
-                <li style="margin-bottom: 1rem;"><strong>Foundation Funding</strong> (production, community engagement, tech infrastructure)</li>
-                <li style="margin-bottom: 1rem;"><strong>Media Distribution</strong> (film, streaming, social platforms)</li>
-                <li style="margin-bottom: 1rem;"><strong>Community Collaborators</strong> (other Black Belt communities, cultural centers, universities)</li>
-                <li style="margin-bottom: 1rem;"><strong>Technology Partners</strong> (interactive experiences, VR/AR, data tracking)</li>
+            <ul style="margin: 2rem auto; color: #fbbf24; text-align: left; max-width: 600px; font-family: monospace; font-size: 1.1rem;">
+                <li style="margin-bottom: 1rem;"><strong>Tour Logistics Teams</strong> (Road managers, bookers, show runners)</li>
+                <li style="margin-bottom: 1rem;"><strong>Independent Funding</strong> (To back the tech recycling arm and stage production)</li>
+                <li style="margin-bottom: 1rem;"><strong>Media Shakers</strong> (Independent film distribution, streaming channels, video teams)</li>
+                <li style="margin-bottom: 1rem;"><strong>Local Organizers</strong> (Black Belt towns, youth programs, creative centers)</li>
             </ul>
 
-            <p style="color: #aaa; font-size: 0.95rem;">
-                Contact: <strong>evan@jubileemgm.org</strong> | 334-590-1702<br>
-                Organization: <strong>The Sanctuary at Jubilee Community Center</strong><br>
+            <p style="color: #fff; font-size: 1rem; margin: 2rem 0; font-family: monospace;">
+                Ping Us: <strong>evan@jubileemgm.org</strong> // 334-590-1702<br>
+                HQ: <strong>The Sanctuary at Jubilee Community Center</strong><br>
                 432 Goldthwaite St, Montgomery, AL 36104
             </p>
 
             <a href="https://blackbeltbreeze.github.io/the-crossroads/" target="_blank" class="btn">
-                Visit the Interactive Website
+                LAUNCH THE LIVE SITE →
             </a>
         </section>
     </main>
 
     <!-- FOOTER -->
     <footer>
+        <p style="font-family: 'Press Start 2P', monospace; font-size: 10px; color: #fbbf24;">
+            THE CROSSROADS // NARISSA'S HOME
+        </p>
         <p>
-            <strong>The Crossroads: Narissa's Home</strong><br>
-            A 1,150+ year Afrofuturist narrative rooted in Kongo cosmology<br>
-            Created by evan milligan | Co-directed by the Sanctuary at Jubilee
+            A 1,150+ Year Sci-Fi Narrative Powered by Kongo Cosmology.<br>
+            Directed by evan milligan & The Sanctuary at Jubilee Squad.
         </p>
 
-        <p>
-            <strong>Music:</strong> Smoke & Mirrors | Caregiver Road Trip (Remix + Extended)<br>
-            <strong>Artists:</strong> 100+ creators across Berlin, Hanoi, Oakland, Chicago, Montgomery, Brooklyn<br>
-            <strong>Data Trust:</strong> All artists own their work. Revenue sharing when project earns.
-        </p>
-
-        <p style="margin-top: 2rem; border-top: 1px solid rgba(251, 191, 36, 0.3); padding-top: 2rem;">
-            © 2025 evan milligan & The Sanctuary at Jubilee Community Center<br>
-            License: CC-BY 4.0 for Story/Art/Music | MIT for Code | ODbL for Data
-        </p>
-
-        <p style="font-size: 0.85rem; color: #666;">
-            This portfolio was assembled with AI assistance to accelerate documentation and presentation.<br>
-            The work itself is 100% human-created, community-tested, and artist-owned.
+        <p style="margin-top: 2rem; border-top: 1px dashed #cf2121; padding-top: 2rem; font-size: 0.9rem;">
+            © 2026 evan milligan & The Sanctuary at Jubilee Community Center<br>
+            All Artists Own 100% of Their Work. Data Trust Active.
         </p>
     </footer>
 
@@ -926,15 +854,15 @@
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 50) {
+                if (window.pageYOffset >= sectionTop - 100) {
                     current = section.getAttribute('id');
                 }
             });
 
             navLinks.forEach(link => {
-                link.style.borderBottom = '2px solid transparent';
+                link.style.color = '#fbbf24';
                 if (link.getAttribute('href') === '#' + current) {
-                    link.style.borderBottom = '2px solid #fbbf24';
+                    link.style.color = '#fff';
                 }
             });
         });
