@@ -869,5 +869,29 @@
             if (e.key === 'Escape') closeChooser();
         });
     </script>
+    document.addEventListener("DOMContentLoaded", () => {
+    // 1. Check if the user selected a starting exit at the gate
+    const startingExit = localStorage.getItem('selected_initial_exit');
+    
+    if (startingExit) {
+        console.log(`System Boot: User entered via Exit ${startingExit}`);
+        
+        // 2. Execute layout focus based on their choice
+        // (Assuming your timeline columns have IDs like 'exit-168', 'exit-169', etc.)
+        const targetColumn = document.getElementById(`exit-${startingExit}`);
+        
+        if (targetColumn) {
+            // Smoothly bring their chosen era into primary focus
+            targetColumn.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            targetColumn.classList.add('primary-focus'); 
+        }
+        
+        // 3. Update the progressive audio track based on where they initiated entry
+        // initializeAudioForExit(startingExit);
+    } else {
+        // Fallback if they bypassed the index page directly
+        console.log("System Boot: Direct entry detected. Initializing default view.");
+    }
+});
 </body>
 </html>
