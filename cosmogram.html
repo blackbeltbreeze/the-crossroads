@@ -3,625 +3,508 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Crossroads: Cosmogram Portal | Narissa's Home</title>
+    <title>Cosmogram Portal // WZRD 77.7 FM Archive Substrate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root { 
+            --bg-deep: #030307; 
+            --terminal-dark: #090a15; 
+            --gold: #fbbf24; 
+            --crimson: #cf2121;
+            --cyan: #06b6d4;
+            --text-muted: #9ca3af;
         }
-
-        body {
-            font-family: 'Space Grotesk', 'Courier New', monospace;
-            background: #0a0e27;
-            color: #ddd;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { 
+            background: var(--bg-deep); 
+            color: #e5e7eb; 
+            font-family: 'Space Grotesk', sans-serif; 
+            line-height: 1.7; 
             overflow-x: hidden;
-            line-height: 1.6;
         }
-
-        /* HEADER */
+        
         header {
-            background: linear-gradient(135deg, #0f172e 0%, #1a1a2e 50%, #16213e 100%);
-            padding: 2rem;
-            text-align: center;
-            border-bottom: 3px solid #fbbf24;
+            background: var(--terminal-dark);
+            border-bottom: 3px solid var(--crimson);
+            padding: 2.5rem 2rem;
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
         }
-
-        header h1 {
-            color: #fbbf24;
-            font-size: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            color: #aaa;
-            font-size: 0.95rem;
-            max-width: 600px;
+        .header-content {
+            max-width: 1200px;
             margin: 0 auto;
-        }
-
-        /* MAIN CONTAINER */
-        main {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-        }
-
-        /* COSMOGRAM SECTION */
-        #cosmogram-section {
-            background: rgba(15, 23, 46, 0.7);
-            border: 2px solid #fbbf24;
-            border-radius: 8px;
-            padding: 3rem;
-            margin-bottom: 3rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .cosmogram-title {
-            color: #fbbf24;
-            text-align: center;
-            margin-bottom: 2rem;
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .cosmogram-description {
-            color: #bbb;
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 3rem;
-            line-height: 1.8;
-        }
-
-        /* SVG COSMOGRAM */
-        #cosmogram-container {
             display: flex;
-            justify-content: center;
-            margin: 3rem 0;
-            min-height: 600px;
+            justify-content: space-between;
             align-items: center;
         }
-
-        svg {
-            max-width: 100%;
-            height: auto;
-            filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.3));
-        }
-
-        /* COSMOGRAM POINTS (CLICKABLE) */
-        .cosmogram-point {
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .cosmogram-point circle {
-            fill: #1a1a2e;
-            stroke: #fbbf24;
-            stroke-width: 2;
-            transition: all 0.3s ease;
-        }
-
-        .cosmogram-point:hover circle {
-            fill: #fbbf24;
-            r: 8;
-            filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.6));
-        }
-
-        .cosmogram-label {
-            fill: #fbbf24;
-            font-size: 14px;
-            text-anchor: middle;
+        .logo { font-size: 1.4rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+        .logo a { color: #fff; text-decoration: none; }
+        .signal-badge {
+            font-size: 11px;
             font-weight: bold;
-            pointer-events: none;
-            transition: all 0.3s ease;
+            color: var(--crimson);
+            border: 1px solid var(--crimson);
+            padding: 4px 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
-        .cosmogram-point:hover .cosmogram-label {
-            font-size: 16px;
-            fill: #fff;
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .intro-block {
+            background: linear-gradient(135deg, #090a15 0%, #000000 100%);
+            border: 1px solid #1e293b;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        .intro-block h1 {
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        .intro-block p { color: var(--text-muted); font-size: 1.05rem; }
+
+        /* PORTAL ENGINE GRID */
+        .portal-engine {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        @media (max-width: 900px) {
+            .portal-engine { grid-template-columns: 1fr; }
         }
 
-        /* CONTENT DISPLAY */
-        #timeline-content {
-            background: rgba(26, 26, 46, 0.8);
-            border-left: 4px solid #fbbf24;
-            padding: 3rem;
-            border-radius: 4px;
-            backdrop-filter: blur(10px);
-            min-height: 400px;
-            animation: fadeIn 0.5s ease;
+        .visual-matrix {
+            background: var(--terminal-dark);
+            border: 1px solid #1e293b;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
         }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .timeline-header {
-            color: #fbbf24;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+        .visual-matrix h2 {
+            font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-        }
-
-        .timeline-year {
-            color: #888;
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .timeline-narrative {
-            color: #ddd;
-            line-height: 1.8;
+            color: var(--gold);
             margin-bottom: 2rem;
-            font-size: 1rem;
-        }
-
-        .timeline-narrative em {
-            color: #fbbf24;
-            font-style: italic;
-        }
-
-        .character-preview {
-            background: rgba(251, 191, 36, 0.1);
-            border-left: 3px solid #fbbf24;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 4px;
-        }
-
-        .character-preview h4 {
-            color: #fbbf24;
-            margin-bottom: 0.5rem;
-        }
-
-        .character-preview p {
-            color: #bbb;
-            font-size: 0.95rem;
-        }
-
-        .explore-link {
-            display: inline-block;
-            color: #fbbf24;
-            text-decoration: none;
-            margin-top: 1rem;
-            border: 1px solid #fbbf24;
-            padding: 0.5rem 1rem;
-            border-radius: 3px;
-            transition: all 0.3s ease;
-        }
-
-        .explore-link:hover {
-            background: #fbbf24;
-            color: #0a0e27;
-            font-weight: bold;
-        }
-
-        /* TIMELINE GUIDE */
-        .timeline-guide {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .guide-card {
-            background: rgba(251, 191, 36, 0.05);
-            border: 1px solid rgba(251, 191, 36, 0.3);
-            padding: 1.5rem;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        .guide-card:hover {
-            background: rgba(251, 191, 36, 0.15);
-            border-color: #fbbf24;
-            transform: translateY(-5px);
-        }
-
-        .guide-card h4 {
-            color: #fbbf24;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        .guide-card p {
-            color: #aaa;
-            font-size: 0.85rem;
-        }
-
-        /* LEGEND */
-        .cosmogram-legend {
-            background: rgba(251, 191, 36, 0.1);
-            border: 1px solid #fbbf24;
-            padding: 2rem;
-            margin-top: 3rem;
-            border-radius: 4px;
+            border-bottom: 1px dashed rgba(251, 191, 36, 0.3);
+            padding-bottom: 0.5rem;
+            width: 100%;
             text-align: center;
         }
 
-        .cosmogram-legend h3 {
-            color: #fbbf24;
-            margin-bottom: 1rem;
+        /* SVG COSMOGRAM SPECIFICS */
+        #cosmogram-svg-wrapper {
+            width: 100%;
+            max-width: 450px;
+            margin: 1rem 0;
+        }
+        svg {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 0 15px rgba(0,0,0,0.5));
+        }
+        .cosmogram-point { cursor: pointer; }
+        .cosmogram-point circle {
+            fill: #040612;
+            stroke: var(--text-muted);
+            stroke-width: 2;
+            transition: all 0.3s steps(4);
+        }
+        .cosmogram-point:hover circle, .cosmogram-point.active circle {
+            stroke: var(--gold);
+            fill: var(--gold);
+            filter: drop-shadow(0 0 8px var(--gold));
+        }
+        .cosmogram-label {
+            fill: var(--text-muted);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            pointer-events: none;
+            transition: fill 0.3s ease;
+        }
+        .cosmogram-point:hover .cosmogram-label, .cosmogram-point.active .cosmogram-label {
+            fill: #fff;
+        }
+        .spiral-path {
+            stroke: rgba(251, 191, 36, 0.15);
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        /* DYNAMIC DISPLAY INTERCEPT */
+        #timeline-intercept {
+            background: linear-gradient(180deg, #090a15 0%, #030408 100%);
+            border: 1px solid #1e293b;
+            border-left: 4px solid var(--crimson);
+            padding: 3rem;
+            min-height: 550px;
+            position: relative;
+        }
+        .node-header {
+            font-size: 1.8rem;
+            color: #fff;
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-bottom: 0.2rem;
         }
-
-        .legend-text {
-            color: #bbb;
+        .node-temporal {
+            font-size: 0.9rem;
+            font-family: monospace;
+            color: var(--cyan);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            display: block;
+        }
+        .node-narrative {
+            color: #cbd5e1;
+            font-size: 1.05rem;
             line-height: 1.8;
+            margin-bottom: 2.5rem;
+        }
+        .node-narrative strong { color: #fff; }
+        .node-narrative em { color: var(--gold); font-style: normal; font-weight: 600; }
+
+        .character-card {
+            background: #0d0606;
+            border: 1px solid #3a1212;
+            padding: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+        .character-card h4 {
+            color: var(--crimson);
+            text-transform: uppercase;
             font-size: 0.95rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
         }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            #cosmogram-section {
-                padding: 1.5rem;
-            }
-
-            header h1 {
-                font-size: 1.5rem;
-            }
-
-            .timeline-header {
-                font-size: 1.4rem;
-            }
-
-            #cosmogram-container {
-                min-height: 400px;
-            }
-
-            .timeline-guide {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* EASTER EGG CLASSES */
-        .hidden-tension {
-            color: #888;
+        .character-card p { font-size: 0.95rem; color: #cbd5e1; }
+        .character-card .tension-subtext {
+            margin-top: 0.8rem;
             font-size: 0.85rem;
+            color: var(--text-muted);
             font-style: italic;
-            margin-top: 1rem;
-            opacity: 0.7;
+            border-top: 1px dashed rgba(207, 33, 33, 0.2);
+            padding-top: 0.5rem;
         }
 
-        .easter-egg {
-            color: #ff6b6b;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            font-size: 0.8rem;
-            margin-top: 0.5rem;
+        .meta-specs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+        .spec-box {
+            background: #111322;
+            border: 1px solid #1e293b;
+            padding: 1rem;
+        }
+        .spec-box h5 {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: var(--gold);
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+        }
+        .spec-box p { font-size: 0.85rem; color: #cbd5e1; line-height: 1.4; }
+
+        /* NAV GUIDE FOOTER */
+        .navigation-instructions {
+            background: var(--terminal-dark);
+            border: 1px dashed #1e293b;
+            padding: 2.5rem;
+            margin-top: 4rem;
+        }
+        .navigation-instructions h3 {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+        .navigation-instructions p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.7;
         }
 
-        .timeline-content:hover .easter-egg {
-            opacity: 0.6;
+        footer {
+            margin-top: 6rem;
+            border-top: 1px solid #1e293b;
+            padding: 3rem 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
         }
+        footer a { color: var(--gold); text-decoration: none; }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>🌍 The Crossroads Cosmogram</h1>
-        <p>Navigate through 7 timelines across 1,150+ years. Follow the 9-point Kongo dance. Discover what Tyra can't name.</p>
+        <div class="header-content">
+            <div class="logo"><a href="index.html">The Crossroads</a></div>
+            <div class="signal-badge">9-POINT TIME WARP DANCE SYSTEM</div>
+        </div>
     </header>
 
     <main>
-        <section id="cosmogram-section">
-            <h2 class="cosmogram-title">The 9-Point Portal</h2>
-            <p class="cosmogram-description">
-                Based on the ancient Kongo Cosmogram, adapted for The Crossroads.<br>
-                <em>East → North → West → South → Center → Lower → Higher → Center → Zig-Zag → East (repeat)</em>
-            </p>
-
-            <div id="cosmogram-container">
-                <svg viewBox="0 0 500 500" width="400" height="400">
-                    <!-- Outer circle guide -->
-                    <circle cx="250" cy="250" r="180" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="5,5"/>
-                    
-                    <!-- EAST (Entry Point) -->
-                    <g class="cosmogram-point" data-point="east" data-year="2026">
-                        <circle cx="430" cy="250" r="6"/>
-                        <text class="cosmogram-label" x="430" y="280">EAST<tspan x="430" dy="15">2026</tspan></text>
-                    </g>
-
-                    <!-- NORTH -->
-                    <g class="cosmogram-point" data-point="north" data-year="1996">
-                        <circle cx="250" cy="70" r="6"/>
-                        <text class="cosmogram-label" x="250" y="40">NORTH<tspan x="250" dy="15">1996</tspan></text>
-                    </g>
-
-                    <!-- WEST -->
-                    <g class="cosmogram-point" data-point="west" data-year="1901">
-                        <circle cx="70" cy="250" r="6"/>
-                        <text class="cosmogram-label" x="70" y="280">WEST<tspan x="70" dy="15">1901</tspan></text>
-                    </g>
-
-                    <!-- SOUTH -->
-                    <g class="cosmogram-point" data-point="south" data-year="1952">
-                        <circle cx="250" cy="430" r="6"/>
-                        <text class="cosmogram-label" x="250" y="460">SOUTH<tspan x="250" dy="15">1952</tspan></text>
-                    </g>
-
-                    <!-- CENTER (first) -->
-                    <g class="cosmogram-point" data-point="center-1" data-year="2026">
-                        <circle cx="250" cy="250" r="7"/>
-                        <text class="cosmogram-label" x="250" y="275">CENTER</text>
-                    </g>
-
-                    <!-- LOWER (Ancestor Realm) -->
-                    <g class="cosmogram-point" data-point="lower" data-year="1901">
-                        <circle cx="250" cy="350" r="6"/>
-                        <text class="cosmogram-label" x="250" y="375">LOWER<tspan x="250" dy="15">Ancestors</tspan></text>
-                    </g>
-
-                    <!-- HIGHER (Future/Transcendent) -->
-                    <g class="cosmogram-point" data-point="higher" data-year="3176">
-                        <circle cx="250" cy="150" r="6"/>
-                        <text class="cosmogram-label" x="250" y="125">HIGHER<tspan x="250" dy="15">3176+</tspan></text>
-                    </g>
-
-                    <!-- ZIG-ZAG (The Spiral) -->
-                    <g class="cosmogram-point" data-point="zigzag" data-year="2035">
-                        <circle cx="340" cy="160" r="6"/>
-                        <text class="cosmogram-label" x="340" y="130">ZIG-ZAG<tspan x="340" dy="15">2035</tspan></text>
-                    </g>
-
-                    <!-- CENTER (Return) - same as first but represents completion -->
-                    <g class="cosmogram-point" data-point="center-2" data-year="All">
-                        <circle cx="250" cy="250" r="5"/>
-                    </g>
-
-                    <!-- Connecting lines to show the dance path -->
-                    <line x1="430" y1="250" x2="250" y2="250" stroke="#333" stroke-width="1" stroke-dasharray="3,3"/>
-                    <line x1="250" y1="70" x2="250" y2="250" stroke="#333" stroke-width="1" stroke-dasharray="3,3"/>
-                    <line x1="70" y1="250" x2="250" y2="250" stroke="#333" stroke-width="1" stroke-dasharray="3,3"/>
-                    <line x1="250" y1="430" x2="250" y2="250" stroke="#333" stroke-width="1" stroke-dasharray="3,3"/>
-                </svg>
-            </div>
-
-            <div id="timeline-content">
-                <div class="timeline-content">
-                    <h3 class="timeline-header">EAST: Uprising Exposed</h3>
-                    <p class="timeline-year">Year 2026 | The Moment of Rupture</p>
-                    <p class="timeline-narrative">
-                        <strong>Tyra Washington</strong> stands at the crossroads of Interstate 65. A visionary. A leader. A person holding something she cannot name.
-                        <br><br>
-                        She speaks with conviction about the uprising, about the circle of friends occupying the exits, about exposing what's bound beneath Montgomery. 
-                        <br><br>
-                        But there is a pregnancy she hasn't told anyone about.
-                        <br><br>
-                        And there is something else. Something deeper. An <em>unease with the dragon lore</em>. A discomfort with the tunnels. A confusion about her own purpose that she cannot reconcile. She feels it in her bones when she walks certain streets. She feels it when people speak about Bertha.
-                        <br><br>
-                        <em>She doesn't know why.</em>
-                    </p>
-
-                    <div class="character-preview">
-                        <h4>Lead Character: Tyra Washington</h4>
-                        <p>The visionary. The organizer. The woman who speaks her truth but cannot name what haunts her.</p>
-                        <div class="hidden-tension">
-                            [Something about the dragon she can't face. Something about time she can't explain. Something about becoming.]
-                        </div>
-                        <a href="#character-tyra" class="explore-link">Explore Tyra's Profile →</a>
-                    </div>
-
-                    <div class="timeline-guide">
-                        <div class="guide-card">
-                            <h4>🎵 Soundtrack</h4>
-                            <p>Smoke & Mirrors (Full Album) — The uprising in sound</p>
-                        </div>
-                        <div class="guide-card">
-                            <h4>📍 Location</h4>
-                            <p>Interstate 65, Montgomery, Alabama — Where the sword meets the tree</p>
-                        </div>
-                        <div class="guide-card">
-                            <h4>🎭 Cast</h4>
-                            <p>Tyra, Big Kitty, Peppaman, Jamal, Bunny, Squirrel, Future McFerrin</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        
+        <section class="intro-block">
+            <h1>The Cosmogram Portal</h1>
+            <p>Trace 7 distinct timelines across 1,150+ years of community preservation, active containment, and systemic convergence[span_4](start_span)[span_4](end_span).</p>
         </section>
 
-        <!-- COSMOGRAM LEGEND -->
-        <div class="cosmogram-legend">
-            <h3>How to Navigate</h3>
-            <p class="legend-text">
-                Click any point on the cosmogram to explore that timeline. Each point represents a moment in the 1,150+ year journey.
-                <br><br>
-                <strong>EAST</strong> is your entry point (2026 — the uprising).
-                <br>
-                From there, you can spiral through time: <strong>North</strong> (1996 — the Sanctuary grows), <strong>West</strong> (1901 — Bertha is bound), <strong>South</strong> (1952 — the highway cuts), back to <strong>Center</strong> (the crossroads), then <strong>Lower</strong> (ancestor realm), <strong>Higher</strong> (3176+), and the <strong>Zig-Zag</strong> (2035 — the travelers attempt to rewrite time).
-                <br><br>
-                <em>This is the Time Warp dance. Only those who walk it fully will feel what Tyra can't name.</em>
-            </p>
+        <div class="portal-engine">
+            
+            <!-- COSMOGRAM MAP COMPONENT -->
+            <div class="visual-matrix">
+                <h2>System Mapping Radar</h2>
+                <div id="cosmogram-svg-wrapper">
+                    <svg viewBox="0 0 500 500">
+                        <!-- Core Kongo Cosmogram Cross & Boundary Fields -->
+                        <circle cx="250" cy="250" r="180" class="spiral-path" stroke-dasharray="4,4"/>
+                        <line x1="70" y1="250" x2="430" y2="250" stroke="rgba(30, 41, 59, 0.6)" stroke-width="2"/>
+                        <line x1="250" y1="70" x2="250" y2="430" stroke="rgba(30, 41, 59, 0.6)" stroke-width="2"/>
+                        
+                        <!-- Dynamic Continuous Spiral Dance Pathing Overlay -->
+                        <path d="M 430,250 Q 340,70 250,70 Q 70,70 70,250 Q 70,430 250,430 Q 250,350 250,250 Q 250,150 250,150 Q 340,160 340,160" class="spiral-path" style="stroke: rgba(6, 182, 212, 0.25); stroke-width: 2; fill: none;"/>
+
+                        <!-- EAST (Entry Node) -->
+                        <g class="cosmogram-point" data-point="east">
+                            <circle cx="430" cy="250" r="8"/>
+                            <text class="cosmogram-label" x="430" y="275" text-anchor="middle">East (2026)</text>
+                        </g>
+
+                        <!-- NORTH -->
+                        <g class="cosmogram-point" data-point="north">
+                            <circle cx="250" cy="70" r="8"/>
+                            <text class="cosmogram-label" x="250" y="45" text-anchor="middle">North (1996)</text>
+                        </g>
+
+                        <!-- WEST -->
+                        <g class="cosmogram-point" data-point="west">
+                            <circle cx="70" cy="250" r="8"/>
+                            <text class="cosmogram-label" x="70" y="275" text-anchor="middle">West (1901)</text>
+                        </g>
+
+                        <!-- SOUTH -->
+                        <g class="cosmogram-point" data-point="south">
+                            <circle cx="250" cy="430" r="8"/>
+                            <text class="cosmogram-label" x="250" y="460" text-anchor="middle">South (1952)</text>
+                        </g>
+
+                        <!-- CENTER -->
+                        <g class="cosmogram-point" data-point="center">
+                            <circle cx="250" cy="250" r="10"/>
+                            <text class="cosmogram-label" x="250" y="230" text-anchor="middle">Center</text>
+                        </g>
+
+                        <!-- LOWER (Ancestral Deep) -->
+                        <g class="cosmogram-point" data-point="lower">
+                            <circle cx="250" cy="350" r="8"/>
+                            <text class="cosmogram-label" x="250" y="335" text-anchor="middle">Lower</text>
+                        </g>
+
+                        <!-- HIGHER (Transcendence Threshold) -->
+                        <g class="cosmogram-point" data-point="higher">
+                            <circle cx="250" cy="150" r="8"/>
+                            <text class="cosmogram-label" x="250" y="135" text-anchor="middle">Higher (3176)</text>
+                        </g>
+
+                        <!-- ZIG-ZAG (Temporal Spiral Modification) -->
+                        <g class="cosmogram-point" data-point="zigzag">
+                            <circle cx="340" cy="160" r="8"/>
+                            <text class="cosmogram-label" x="340" y="185" text-anchor="middle">Zig-Zag</text>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- DYNAMIC SIGNAL DATA FIELD INTERCEPT -->
+            <div id="timeline-intercept">
+                <!-- Injected dynamically by logic script engine -->
+            </div>
+
         </div>
+
+        <!-- ENGINE NAVIGATION GUIDE OVERLAY -->
+        <section class="navigation-instructions">
+            <h3>Archival Tracking Framework</h3>
+            <p>
+                The Cosmogram acts as a spatial clock[span_5](start_span)[span_5](end_span). <strong>East</strong> maps your current entry position (2026 Uprising)[span_6](start_span)[span_6](end_span). From there, the current loops counter-clockwise through past structural layers—<strong>North</strong> (1996 Sanctuary construction), <strong>West</strong> (1901 Dragon containment matrix), and <strong>South</strong> (1952 Infrastructure displacement fractures)[span_7](start_span)[span_7](end_span). It then drops vertically into the deep internal lines: <strong>Center</strong> intersection, <strong>Lower</strong> deep ancestral code lines, <strong>Higher</strong> post-division future coordinates (3176+), and finally the erratic <strong>Zig-Zag</strong> temporal intervention tracks (2035)[span_8](start_span)[span_8](end_span).
+            </p>
+        </section>
+
     </main>
+
+    <footer>
+        <p><a href="index.html">← RETURN TO CENTRAL ROUTER MASTER HUB</a></p>
+        <p style="margin-top: 1rem; font-size: 11px; letter-spacing: 1px; color: var(--text-muted);">THE CROSSROADS SYSTEM // CANON MATRIX PLATFORM © 2026[span_9](start_span)[span_9](end_span)</p>
+    </footer>
 
     <script>
         const timelines = {
             east: {
-                year: 2026,
                 title: "EAST: Uprising Exposed",
-                subtitle: "Year 2026 | The Moment of Rupture",
-                narrative: `<strong>Tyra Washington</strong> stands at the crossroads of Interstate 65. A visionary. A leader. A person holding something she cannot name.
-                <br><br>
-                She speaks with conviction about the uprising, about the circle of friends occupying the exits, about exposing what's bound beneath Montgomery.
-                <br><br>
-                But there is a pregnancy she hasn't told anyone about.
-                <br><br>
-                And there is something else. Something deeper. An <em>unease with the dragon lore</em>. A discomfort with the tunnels. A confusion about her own purpose that she cannot reconcile. She feels it in her bones when she walks certain streets. She feels it when people speak about Bertha.
-                <br><br>
-                <em>She doesn't know why.</em>`,
-                character: "Tyra Washington",
-                description: "The visionary. The organizer. The woman who speaks her truth but cannot name what haunts her.",
-                tension: "[Something about the dragon she can't face. Something about time she can't explain. Something about becoming.]",
-                soundtrack: "Smoke & Mirrors (Full Album)",
-                location: "Interstate 65, Montgomery, Alabama",
+                temporal: "Year 2026 // The Moment of Rupture",
+                narrative: `<strong>Tyra Washington</strong> stands at the raw intersection of Interstate 65[span_10](start_span)[span_10](end_span). A community organizer, strategic visionary, and anchor point for a neighborhood network holding structural truths she cannot yet fully declare[span_11](start_span)[span_11](end_span). She speaks with uncompromised clarity regarding the blockades, the collaborative circles occupying the thoroughfares, and the historical layers buried beneath Montgomery[span_12](start_span)[span_12](end_span). Yet deep friction exists—an unvoiced pregnancy, paired with a profound, bone-deep <em>unease regarding the regional dragon lore</em> and subterranean tunnel structures[span_13](start_span)[span_13](end_span). She encounters this weight traversing specific city streets, independent of explicit explanation[span_14](start_span)[span_14](end_span).`,
+                character: "Dr. Tyra Washington",
+                desc: "The organizational matrix strategist. Directing public reclamation efforts while privately tracking internal anomalies she cannot safely name[span_15](start_span)[span_15](end_span).",
+                tension: "TENSION PARAMETER: Deep biological connection to hidden lineage tracks; instinctive aversion to the Bertha containment infrastructure[span_16](start_span)[span_16](end_span).",
+                soundtrack: "Smoke & Mirrors (Full Project Catalog)",
+                location: "I-65 Interchange Node // Montgomery, AL",
                 cast: "Tyra, Big Kitty, Peppaman, Jamal, Bunny, Squirrel, Future McFerrin"
             },
             north: {
-                year: 1996,
-                title: "NORTH: Sanctuary Grows",
-                subtitle: "Year 1996 | Foundation & Care",
-                narrative: `The Sanctuary begins to take root. A place where artists, organizers, and healers gather.
-                <br><br>
-                Ms. Ora tends to wounds visible and invisible. Peppaman holds the spiritual center. The community builds something that looks like hope.
-                <br><br>
-                No one yet knows that this foundation will become the anchor point for what's coming.`,
+                title: "NORTH: Sanctuary Root Growth",
+                temporal: "Year 1996 // Groundwork Integration",
+                narrative: `The physical footprint of the Sanctuary establishes structural parameters inside the neighborhood infrastructure[span_17](start_span)[span_17](end_span). A protective perimeter where cultural workers, direct organizers, and local healers design mutual defense metrics[span_18](start_span)[span_18](end_span). Ms. Ora anchors the physical restoration tracking, while Peppaman preserves the ancestral spiritual core[span_19](start_span)[span_19](end_span). This baseline foundation forms the tactical defense network capable of supporting the modern 2026 rupture events decades down the timeline[span_20](start_span)[span_20](end_span).`,
                 character: "Ms. Ora & Peppaman",
-                description: "The caregivers. The ones who understand that healing is resistance.",
-                tension: "[Hints of what was lost. Whispers of what will come.]",
-                soundtrack: "Caregiver Road Trip (Extended)",
-                location: "The Sanctuary at Jubilee Community Center, Montgomery",
-                cast: "Ms. Ora, Peppaman, Bunny, community members"
+                desc: "Archival keepers of localized remedies and grassroots spiritual defense mechanisms[span_21](start_span)[span_21](end_span).",
+                tension: "TENSION PARAMETER: Unspoken warnings regarding historical agreements made during previous generation cycles[span_22](start_span)[span_22](end_span).",
+                soundtrack: "Caregiver Road Trip (Extended Play Archive)",
+                location: "The Sanctuary Sub-Level // Jubilee Center",
+                cast: "Ms. Ora, Peppaman, Bunny, Sovereign Neighborhood Cadres"
             },
             west: {
-                year: 1901,
-                title: "WEST: Bertha Bound",
-                subtitle: "Year 1901 | The Binding",
-                narrative: `The dragon is bound. The constitution is written to exclude. Alabama's political hierarchy solidifies, powered by an energy that will not be named for over a century.
-                <br><br>
-                Someone pays the price for this binding. Someone becomes the vessel.`,
-                character: "Bertha (The Dragon)",
-                description: "The bound one. The energy that powers systems of control.",
-                tension: "[Who did this? And why does Tyra flinch when she hears the story?]",
-                soundtrack: "Smoke & Mirrors - The Foundation",
-                location: "Montgomery, Alabama - The Capitol",
-                cast: "Historical figures, shadow entities, the bound"
+                title: "WEST: Bertha Containment Event",
+                temporal: "Year 1901 // Structural Layer Lock",
+                narrative: `The dragon asset is bound[span_23](start_span)[span_23](end_span). Simultaneously, the state constitution is heavily re-engineered to lock down structural access pathways[span_24](start_span)[span_24](end_span). Alabama's political power vectors coalesce around an extractable energetic sequence that remains intentionally unnamed across institutional histories[span_25](start_span)[span_25](end_span). A living vessel pays the permanent price to maintain this early systemic enclosure[span_26](start_span)[span_26](end_span).`,
+                character: "Bertha (The Bound Asset)",
+                desc: "The contained underground entity whose managed energy loop drives regional systems of tracking and control[span_27](start_span)[span_27](end_span).",
+                tension: "TENSION PARAMETER: The baseline origin points of the geographic anomalies causing Tyra's present-day physical distress[span_28](start_span)[span_28](end_span).",
+                soundtrack: "Smoke & Mirrors // The Foundation Stems",
+                location: "State Capitol Sub-Vaults // Montgomery",
+                cast: "State Technocrats, Archival Intermediaries, Bound Entities"
             },
             south: {
-                year: 1952,
-                title: "SOUTH: Highway Cuts",
-                subtitle: "Year 1952-1969 | Displacement & Loss",
-                narrative: `Interstate 65 cuts through neighborhoods. Families lose homes. Communities scatter. The wound is physical and spiritual.
-                <br><br>
-                But from displacement comes migration. From migration, hidden networks. From hidden networks, eventual resistance.`,
-                character: "The Displaced",
-                description: "Those who remember what was taken. Those who carry the map in their bones.",
-                tension: "[Does Tyra see herself in these stories? Does she know why the tunnels frighten her?]",
-                soundtrack: "Caregiver Road Trip - The Movement",
-                location: "I-65 Corridor, Alabama",
-                cast: "Families, travelers, the ones who remember"
+                title: "SOUTH: Infrastructure Fractures",
+                temporal: "Years 1952 - 1969 // Forced Displacement",
+                narrative: `The physical cutting of Interstate 65 cleaves directly through established community strongholds[span_29](start_span)[span_29](end_span). Neighborhood homes are reclaimed via state mandate, and families scatter across decentralized perimeters[span_30](start_span)[span_30](end_span). While the physical split introduces profound geographic grief, the displacement inadvertently births highly organized clandestine communication corridors and migratory resistance tracks[span_31](start_span)[span_31](end_span).`,
+                character: "The Displaced Lineages",
+                desc: "Communities forced into migration patterns who document the changing grid layout in memory[span_32](start_span)[span_32](end_span).",
+                tension: "TENSION PARAMETER: The structural highway framework built over the old tunnels specifically to confuse ancestral memory access lines[span_33](start_span)[span_33](end_span).",
+                soundtrack: "Caregiver Road Trip // Movement Logs",
+                location: "I-65 Linear Transit Zone",
+                cast: "Regional Displaced Families, Clandestine Field Operators"
             },
-            "center-1": {
-                year: 2026,
-                title: "CENTER: The Crossroads",
-                subtitle: "Year 2026 | The Convergence Point",
-                narrative: `All timelines meet here. The circle of friends. The occupation. The moment where past, present, and future become unstable.
-                <br><br>
-                This is where choices matter. This is where Tyra stands.`,
-                character: "The Circle",
-                description: "The friends who know something is wrong. The ones brave enough to name it.",
-                tension: "[In this moment, everything changes. For everyone.]",
-                soundtrack: "Smoke & Mirrors - The Uprising",
-                location: "Interstate 65, Exit 169",
-                cast: "The entire cast, converged"
+            center: {
+                title: "CENTER: Zero-Point Intersection",
+                temporal: "Year 2026 // The Convergence Node",
+                narrative: `Every temporal frequency intersects at this absolute coordinate[span_34](start_span)[span_34](end_span). The community circle, the highway blockades, and historical timelines become completely volatile[span_35](start_span)[span_35](end_span). Standard cause-and-effect paths destabilize[span_36](start_span)[span_36](end_span). This precise flashpoint demands immediate alignment choices from the actors on the ground—the outcome ripples backward and forward through all connected files[span_37](start_span)[span_37](end_span).`,
+                character: "The Converged Collective",
+                desc: "The complete alignment of neighborhood actors cognizant of the structural anomaly[span_38](start_span)[span_38](end_span).",
+                tension: "TENSION PARAMETER: Total narrative collapse if tracking metrics are not maintained by the core user[span_39](start_span)[span_39](end_span).",
+                soundtrack: "Smoke & Mirrors // Active Blockade Signal",
+                location: "Exit 169 Interchange Terminal",
+                cast: "All Collective Network Nodes, Converged"
             },
             lower: {
-                year: 1901,
-                title: "LOWER: Ancestor Realm",
-                subtitle: "The Foundation Beneath",
-                narrative: `Below the cities. Below the systems. Below consciousness. The ancestors are watching.
-                <br><br>
-                They have seen this before. They know what needs to happen.`,
-                character: "The Ancestors",
-                description: "Those who came before. Those whose sacrifice built the possibility of resistance.",
-                tension: "[Is Tyra connected to this lineage? Is that why she can't escape the weight?]",
-                soundtrack: "Smoke & Mirrors - The Deep",
-                location: "Underground, the tunnels, the hidden ways",
-                cast: "Lineages, the unremembered, the keepers"
+                title: "LOWER: Ancestral Data Stream",
+                temporal: "Deep Infrastructure Track // Continuous",
+                narrative: `Beneath the modern transit layers, the concrete grids, and surface-level data patterns sits the active ancestral processing stream[span_40](start_span)[span_40](end_span). The generational record keepers supervise current events, recognizing the recurring nature of the current structural conflict[span_41](start_span)[span_41](end_span). They hold the specific blueprints required to navigate the modern subterranean terrain without setting off the automatic defense alarms[span_42](start_span)[span_42](end_span).`,
+                character: "The Collective Ancestors",
+                desc: "The un-erased historical record keepers who designed the original protection sigils[span_43](start_span)[span_43](end_span).",
+                tension: "TENSION PARAMETER: Direct transmission vectors trying to break through Tyra's current psychological blocks[span_44](start_span)[span_44](end_span).",
+                soundtrack: "Smoke & Mirrors // Sub-Frequency Drone",
+                location: "Subterranean Aquifer Matrix // Deep Tunnels",
+                cast: "The Unnamed Lineages, Earth Keepers"
             },
             higher: {
-                year: 3176,
-                title: "HIGHER: Future Transcendence",
-                subtitle: "Year 3176+ | Narissa's World",
-                narrative: `<em>"If you walk through the time warp and stay until the end, you'll understand what Tyra couldn't name in 2026."</em>
-                <br><br>
-                Narissa exists. The root vegetables sing. The cosmogram is danced in streets and classrooms and homes.
-                <br><br>
-                But how did we get here? What did it cost?`,
-                character: "Narissa (The Unborn Future)",
-                description: "The one who only exists if the story is told correctly. The one waiting at the end.",
-                tension: "[Elliot looks back from 3176 and tells us: your ancestors did this. What will you do?]",
-                soundtrack: "Shake the Field - The Future Songs",
-                location: "A world that might be. Freedom, Alabama.",
-                cast: "Narissa, Elliot, the communities that remember"
+                title: "HIGHER: Post-Division Horizon",
+                temporal: "Year 3176+ // Narissa's World Frame",
+                narrative: `<em>"Traversing the spatial timeline to its termination reveals what Tyra could not voice during the 2026 rupture events[span_45](start_span)[span_45](end_span)."</em> Narissa exists here safely[span_46](start_span)[span_46](end_span). In this space, agricultural networks communicate sonically, and the 9-point cosmogram dance is taught as standard baseline literacy in open-air networks[span_47](start_span)[span_47](end_span). The future is secure, but its reality relies entirely on choices made back at the 2026 intersection[span_48](start_span)[span_48](end_span).`,
+                character: "Narissa (The Realized Horizon)",
+                desc: "The unborn future node whose structural timeline existence is dependent on current actions[span_49](start_span)[span_49](end_span).",
+                tension: "TENSION PARAMETER: Elliot monitors this node from the 3176 frequency, broadcasting guidance back to modern terminals[span_50](start_span)[span_50](end_span).",
+                soundtrack: "Shake the Field // Transcendent Outtakes",
+                location: "Sovereign Agro-Zones // Freedom, Alabama",
+                cast: "Narissa, Elliot, The Unbroken Generation"
             },
             zigzag: {
-                year: 2035,
-                title: "ZIG-ZAG: The Spiral",
-                subtitle: "Year 2035 | Travelers Rewrite Time",
-                narrative: `A group of travelers move backward through time, attempting to prevent the Great Division by stopping a key moment in 2025.
-                <br><br>
-                They might succeed. They might fail. Either way, they discover that time is not what they thought it was.`,
-                character: "The Travelers",
-                description: "Those who understand that the story can be rewritten, but not without cost.",
-                tension: "[Does Tyra help them? Does she try to stop them? Or does she already know what happens?]",
-                soundtrack: "Smoke & Mirrors - The Rewriting",
-                location: "Across all timelines, spiraling",
-                cast: "Travelers, wild seers, collectors, night gods"
+                title: "ZIG-ZAG: Timeline Remediation",
+                temporal: "Year 2035 // The Spiral Correction",
+                narrative: `A tactical strike team of chronological travelers moves backward against standard temporal tracks, attempting to correct structural failures and prevent the Great Division by isolating specific events in 2025[span_51](start_span)[span_51](end_span). They operate under the realization that time functions as an adjustable spiral matrix rather than a linear track, accepting immense personal risk to rewrite the modern archive[span_52](start_span)[span_52](end_span).`,
+                character: "The Chrono Travelers",
+                desc: "Asymmetrical asset specialists attempting remediation on broken historical nodes[span_53](start_span)[span_53](end_span).",
+                tension: "TENSION PARAMETER: High probability of timeline paradox tracking loops intersecting Tyra's immediate choices[span_54](start_span)[span_54](end_span).",
+                soundtrack: "Smoke & Mirrors // Splice Track Engineering",
+                location: "Asymmetrical Quantum Vectors // Spliced",
+                cast: "Traveler Units, Night Arbiters, Deep Seers"
             }
         };
 
-        // Handle cosmogram point clicks
-        document.querySelectorAll('.cosmogram-point').forEach(point => {
-            point.addEventListener('click', function() {
-                const pointType = this.getAttribute('data-point');
-                const timeline = timelines[pointType] || timelines.east;
-                
-                const contentDiv = document.querySelector('#timeline-content');
-                contentDiv.innerHTML = `
-                    <div class="timeline-content">
-                        <h3 class="timeline-header">${timeline.title}</h3>
-                        <p class="timeline-year">${timeline.subtitle}</p>
-                        <p class="timeline-narrative">${timeline.narrative}</p>
-                        
-                        <div class="character-preview">
-                            <h4>Lead Character(s): ${timeline.character}</h4>
-                            <p>${timeline.description}</p>
-                            <div class="hidden-tension">${timeline.tension}</div>
-                            <a href="#" class="explore-link">Explore Profile →</a>
-                        </div>
+        // DOM Rendering Engine
+        function renderNode(nodeId) {
+            const data = timelines[nodeId];
+            if (!data) return;
 
-                        <div class="timeline-guide">
-                            <div class="guide-card">
-                                <h4>🎵 Soundtrack</h4>
-                                <p>${timeline.soundtrack}</p>
-                            </div>
-                            <div class="guide-card">
-                                <h4>📍 Location</h4>
-                                <p>${timeline.location}</p>
-                            </div>
-                            <div class="guide-card">
-                                <h4>🎭 Cast</h4>
-                                <p>${timeline.cast}</p>
-                            </div>
+            const intercept = document.getElementById('timeline-intercept');
+            intercept.innerHTML = `
+                <div style="animation: fadeIn 0.4s steps(4);">
+                    <h3 class="node-header">${data.title}</h3>
+                    <span class="node-temporal">${data.temporal}</span>
+                    <p class="node-narrative">${data.narrative}</p>
+                    
+                    <div class="character-card">
+                        <h4>Lead Node Profile: ${data.character}</h4>
+                        <p>${data.desc}</p>
+                        <div class="tension-subtext">${data.tension}</div>
+                    </div>
+
+                    <div class="meta-specs">
+                        <div class="spec-box">
+                            <h5>🎵 Soundtrack</h5>
+                            <p>${data.soundtrack}</p>
+                        </div>
+                        <div class="spec-box">
+                            <h5>📍 Location Coordinate</h5>
+                            <p>${data.location}</p>
+                        </div>
+                        <div class="spec-box">
+                            <h5>🎭 Logged Cast</h5>
+                            <p>${data.cast}</p>
                         </div>
                     </div>
-                `;
-                
-                // Highlight active point
-                document.querySelectorAll('.cosmogram-point circle').forEach(c => c.style.fill = '#1a1a2e');
-                this.querySelector('circle').style.fill = '#fbbf24';
+                </div>
+            `;
+
+            // Adjust Active Graphical State
+            document.querySelectorAll('.cosmogram-point').forEach(point => {
+                point.classList.remove('active');
+                if(point.getAttribute('data-point') === nodeId) {
+                    point.classList.add('active');
+                }
+            });
+        }
+
+        // Initialize Point Event Listeners
+        document.querySelectorAll('.cosmogram-point').forEach(point => {
+            point.addEventListener('click', function() {
+                const targetNode = this.getAttribute('data-point');
+                renderNode(targetNode);
             });
         });
 
-        // Default view on load
-        document.querySelector('[data-point="east"]').click();
+        // Initialize System Engine on Default Node (East)
+        document.addEventListener('DOMContentLoaded', () => {
+            renderNode('east');
+        });
     </script>
 </body>
 </html>
