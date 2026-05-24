@@ -35,12 +35,12 @@
             border: 3px solid #282d47;
         }
 
-        /* LIVE EVENT BANNER */
+        /* HIGH-CONTRAST ARCADE BANNER */
         .banner-zone {
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             padding: 2rem 1.5rem;
             text-align: center;
-            border-bottom: 3px solid #282d47;
+            border-bottom: 3px solid #ef4444;
         }
 
         .banner-zone h1 {
@@ -87,7 +87,7 @@
             gap: 0.5rem;
             overflow-x: auto;
             padding-bottom: 6px;
-            scrollbar-width: none; /* Hide scrollbar for clean UI */
+            scrollbar-width: none;
         }
         .role-track::-webkit-scrollbar { display: none; }
 
@@ -197,7 +197,7 @@
         .zone-card:hover .spawn-btn { background: #15803d; }
         .spawn-btn:active { transform: translateY(3px); box-shadow: 0 0 0 #15803d; }
 
-        /* ENGINE CONTROLS */
+        /* STREET LINK DESKS */
         .panel-row {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -215,7 +215,7 @@
         }
 
         .utility-panel:hover {
-            border-color: #7c3aed;
+            border-color: #ef4444;
             background: #22263f;
         }
 
@@ -226,7 +226,7 @@
             margin-bottom: 0.25rem;
         }
 
-        /* MOBILE OPTIMIZATION OVERRIDES */
+        /* MOBILE OPTIMIZATION */
         @media (max-width: 640px) {
             .server-grid, .panel-row { grid-template-columns: 1fr; }
             .banner-zone { padding: 1.5rem 1rem; }
@@ -243,6 +243,7 @@
         </div>
 
         <div class="menu-layout">
+            <!-- AVATARS -->
             <div>
                 <div class="section-label">Choose Role Avatar:</div>
                 <div class="role-track">
@@ -254,6 +255,7 @@
                 </div>
             </div>
 
+            <!-- ERAS -->
             <div class="section-label">Select Active Era Coordinate:</div>
             <div class="server-grid">
                 
@@ -300,7 +302,16 @@
                     </div>
                     <button class="spawn-btn">Spawn In Zone</button>
                 </div>
+            </div>
 
+            <!-- STREET LOGS & LINKS -->
+            <div class="section-label">Street Logs & Station Links:</div>
+            
+            <div class="panel-row" style="grid-template-columns: 1fr; margin-bottom: -0.25rem;">
+                <div class="utility-panel" style="border-style: solid; border-color: #ef4444;" onclick="routeToPage('characters.html')">
+                    <div class="utility-heading" style="color: #ef4444;">🔥 NIGHT GODS AND COLLECTORS</div>
+                    <p style="font-size: 0.75rem; color: #94a3b8;">Track the Core Circle, animal aspects, and the corporate factions running the grid blocks.</p>
+                </div>
             </div>
 
             <div class="panel-row">
