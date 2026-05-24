@@ -3,1232 +3,538 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Crossroads: Family Bible | Narissa's Home</title>
+    <title>The Crossroads: Family Bible Archive | WZRD 77.7 FM</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;700&display=swap');
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html, body {
-            width: 100%;
-        }
-
         body {
-            font-family: 'Space Grotesk', 'Courier New', monospace;
-            background: #0a0e27;
-            color: #ddd;
+            font-family: 'Space Grotesk', sans-serif;
+            background: #020208;
+            color: #d1d5db;
             overflow-x: hidden;
             line-height: 1.7;
         }
 
-        /* STICKY NAVIGATION */
-        nav {
-            position: sticky;
-            top: 0;
-            background: linear-gradient(135deg, #0f172e 0%, #1a1a2e 50%, #16213e 100%);
-            padding: 0.8rem 2rem;
-            border-bottom: 3px solid #fbbf24;
-            z-index: 300;
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            font-size: 0.85rem;
-        }
-
-        nav a {
-            color: #fbbf24;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-bottom: 2px solid transparent;
-            transition: all 0.3s ease;
-            padding: 0.5rem 0;
-        }
-
-        nav a:hover {
-            border-bottom-color: #fbbf24;
-        }
-
-        /* HEADER */
+        /* HEAVY LITURGICAL TERMINAL HEADER */
         header {
-            background: linear-gradient(135deg, #0f172e 0%, #1a1a2e 50%, #16213e 100%);
-            padding: 4rem 2rem;
+            background: #080816;
+            border-bottom: 4px solid #fbbf24;
+            padding: 3rem 2rem;
             text-align: center;
-            border-bottom: 3px solid #fbbf24;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+            position: relative;
         }
 
         header h1 {
+            font-family: 'Press Start 2P', monospace;
             color: #fbbf24;
-            font-size: 2.5rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 0 #cf2121;
         }
 
         .subtitle {
-            color: #aaa;
+            color: #9ca3af;
             font-size: 1rem;
-            font-style: italic;
-        }
-
-        /* MAIN */
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-        }
-
-        /* SECTIONS */
-        section {
-            margin-bottom: 4rem;
-            background: rgba(26, 26, 46, 0.6);
-            border: 1px solid rgba(251, 191, 36, 0.2);
-            padding: 2.5rem;
-            border-radius: 8px;
-            backdrop-filter: blur(10px);
-        }
-
-        section h2 {
-            color: #fbbf24;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            border-bottom: 2px solid #fbbf24;
-            padding-bottom: 1rem;
-        }
-
-        section h3 {
-            color: #fbbf24;
-            font-size: 1.3rem;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        section h4 {
-            color: #bbb;
-            font-size: 1.05rem;
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        p {
-            color: #bbb;
-            margin-bottom: 1.2rem;
-            line-height: 1.8;
-        }
-
-        strong {
-            color: #fbbf24;
-        }
-
-        /* LIFE STAGE CARDS */
-        .life-stage {
-            background: rgba(251, 191, 36, 0.08);
-            border-left: 4px solid #fbbf24;
-            padding: 2rem;
-            margin: 1.5rem 0;
-            border-radius: 4px;
-        }
-
-        .life-stage h4 {
-            margin-top: 0;
-            color: #fbbf24;
-            font-size: 1.2rem;
-        }
-
-        .stage-label {
-            color: #fbbf24;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 0.85rem;
             letter-spacing: 1px;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        /* CHARACTER FAMILY TREES */
-        .family-tree {
-            background: rgba(251, 191, 36, 0.05);
-            border: 1px solid rgba(251, 191, 36, 0.3);
-            padding: 2rem;
-            margin: 2rem 0;
-            border-radius: 8px;
-            font-size: 0.95rem;
-        }
-
-        .family-tree h5 {
-            color: #fbbf24;
-            margin-bottom: 1rem;
-        }
-
-        /* SCENE BREAKDOWN */
-        .scene-block {
-            background: rgba(26, 26, 46, 0.8);
-            border-left: 3px solid #fbbf24;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 4px;
-        }
-
-        .scene-title {
-            color: #fbbf24;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            font-size: 0.95rem;
-        }
-
-        .scene-time {
-            color: #888;
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .scene-location {
-            color: #aaa;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            font-style: italic;
-        }
-
-        .scene-content {
-            color: #bbb;
-            line-height: 1.8;
-        }
-
-        /* CHOICE POINT */
-        .choice-point {
-            background: linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(251, 191, 36, 0.05));
-            border: 2px solid #fbbf24;
-            padding: 2rem;
-            margin: 2rem 0;
-            border-radius: 8px;
-        }
-
-        .choice-point h4 {
-            color: #fbbf24;
-            margin-top: 0;
-        }
-
-        .choice-option {
-            margin: 1rem 0;
-            padding-left: 1.5rem;
-            border-left: 3px solid #fbbf24;
-        }
-
-        .choice-label {
-            color: #fbbf24;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-        }
-
-        /* TIMELINE */
-        .timeline {
-            margin: 2rem 0;
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
+        /* STICKY CONTROL NAV */
+        nav {
+            position: sticky;
             top: 0;
-            bottom: 0;
-            width: 2px;
-            background: #fbbf24;
+            background: #0c0d21;
+            border-bottom: 2px solid #cf2121;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            z-index: 500;
         }
 
-        .timeline-item {
-            position: relative;
-            margin-bottom: 2rem;
-            padding-left: 2rem;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -12px;
-            top: 5px;
-            width: 10px;
-            height: 10px;
-            background: #fbbf24;
-            border-radius: 50%;
-        }
-
-        .timeline-year {
-            color: #fbbf24;
-            font-weight: bold;
-            font-size: 1.05rem;
-        }
-
-        .timeline-text {
-            color: #aaa;
-            margin-top: 0.5rem;
-        }
-
-        /* CALLOUT BOXES */
-        .callout {
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 9px;
+            padding: 8px 12px;
             background: rgba(251, 191, 36, 0.1);
             border: 1px solid #fbbf24;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 4px;
+            transition: all 0.2s steps(4);
         }
 
-        .callout strong {
-            display: block;
-            margin-bottom: 0.5rem;
+        nav a:hover {
+            background: #cf2121;
+            border-color: #fff;
+            color: #fff;
+            box-shadow: 2px 2px 0 #fbbf24;
         }
 
-        /* FOOTER */
-        footer {
-            background: linear-gradient(135deg, #0f172e 0%, #1a1a2e 50%, #16213e 100%);
-            padding: 3rem 2rem;
-            text-align: center;
-            border-top: 3px solid #fbbf24;
-            color: #aaa;
-            margin-top: 5rem;
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
         }
 
-        footer p {
+        /* 334-SECOND BOMBING SIMULATOR CONTROL */
+        #bomb-panel {
+            background: #120303;
+            border: 3px solid #cf2121;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            box-shadow: 0 0 20px rgba(207, 33, 33, 0.2);
+        }
+
+        .panel-title {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 12px;
+            color: #cf2121;
             margin-bottom: 1rem;
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.8rem;
-            }
+        .bomb-ticker {
+            background: #000;
+            border: 1px solid #cf2121;
+            padding: 1rem;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 14px;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
 
-            nav {
-                gap: 0.75rem;
-                font-size: 0.75rem;
-            }
+        .bomb-btn {
+            background: #cf2121;
+            color: #fff;
+            border: none;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 11px;
+            padding: 12px 24px;
+            cursor: pointer;
+            width: 100%;
+            box-shadow: 4px 4px 0 #000;
+        }
 
-            section {
-                padding: 1.5rem;
-            }
+        .bomb-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 #000;
+        }
 
-            section h2 {
-                font-size: 1.4rem;
-            }
+        /* GRID MATRIX FOR REAL-TIME CONVERGENCE */
+        .matrix-title {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 14px;
+            color: #fbbf24;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .convergence-matrix {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .matrix-cell {
+            background: #090b14;
+            border: 2px solid #3b4261;
+            padding: 1.5rem;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .matrix-cell:hover {
+            border-color: #fbbf24;
+            background: #0f1222;
+        }
+
+        .cell-tag {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 8px;
+            background: #3b4261;
+            color: #fff;
+            padding: 4px 8px;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .matrix-cell:hover .cell-tag {
+            background: #fbbf24;
+            color: #000;
+        }
+
+        .cell-title {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 10px;
+            color: #fbbf24;
+            margin-bottom: 5px;
+            margin-top: 10px;
+        }
+
+        .cell-loc {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+
+        /* COSMOGRAM LIFE CYCLES SECTION */
+        .cycle-container {
+            background: #05060f;
+            border: 3px solid #fbbf24;
+            padding: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .stage-node {
+            border-left: 3px solid #fbbf24;
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .stage-node::before {
+            content: '■';
+            position: absolute;
+            left: -8px;
+            top: -2px;
+            color: #fbbf24;
+            background: #05060f;
+            padding: 0 2px;
+        }
+
+        .stage-header {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 11px;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .stage-energy {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 8px;
+            color: #cf2121;
+            margin-bottom: 10px;
+        }
+
+        /* CLASSIFIED DOSSIER LAYOUT (SQUIRREL) */
+        .dossier-wrapper {
+            background: #0f111a;
+            border: 2px dashed #cf2121;
+            padding: 2.5rem;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .dossier-stamp {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            border: 3px solid #cf2121;
+            color: #cf2121;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 10px;
+            padding: 8px;
+            transform: rotate(15deg);
+            text-transform: uppercase;
+        }
+
+        /* TACTICAL ENDING INTERACTIVE DECISION MATRIX */
+        .decision-panel {
+            background: #000;
+            border: 3px solid #3b4261;
+            padding: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .toggle-container {
+            display: flex;
+            gap: 20px;
+            margin: 2rem 0;
+        }
+
+        .toggle-choice {
+            flex: 1;
+            background: #090b14;
+            border: 2px solid #3b4261;
+            padding: 1.5rem;
+            cursor: pointer;
+            text-align: center;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 11px;
+            color: #9ca3af;
+            transition: all 0.2s steps(4);
+        }
+
+        .toggle-choice:hover {
+            border-color: #fbbf24;
+            color: #fff;
+        }
+
+        .toggle-choice.active-no {
+            border-color: #fbbf24;
+            background: rgba(251, 191, 36, 0.1);
+            color: #fbbf24;
+            box-shadow: 0 0 15px rgba(251, 191, 36, 0.2);
+        }
+
+        .toggle-choice.active-yes {
+            border-color: #cf2121;
+            background: rgba(207, 33, 33, 0.15);
+            color: #ff6b6b;
+            box-shadow: 0 0 15px rgba(207, 33, 33, 0.3);
+        }
+
+        .outcome-display {
+            background: #080912;
+            border: 1px solid #fbbf24;
+            padding: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .outcome-header {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .hidden-pane { display: none; }
+
+        /* GENERAL UTILITIES */
+        strong { color: #fbbf24; }
+        em { color: #ff6b6b; font-style: normal; }
+
+        footer {
+            background: #060712;
+            border-top: 4px solid #fbbf24;
+            padding: 3rem 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #6b7280;
         }
     </style>
 </head>
 <body>
-    <!-- NAVIGATION -->
-    <nav>
-        <a href="#overview">Overview</a>
-        <a href="#nine-points">9-Point Life Cycle</a>
-        <a href="#tyra-arc">Tyra's Arc</a>
-        <a href="#bertha-kitty">Bertha & Kitty</a>
-        <a href="#penultimate">Penultimate Scene</a>
-        <a href="#climax">Climax & Choice</a>
-        <a href="#squirrel">Squirrel's Path</a>
-        <a href="#endings">The Two Endings</a>
-    </nav>
 
-    <!-- HEADER -->
     <header>
-        <h1>📖 The Crossroads Family Bible</h1>
-        <p class="subtitle">The genealogy of a story across 1,150+ years. The inherited trauma and inherited gifts.</p>
+        <h1>📖 THE CROSSROADS FAMILY BIBLE</h1>
+        <div class="subtitle">Genealogical Log System // Wounds, Wisdom, and Tactical Choice Vectors Across 1,150+ Years</div>
     </header>
 
-    <!-- MAIN CONTENT -->
+    <nav>
+        <a href="#bomb-panel">01_LIVE_TACTICAL_BURST</a>
+        <a href="#convergence">02_REALTIME_MATRIX</a>
+        <a href="#cosmogram">03_9POINT_CYCLE</a>
+        <a href="#dossier">04_SQUIRREL_LOGS</a>
+        <a href="#decision">05_QUANTUM_RELAY_VOTE</a>
+    </nav>
+
     <main>
-        <!-- OVERVIEW -->
-        <section id="overview">
-            <h2>🌍 Overview: What is the Family Bible?</h2>
 
-            <p>
-                The <strong>Family Bible</strong> is not a linear script. It's a genealogical document—the inherited wounds, 
-                inherited wisdom, and inherited choices that ripple across 7 timelines and multiple dimensions.
-            </p>
+        <section id="bomb-panel">
+            <div class="panel-title">⚠️ SYSTEM STATUS: IMMEDIATE AIR RAID EMERGENCY</div>
+            <p style="margin-bottom: 1rem;">The sky above the West Montgomery interstate corridor has ruptured. Christian nationalist factions have commandeered tactical wings. Real-time detonation array active.</p>
+            <div class="bomb-ticker" id="bombTimer">334 SECONDS OF BLOCKADE BOMBING AT RECKONING VELOCITY</div>
+            <button class="bomb-btn" id="bombTriggerBtn" onclick="initiateBombSequence()">EXECUTE BOMB DETONATION WAVE</button>
+        </section>
 
-            <p>
-                Like a family Bible that records births, deaths, marriages, and curses passed down through generations, 
-                this document tracks:
-            </p>
+        <h2 class="matrix-title" id="convergence">🚨 June 20, 2026 // The Penultimate Convergence Matrix</h2>
+        <p style="margin-bottom: 2rem;">Every coordinate point below is firing *at the exact same microsecond*. The physical lines are separate, but the spiritual communication substrate is totally aligned.</p>
+        
+        <section class="convergence-matrix">
+            <div class="matrix-cell">
+                <div class="cell-tag">LOC_01</div>
+                <div class="cell-title">PEPPAMAN'S RESIDENCE</div>
+                <div class="cell-loc">Downtown Core</div>
+                <p><strong>Jamal</strong> hashes terminal updates inside the framework. Outside in the sedan, <strong>Tyra Washington</strong> faces sudden, crushing physical withdrawal indicators. As Bertha's dimensional energy redistributes, the physical lineage strain passes straight through her body. She goes from absolute collapse to sudden presence. She grabs Jamal and states: <em>I am 12 weeks pregnant.</em></p>
+            </div>
 
-            <ul style="margin-left: 2rem; color: #bbb;">
-                <li style="margin-bottom: 0.8rem;"><strong>Character arcs</strong> across timelines (Tyra → Bertha is the spine)</li>
-                <li style="margin-bottom: 0.8rem;"><strong>Emotional life stages</strong> mapped to the 9-point Kongo cosmogram</li>
-                <li style="margin-bottom: 0.8rem;"><strong>Scenes that define the story</strong> in real-time convergence (penultimate + climax)</li>
-                <li style="margin-bottom: 0.8rem;"><strong>The audience choice</strong> that determines which timeline survives</li>
-                <li style="margin-bottom: 0.8rem;"><strong>Character betrayals, healings, and transformations</strong></li>
-            </ul>
+            <div class="matrix-cell">
+                <div class="cell-tag">LOC_02</div>
+                <div class="cell-title">EXIT 169 [THE TEETH]</div>
+                <div class="cell-loc">Interstate 65 Corridor</div>
+                <p><strong>Future McFerrin</strong> finishes aligning live instrument tracking feeds with local street block organizers. He is covered in Peppaman's physical blood residues after an elite drone strike split the outer encampment wide open. The pirate lines are pushed to peak electrical loads.</p>
+            </div>
 
-            <div class="callout">
-                <strong>Core Principle:</strong> The 9-point Kongo cosmogram is not geography. It's a map of emotional 
-                and spiritual development that anyone can apply to their own life, their family, their community, their journey.
+            <div class="matrix-cell">
+                <div class="cell-tag">LOC_03</div>
+                <div class="cell-title">THE SANCTUARY HUBS</div>
+                <div class="cell-loc">432 Goldthwaite Street</div>
+                <p><strong>Squirrel</strong> is aggressively grilled at the kitchen main block regarding metadata trade-offs he finalized with localized surveillance entities. His absolute hunger to be feared and respected separately from Big Kitty has backfired completely into the system logs.</p>
+            </div>
+
+            <div class="matrix-cell">
+                <div class="cell-tag">LOC_04</div>
+                <div class="cell-title">MONTGOMERY COUNTRY CLUB</div>
+                <div class="cell-loc">Reclaimed Ritual Infrastructure</div>
+                <p><strong>Phat Tony, Lil Alex, and the Night God Network</strong> drop the full theatrical arrays for the live production of <em>Root Veggie Tails</em>. A radical dramatic alignment designed to spell the non-human/vegan sovereign future into existence while the sky burns.</p>
+            </div>
+
+            <div class="matrix-cell" style="grid-column: span 1;">
+                <div class="cell-tag">LOC_05</div>
+                <div class="cell-title">MS. ORA'S REAR PORCH</div>
+                <div class="cell-loc">The Anchor Point</div>
+                <p><strong>Ms. Ora and Bunny</strong> track the system breakdown as direct tactical communication to Big Kitty fails completely. <em>Bunny's spiritual sight engine becomes the only functional relay link</em>—her real-time tracking vocals accurately chart Bertha's dialysis chamber without ever having seen the physical rooms.</p>
             </div>
         </section>
 
-        <!-- 9-POINT LIFE CYCLE -->
-        <section id="nine-points">
-            <h2>🔄 The 9-Point Life Cycle</h2>
+        <section class="cycle-container" id="cosmogram">
+            <h2 class="matrix-title" style="margin-bottom: 2rem;">🔄 THE 9-POINT COSMOGRAM INNER ARCHITECTURE</h2>
+            <p style="margin-bottom: 2rem;">The Kongo Cosmogram is not standard terrain map tracking—it is an active matrix mapping individual trauma integration, community defense structure, and temporal lineage movement.</p>
 
-            <p>
-                Each of the 9 points represents a phase of human and spiritual development. They are not meant to be 
-                linear—people spiral through them, return to them, live in multiple phases simultaneously.
-            </p>
-
-            <div class="life-stage">
-                <div class="stage-label">1. EAST (The Child)</div>
-                <h4>Entry Point — 2026 Story</h4>
-                <p>
-                    <strong>Time Energy:</strong> A Time! Discovery. Total dependence on at least one other person.
-                </p>
-                <p>
-                    <strong>Who Lives Here:</strong> Tyra begins here (emotionally, despite being 30+ years old). 
-                    Future McFerrin (literal child, but also spiritual infant—just discovering fire).
-                </p>
-                <p>
-                    <strong>Emotional Signature:</strong> Wonder mixed with terror. Infinite vulnerability. The need to be held.
-                </p>
+            <div class="stage-node">
+                <div class="stage-header">01 // EAST [THE CHILD]</div>
+                <div class="stage-energy">TIME PROFILE: A TIME (DISCOVERY & COMPLETE DEPENDENCE)</div>
+                <p>Tyra begins here emotionally despite her operational profile. Infinite vulnerability. Future McFerrin is an infant here—discovering raw fire capabilities for the first time.</p>
             </div>
 
-            <div class="life-stage">
-                <div class="stage-label">2. NORTH (The Adult)</div>
-                <h4>Movement Upward — Learning the Grind</h4>
-                <p>
-                    <strong>Time Energy:</strong> Do or Die Time. Learning to love the rhythm and contours of your body, 
-                    your social body, your life in it. Adapting emotionally to rapid change with far fewer guides.
-                </p>
-                <p>
-                    <strong>Who Lives Here:</strong> Tyra at Spellman, ASU, and Trenholm. The Travelers. Community organizers. 
-                    Peppaman (the healer who learned the hard way).
-                </p>
-                <p>
-                    <strong>Emotional Signature:</strong> Fierce. Irridescent. Feral yet still. Building something that lasts.
-                </p>
+            <div class="stage-node">
+                <div class="stage-header">02 // NORTH [THE ADULT]</div>
+                <div class="stage-energy">TIME PROFILE: DO OR DIE TIME (THE HARD GRIND)</div>
+                <p>Adapting your social body to rapid tactical shifts with zero guidance systems. Tyra's educational escape paths at Trenholm, Spellman, and ASU live here. Highly feral, radiant build states.</p>
             </div>
 
-            <div class="life-stage">
-                <div class="stage-label">3. WEST (The Elder)</div>
-                <h4>Turning Inward — Reckoning Time</h4>
-                <p>
-                    <strong>Time Energy:</strong> Reckoning Time. Some days believing it is a joy to have been alive and remain so. 
-                    Other days consumed with every negative emotion and physical ailment possible.
-                </p>
-                <p>
-                    <strong>Paradox:</strong> Either your decline is invisible (anti-elder prejudice: "you don't look sick") 
-                    which means less aggression but also less assistance. OR you look different enough to transgress social 
-                    expectations and experience greater aggression but potentially greater assistance.
-                </p>
-                <p>
-                    <strong>Who Lives Here:</strong> Ms. Ora. Peppaman (especially in his later relationship with Tyra). 
-                    Elliot (living a very long life).
-                </p>
-                <p>
-                    <strong>Emotional Signature:</strong> Wisdom without guarantee it will be heard. The ability to hold 
-                    contradictions. Family reckoning.
-                </p>
+            <div class="stage-node">
+                <div class="stage-header">03 // WEST [THE ELDER]</div>
+                <div class="stage-energy">TIME PROFILE: RECKONING TIME (THE INWARD TURN)</div>
+                <p>Ms. Ora and Peppaman hold this center. Managing deep institutional memory and physical systemic decline while the younger cadres choose whether or not to map their vectors to your coordinates.</p>
             </div>
 
-            <div class="life-stage">
-                <div class="stage-label">4. SOUTH (The Spirit/Ancestor Realm)</div>
-                <h4>Grounding/Foundation — Between Time</h4>
-                <p>
-                    <strong>Time Energy:</strong> Between Time. Constant. Unconquerable. Wild.
-                </p>
-                <p>
-                    <strong>What Happens Here:</strong> Time and space travel are as common as death and birth. 
-                    The travelers move through these unseen realms. What do they tell us? Why? What do we ask them 
-                    that we're afraid to ask ourselves? How do they experience our pedantic yearning for loving parental figures 
-                    (over and over and over again)?
-                </p>
-                <p>
-                    <strong>Who Lives Here:</strong> The ancestors. The Night Gods. The ones who died in the bombing. 
-                    The ones who chose to stay and guide.
-                </p>
+            <div class="stage-node">
+                <div class="stage-header">04 // SOUTH [THE SPIRIT / ANCESTOR HORIZON]</div>
+                <div class="stage-energy">TIME PROFILE: BETWEEN TIME (CONSTANT & UNCONQUERABLE)</div>
+                <p>The operational framework of the dead, the displaced, and the historic casualties of the 1952 highway cuts. Space transit occurs smoothly here without tracking anomalies.</p>
             </div>
 
-            <div class="life-stage">
-                <div class="stage-label">5. CENTER/CROSSROADS</div>
-                <h4>The Nexus Point — All Time / No Time</h4>
-                <p>
-                    <strong>Where Everything Meets.</strong> This is where the penultimate scene happens. 
-                    Where all characters are in different locations but spiritually and temporally synchronized. 
-                    Where Big Kitty meets Bertha in a pocket dimension that feels like many years but is 30-45 minutes.
-                </p>
+            <div class="stage-node">
+                <div class="stage-header">05 // CENTER [THE NEXUS]</div>
+                <div class="stage-energy">TIME PROFILE: ALL TIME / NO TIME</div>
+                <p>The precise dimensional pocket where Big Kitty tracks a 45-minute tactical alliance with the Dragon Bertha that structurally feels like an entire lifetime inside her mind.</p>
             </div>
 
-            <div class="life-stage">
-                <div class="stage-label">6. LOWER (Total Lower Chakra)</div>
-                <h4>Finding Beauty in Horror — Demon Time</h4>
-                <p>
-                    <strong>Where Bertha has been.</strong> The place of absolute servitude, absolute breaking, 
-                    absolute forgetting of self. But also the place where transformation becomes possible because 
-                    there is nothing left to lose.
-                </p>
+            <div class="stage-node">
+                <div class="stage-header">06 // LOWER [THE CHAKRA DEPTHS]</div>
+                <div class="stage-energy">TIME PROFILE: DEMON TIME (BEAUTY IN HORROR)</div>
+                <p>Bertha's binding grounds since the 1901 constitutional erasure. Absolute servitude, calculated breaking, and full detachment from historical self-identity variables.</p>
             </div>
 
-            <div class="life-stage">
-                <div class="stage-label">7. HIGHER (Transcendence)</div>
-                <h4>Finding Beauty in Divinity — Holy Time</h4>
-                <p>
-                    <strong>Where Narissa lives.</strong> Year 3176+. A world where the choices made in 2026 
-                    have rippled into new forms of being. Where root vegetables are sentient communities. 
-                    Where humans and non-humans negotiate existence together.
-                </p>
-            </div>
-
-            <div class="life-stage">
-                <div class="stage-label">8. CENTER/CROSSROADS (Return)</div>
-                <h4>The Nexus Point — An' Time</h4>
-                <p>
-                    <strong>And Time.</strong> The moment after choice, before consequence. The space where you realize 
-                    your decision will echo forever but you still have to keep living.
-                </p>
-            </div>
-
-            <div class="life-stage">
-                <div class="stage-label">9. ZIG-ZAG/SQUIGGLE</div>
-                <h4>The Spiral Back — WTF Time</h4>
-                <p>
-                    <strong>Time Energy:</strong> Puzzling. Shocking. Confusing. Clarifying. 
-                    <strong>The audience chooses how Elliot's council votes.</strong>
-                </p>
-                <p>
-                    If they vote to STOP the quantum relay: They don't get bombed. The Crossroads Coalition 
-                    (scientists, children, artists, night god guilds) collectively solve the problem through 
-                    relay systems (pinball energy that bounces and passes, like a cypher, like a freestyle, like passing 
-                    the torch rather than exploding at one point).
-                </p>
-                <p>
-                    If they vote to ALLOW the quantum relay: Elliot disaffiliates from the guild and becomes an earth-firster 
-                    (the least savvy, most chaotic people). They can only host a street play called "Narissa's Home" 
-                    the night before Earth's implosion. Not a distraction. Just a beautiful, heartfelt performance of the 
-                    very scenes we've been experiencing. They know there is no tomorrow. So being elsewhere is the same as 
-                    being right here. Together. Scene.
-                </p>
+            <div class="stage-node">
+                <div class="stage-header">07 // HIGHER [TRANSCENDENCE]</div>
+                <div class="stage-energy">TIME PROFILE: HOLY TIME (DIVINITY REGISTERS)</div>
+                <p>Year 3176+. The sovereign reality of Narissa's Home. Organic vegetable communities are fully communicative and humans negotiate resources without extractive violence.</p>
             </div>
         </section>
 
-        <!-- TYRA'S ARC -->
-        <section id="tyra-arc">
-            <h2>💔 Tyra Washington's Complete Arc</h2>
-
-            <h3>The Foundational Wound</h3>
-
-            <p>
-                Tyra has always felt <strong>off</strong> around Peppaman. Since childhood. She cries more easily around him. 
-                Ms. Ora notices this but trusts Peppa deeply with vulnerable people, so she feels conflicted about his perceived rejection.
-            </p>
-
-            <p>
-                <strong>Why Tyra feels this:</strong> She is spiritually, emotionally, and dimensionally attuned to 
-                something in Peppaman that relates to Bertha. She doesn't have words for it. Her nervous system knows 
-                before her mind does.
-            </p>
-
-            <h3>The Escape (North Phase)</h3>
-
-            <div class="family-tree">
-                <h5>Tyra's Educational Journey</h5>
-                <p>
-                    <strong>Trenholm State Teachers College:</strong> First time away from Montgomery. 
-                    "She feels 10 feet taller. She can fly. She is fierce and irridescent. Her mind is feral yet still."
-                </p>
-                <p>
-                    <strong>Why leaving heals her:</strong> It's not just Peppaman. It's Montgomery itself. 
-                    Downtown especially makes her dread being there. She feels like she's suffocating.
-                </p>
-                <p>
-                    <strong>Spellman College, then ASU:</strong> The pattern continues. Away = freedom. Away = life-giving. 
-                    Away = she can think clearly about herself.
-                </p>
-            </div>
-
-            <h3>The Return (West Phase Begins)</h3>
-
-            <p>
-                She decides to come home. <strong>This decision felt bigger than her.</strong>
-            </p>
-
-            <p>
-                When she returns, something shifts. She feels lighter and less anxious around her father. 
-                She associates her father more with TOWN culture and Peppaman's art legacy. 
-                "The TOWN culture and Her Dad and the city are all intertwined for her. Or were."
-            </p>
-
-            <p>
-                She still feels the dread. But she feels a different level of hope. 
-                "She finds new life (literally) and new ability to create new spaces and revamp old relationships."
-            </p>
-
-            <p style="margin-top: 2rem;">
-                <strong>She is pregnant.</strong> About 12 weeks by June 2026.
-            </p>
-
-            <h3>The Reckoning Scene (Penultimate Convergence)</h3>
-
-            <div class="scene-block">
-                <div class="scene-title">Tyra's Last Hour Before Midnight</div>
-                <div class="scene-location">Peppaman's house, then Jamal's car, driving toward Holy Ground</div>
-
-                <div class="scene-content">
-                    <p>
-                        As they get closer to midnight on 6/20/2026, Tyra feels an urge to visit her father. 
-                        She finds Peppaman and just wants to hold him and rub his feet.
-                    </p>
-                    <p>
-                        She prays with him. Laughs with him. <strong>Thanks him for looking out for Big Kitty over the years.</strong>
-                    </p>
-                    <p>
-                        Then she goes outside and sits in the car. While Jamal talks with Peppaman inside, 
-                        Tyra feels something shifting. She feels less and less present. More and more pulled elsewhere.
-                    </p>
-                    <p>
-                        "She feels fully exposed and terrified. She pulls her hoodie over her face and leans her car 
-                        all the way back. She wonders if she's having pain related to the baby."
-                    </p>
-                    <p>
-                        <strong>What's actually happening:</strong> Big Kitty has just met Bertha in the chamber. 
-                        Bertha is remembering. Bertha is healing. Bertha is about to make a choice. And Tyra, 
-                        who IS connected to Bertha across dimensions, can feel it happening.
-                    </p>
-                </div>
-            </div>
-
-            <h3>The Moment of Redistribution</h3>
-
-            <p>
-                In the moment when Big Kitty finally reaches Bertha and they meet after so long, 
-                Bertha remembers Tyra/Narissa. She remembers the drone bombs that are about to drop. 
-                She realizes she has minutes to decide: use her power for destruction (she has every right) 
-                or redistribute it to those closest to Big Kitty's heart.
-            </p>
-
-            <p>
-                <strong>Bertha chooses redistribution.</strong>
-            </p>
-
-            <p>
-                In that split second, Tyra feels it. 
-                "She begins feeling much better, and that's when she explains to Jamal that she is pregnant."
-            </p>
-
-            <p>
-                She goes from looking like she's having heroin withdrawal (which Jamal suspects, knowing her history 
-                with harder drugs) to suddenly present, alive, capable.
-            </p>
-
-            <h3>Tyra at the Climax</h3>
-
-            <p>
-                They pull up to Ms. Ora's. Find her on the back porch with Bunny, recorder still rolling. 
-                Squirrel arrives moments later. Five people trying to shout over each other.
-            </p>
-
-            <p>
-                <strong>Then: BOOM! BOOM! BOOM! BOOM! BOOM! (pause) BOOM! BOOM!</strong>
-            </p>
-
-            <p>
-                334 seconds of bombing. The capitol. The interstate. Liberty and all around there.
-            </p>
-
-            <p>
-                Tyra throws up in Jamal's car. They're down a seat and can't take Squirrel. 
-                Squirrel offers to drive. By doing so, he can transport more stuff. He has the lojack.
-            </p>
-
-            <p style="margin-top: 2rem;">
-                <strong>Tyra leaves Montgomery. She doesn't know if she'll come back.</strong>
-            </p>
+        <section class="dossier-wrapper" id="dossier">
+            <div class="dossier-stamp">INTELLIGENCE LEAK</div>
+            <h2 class="matrix-title" style="color: #cf2121; margin-bottom: 1rem;">📁 TARGET FILE: SQUIRREL [BETRAYAL PARAMETERS]</h2>
+            <p><strong>Operational Flaw:</strong> High-frequency vulnerability to a Shake the Field asset posing as media presence. Squirrel traded critical deployment parameters regarding Big Kitty's access routes to the central dragon chamber to prove he was <em>more ruthless, feared, and capable than Kitty.</em></p>
+            <p style="margin-top: 1rem;"><strong>The Ideological Trap:</strong> The asset fed Squirrel transhumanist theories regarding historical diaspora structural failures to convince him that baseline human systems are inherently broken, planting seeds of technological transcendence that he still carries.</p>
+            <p style="margin-top: 1rem;"><strong>Tactical Pivot:</strong> At the climax of the 334-second strike, with Tyra compromised by nausea, Squirrel manually steps up to pilot the tracking extraction vehicle, taking his initial calculated step toward redemption or ultimate deep-cover infiltration.</p>
         </section>
 
-        <!-- BERTHA & KITTY -->
-        <section id="bertha-kitty">
-            <h2>🐉 Bertha & Big Kitty: The Healing</h2>
-
-            <h3>Who Bertha Is</h3>
-
-            <p>
-                <strong>A bound dragon.</strong> Imprisoned since 1901 when she was captured and forced to bind her 
-                infinite energy into a single geographic location (Alabama). Her power has fueled the political hierarchy 
-                for 125+ years. But the binding broke her mind.
-            </p>
-
-            <p>
-                She forgot who she was. She believed the lies they told her:
-            </p>
-
-            <ul style="margin-left: 2rem;">
-                <li>That her own people had rebelled and cast her down</li>
-                <li>That she deserved to be enslaved as punishment for their pride</li>
-                <li>That her only way to atone was to protect their children</li>
-                <li>That if she didn't feed them, they would die</li>
-                <li>That her loved ones would be melted away without her protection</li>
-            </ul>
-
-            <p style="margin-top: 1.5rem;">
-                <strong>She came to believe: "I'm not ok / You're ok."</strong>
-            </p>
-
-            <h3>Big Kitty's Role</h3>
-
-            <p>
-                <strong>The only person Bertha can trust to help her remember herself.</strong>
-            </p>
-
-            <p>
-                Big Kitty finds Bertha in the chamber. She is almost incapable of speaking. A shell. 
-                But Kitty has been preparing for this moment. He knows how to coax her back.
-            </p>
-
-            <p>
-                In what feels to Kitty like many years, but is only 30-45 minutes in real time, 
-                they have a <strong>long and sweet friendship.</strong>
-            </p>
-
-            <p>
-                This is crucial: <strong>They are never romantic.</strong> Kitty can't let go of Tyra/Yemmy. 
-                Bertha is learning to love herself and figure out who she is. Kitty doesn't want that to be rooted in him. 
-                Bertha is hostile to the idea. But Kitty's gentleness and intrigue with her is what helps her recover 
-                her actual story and self.
-            </p>
-
-            <h3>Bertha's Final Choice</h3>
-
-            <p>
-                By the time Big Kitty reaches her, Bertha has moved through the emotional stages:
-            </p>
-
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-year">Entry</div>
-                    <div class="timeline-text">"I'm not ok / You're ok"</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">With Kitty</div>
-                    <div class="timeline-text">"I'm ok / You're not ok"</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">Healing Deepens</div>
-                    <div class="timeline-text">"I'm very ok / You're definitely not ok"</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-year">Final Wisdom</div>
-                    <div class="timeline-text">"I'm ok / You're ok"</div>
-                </div>
+        <section class="decision-panel" id="decision">
+            <h2 class="matrix-title" style="text-align: center;">🎛️ THE SQUIGGLE // QUANTUM CODES VOTE TERMINAL</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 1.5rem;">The ultimate audience fork. The choice parameter directly compiles the structural status of Elliot's future timeline council registry.</p>
+            
+            <div class="toggle-container">
+                <div class="toggle-choice" id="choiceNo" onclick="toggleQuantumEnding('NO')">VOTE NO: HALT QUANTUM RELAY</div>
+                <div class="toggle-choice" id="choiceYes" onclick="toggleQuantumEnding('YES')">VOTE YES: ACTIVATE QUANTUM RELAY</div>
             </div>
 
-            <p style="margin-top: 2rem;">
-                In that final moment of clarity, Bertha realizes she has minutes before the bombs drop. 
-                She could use her power for destruction (justified, deserved, necessary). But instead:
-            </p>
-
-            <p>
-                <strong>She chooses to redistribute her energy to the loved ones closest to Big Kitty's heart.</strong>
-            </p>
-
-            <p>
-                This redistribution is what saves Tyra from a crisis. What allows Jamal to drive safely. 
-                What gives the entire group the spiritual/emotional energy to survive the next 48 hours.
-            </p>
-
-            <h3>After Bertha Ascends</h3>
-
-            <p>
-                When Big Kitty emerges from the chamber, everything is different. 
-                "He is older. He is moving slower." He has lived a full life with Bertha, even if it was only minutes 
-                in external time. He looks at the governors' portraits in the rotunda and then sees his own reflection. 
-                "He is surprised to see his age, but delighted."
-            </p>
-
-            <p>
-                He sits on the capitol steps and enjoys the sunshine. In Bertha's timeline, Big Kitty has been living 
-                inside her consciousness for as many days/years as the number of amendments in Alabama's constitution 
-                (the longest in the world). When he finally emerges, he has lived a lifetime.
-            </p>
-
-            <p>
-                <strong>He carries Bertha's gift with him for the rest of the story.</strong>
-            </p>
-        </section>
-
-        <!-- PENULTIMATE SCENE -->
-        <section id="penultimate">
-            <h2>🎭 The Penultimate Convergence Scene</h2>
-
-            <p>
-                <strong>This is the crucial scene that precedes the climax.</strong> Every major character is in a 
-                different physical location, but they are all spiritually synchronized. What happens here determines 
-                how they navigate what comes next.
-            </p>
-
-            <h3>Real-Time Multi-Location Convergence</h3>
-
-            <div class="scene-block">
-                <div class="scene-title">Location 1: Peppaman's House</div>
-                <div class="scene-location">Downtown Montgomery</div>
-                <div class="scene-content">
-                    <p><strong>Jamal</strong> is talking with Peppaman inside. Tyra is in the car outside, 
-                    feeling the effects of Bertha's redistribution ripple through her body.</p>
-                </div>
+            <div class="outcome-display hidden-pane" id="paneNo">
+                <div class="outcome-header" style="color: #fbbf24;">🔴 ENDING 1 INITIALIZED: THE PINBALL METHOD</div>
+                <p>The activists and coalition designers successfully disable Peter Rabbit's centralized layout. Instead of an engine that requires total systemic sacrifice at one node, the <strong>Crossroads Coalition crafts a decentralized PINBALL RELAY.</strong></p>
+                <p style="margin-top: 1rem;">The signal bounces cleanly between celestial body grids, treating space-time navigation like a live, collaborative musical cipher. Rocket extraction byproducts drop to zero metrics. Elliot tracks a full, lengthy existence, passing the lineage to grandchildren who organize future systemic shifts. <strong>Narissa is born secure. The root vegetables sing.</strong></p>
             </div>
 
-            <div class="scene-block">
-                <div class="scene-title">Location 2: The Crossroads (I-65)</div>
-                <div class="scene-location">Exit 169</div>
-                <div class="scene-content">
-                    <p><strong>Future McFerrin</strong> is getting set up to do music with local artists and 
-                    neighborhood residents. The voice of the uprising, covered in Peppaman's blood (who died shielding 
-                    Future from a drone blast).</p>
-                </div>
+            <div class="outcome-display hidden-pane" id="paneYes">
+                <div class="outcome-header" style="color: #ff6b6b;">🔵 ENDING 2 INITIALIZED: THE EARTH-FIRST REQUIEM</div>
+                <p>The relay fires at peak capacity. Humanity forces access across cosmic frontiers, but Elliot disaffiliates entirely from the high institutional guilds. He integrates fully with the raw <strong>Earth-Firsters</strong>—the chaotic, non-nuanced Bad News Bears of the lower sectors.</p>
+                <p style="margin-top: 1rem;">The remaining community groups host a rogue street performance titled <em>"Narissa's Home"</em> on June 19th, exactly 24 hours prior to Earth's scheduled implosion vector. There is no strategic cover-up; it is a clean, absolute archive of human testimony. <strong>"We know there is no tomorrow. So being elsewhere is the exact same as being right here."</strong> Narissa survives only as an echo inside the collective performance spell.</p>
             </div>
-
-            <div class="scene-block">
-                <div class="scene-title">Location 3: The Sanctuary</div>
-                <div class="scene-location">432 Goldthwaite Street</div>
-                <div class="scene-content">
-                    <p><strong>Squirrel</strong> is being questioned/grilled about his betrayal. The tech he sold. 
-                    The information he gave up. His desperation to be seen and feared rather than loved.</p>
-                </div>
-            </div>
-
-            <div class="scene-block">
-                <div class="scene-title">Location 4: Montgomery Country Club</div>
-                <div class="scene-location">Ritual Space</div>
-                <div class="scene-content">
-                    <p><strong>Phat Tony, Lil Alex, Unique, Dominique, and other Night Gods</strong> are about to start 
-                    the fully costumed Root Veggie Tails + Dragon/Castle show. A live dramatization of the vegan future 
-                    they're choosing. A preview of what Narissa's world will be.</p>
-                </div>
-            </div>
-
-            <div class="scene-block">
-                <div class="scene-title">Location 5: Ms. Ora's Kitchen</div>
-                <div class="scene-location">Her back porch</div>
-                <div class="scene-content">
-                    <p><strong>Ms. Ora and Bunny</strong> are sitting at the kitchen table. Bunny has a recorder rolling. 
-                    Ms. Ora is tapping into her vision gifts as the tech they were using to speak with Big Kitty begins to fail.</p>
-                    <p>Bunny has to narrate and describe Bertha's prison-dialysis room with uncanny accuracy. 
-                    Sometimes describing wherever Tyra is. Eventually describing Jamal and Tyra driving toward Hope Hull.</p>
-                </div>
-            </div>
-
-            <h3>The Tech Failure</h3>
-
-            <p>
-                About 20 minutes before Big Kitty reaches Bertha's chamber, <strong>the tech fails.</strong> 
-                The direct communication line goes down. From this point forward, everything relies on Bunny's vision gift 
-                and Ms. Ora's spiritual attunement.
-            </p>
-
-            <p>
-                <strong>This is why Bunny's narration is so crucial.</strong> She is the bridge between the Bertha dimension 
-                and the material world. She is describing what she "sees" — the events in real-time, even though she's 
-                never been to that location.
-            </p>
-
-            <h3>The Function of This Scene</h3>
-
-            <p>
-                Every character-defining action and story-defining action has its most fundamental expression here. 
-                What each character does in this moment determines their trajectory in the climax and the endings.
-            </p>
-
-            <ul style="margin-left: 2rem;">
-                <li style="margin-bottom: 0.8rem;"><strong>Tyra:</strong> Moves from crisis (physical/emotional) to clarity. Learns she's pregnant.</li>
-                <li style="margin-bottom: 0.8rem;"><strong>Jamal:</strong> Releases his faith in Peppaman. Becomes the driver. Takes action.</li>
-                <li style="margin-bottom: 0.8rem;"><strong>Ms. Ora:</strong> Activates her vision gift fully. Becomes the bridge.</li>
-                <li style="margin-bottom: 0.8rem;"><strong>Bunny:</strong> Honors her role. Narrates what she cannot logically know.</li>
-                <li style="margin-bottom: 0.8rem;"><strong>Squirrel:</strong> Faces his choices. Offers to help.</li>
-                <li style="margin-bottom: 0.8rem;"><strong>Future McFerrin:</strong> Continues the music. Holds the space.</li>
-                <li style="margin-bottom: 0.8rem;"><strong>Big Kitty & Bertha:</strong> Meet. Heal. Choose redistribution.</li>
-            </ul>
-        </section>
-
-        <!-- CLIMAX SCENE -->
-        <section id="climax">
-            <h2>⚡ The Climax: 334 Seconds of Bombing</h2>
-
-            <h3>The Convergence</h3>
-
-            <p>
-                They pull up to Ms. Ora's. Everyone is suddenly in one location for the first time. The penultimate scene 
-                has prepared them. Now they must act together.
-            </p>
-
-            <div class="scene-block">
-                <div class="scene-title">The Scene</div>
-                <div class="scene-location">Ms. Ora's back porch, nighttime</div>
-                <div class="scene-content">
-                    <p>Squirrel pulls up moments after Tyra and Jamal arrive.</p>
-                    <p><strong>Five people are attempting to shout or talk over each other.</strong> 
-                    Tyra just threw up in Jamal's car. They're down a seat. They can't take Squirrel.</p>
-                    <p>In that moment of chaos—</p>
-                </div>
-            </div>
-
-            <h3>The Attack</h3>
-
-            <div class="callout">
-                <strong>BOOM! BOOM! BOOM! BOOM! BOOM!</strong>
-                <br>(pause)
-                <br><strong>BOOM! BOOM!</strong>
-                <br>And this continues with varying rates of velocity for a full 334 seconds.
-            </div>
-
-            <p>
-                The capitol building. The interstate. Liberty and all around there. 
-                The initial wave is 5 bombs. Then a pause (2-3 seconds of silence where everyone's heart stops). 
-                Then 2 more. Then irregular bursts.
-            </p>
-
-            <p>
-                A full 334 seconds. About 5 minutes and 34 seconds of bombing. Long enough that people start to wonder 
-                if it will ever stop. Long enough that they make decisions about their lives.
-            </p>
-
-            <h3>The Aftermath (Immediate)</h3>
-
-            <p>
-                They check cell phones. News reports. Talk to neighbors.
-            </p>
-
-            <p>
-                <strong>The capitol has been hit.</strong> The interstate. Downtown. 
-                "Why through there?" Phat Tony calls. "We had to cut through Spring Valley and Snoudon but we're en route to Holy Ground."
-            </p>
-
-            <p>
-                They hear: sounds like police shooting. Someone was shooting with the police. Or someone shot AT the police. 
-                The city has been placed under attack.
-            </p>
-
-            <p>
-                <strong>They only guess who.</strong> (The Christian nationalist extremists hijacking military jets, 
-                aided by law enforcement and paramilitary groups, seeking to start a holy war.)
-            </p>
-
-            <h3>The Decision</h3>
-
-            <p>
-                They need more room. Tyra threw up. They can't take Squirrel. 
-                <strong>Squirrel offers to drive.</strong> By doing so, he can transport more stuff. He has the lojack 
-                (a tracking device they may or may not disclose to authorities).
-            </p>
-
-            <p>
-                This moment — Squirrel's offer to help despite knowing he betrayed them — is his path toward redemption 
-                or damnation, depending on what he does next.
-            </p>
-        </section>
-
-        <!-- SQUIRREL'S PATH -->
-        <section id="squirrel">
-            <h2>🐿️ Squirrel: Betrayal & Consequence</h2>
-
-            <h3>The Setup (Before Climax)</h3>
-
-            <p>
-                Squirrel gave up information about Big Kitty and the dragon to a <strong>reporter for Shake the Field Media</strong> 
-                who was flirting with him. She seemed stuck on wanting to know more about the Night Gods.
-            </p>
-
-            <p>
-                Squirrel was high. He wanted to show her that he and Big Kitty were different. "There are things Kitty won't do, 
-                that I will and have. If I were doing the night gods, I would have done XYZ."
-            </p>
-
-            <p>
-                <strong>Why he betrayed:</strong> He needed to be seen. To be feared. To be respected separately from Kitty. 
-                "Kitty is the sweetest man in this town. And I am feared. Both respected. For a reason."
-            </p>
-
-            <h3>The Reporter's True Purpose</h3>
-
-            <p>
-                The reporter was more than a flirt. She was <strong>intelligence.</strong> 
-                Someone working to determine if Squirrel could be "turned for or against their trans-humanist interests."
-            </p>
-
-            <p>
-                During their conversation, they discussed transhumanism. She used examples of Beta Israel discrimination 
-                in Ethiopia, Israel, Palestine, and UK to argue: "Humans are consistently full of shit. This is why we should 
-                improve our humanity with technology that can ultimately solve for death itself."
-            </p>
-
-            <p>
-                <strong>This message planted a seed.</strong> Maybe there is a technological solution. Maybe transcendence 
-                is possible. Maybe Squirrel's hunger to be seen, to be feared, to be transcendent — maybe it can be solved 
-                by the right technology.
-            </p>
-
-            <h3>Squirrel's Crisis</h3>
-
-            <p>
-                After the bombing, Squirrel is in danger. He knows the reporter wasn't just a reporter. 
-                He knows he's proximity to Peter Rabbit interests (who he doesn't like). He sexualized the woman, 
-                so he was less censored around her. <strong>He told her too much.</strong>
-            </p>
-
-            <p>
-                The law enforcement people isolate this clip. The clip where Squirrel talks about what the people need. 
-                "The folks selling parking on their land. We feed off each other." 
-            </p>
-
-            <p>
-                Out of context, it sounds like Squirrel was in on something. Like he was part of the planning. 
-                <strong>He becomes a suspect.</strong>
-            </p>
-
-            <h3>Squirrel's Offer at the Climax</h3>
-
-            <p>
-                Despite knowing he's in danger. Despite knowing he betrayed. Despite being high and afraid. 
-                <strong>Squirrel offers to drive.</strong>
-            </p>
-
-            <p>
-                This is his moment of choosing. Is he going to run? Or is he going to help? 
-                Is he going to lean into his reputation as someone feared? Or is he going to become someone trusted?
-            </p>
-
-            <p>
-                For now, he chooses to help. But the reporter, the technology, the promise of transcendence through fear 
-                and power — those seeds are still planted. Squirrel will carry them forward.
-            </p>
-        </section>
-
-        <!-- THE CHOICE & ENDINGS -->
-        <section id="endings">
-            <h2>🌈 The Choice Point: Two Possible Endings</h2>
-
-            <p>
-                After the climax, after they drive away, after they reach the Holy Ground safe, 
-                <strong>they gather. The community gathers. And they must decide.</strong>
-            </p>
-
-            <h3>The Question</h3>
-
-            <p>
-                The quantum relay station that Peter Rabbit and the scientists built — should they activate it or destroy it?
-            </p>
-
-            <p>
-                <strong>What it does:</strong> Harnesses all of Bertha's distributed energy into one location. 
-                Uses that energy to open a portal off-planet. Allows humans to begin exploring the cosmos. 
-                But requires the destruction/annihilation/domination of whatever is at that location 
-                (it's hidden but it's something alive).
-            </p>
-
-            <p>
-                <strong>What's at risk:</strong> If they activate it, people die. But humanity gets a chance to explore 
-                the cosmic order. If they stop it, Elliot's quantum relay council survives and remains unified. 
-                But the deep hunger for cosmic transcendence remains unsolved.
-            </p>
-
-            <div class="choice-point">
-                <h4>🔴 ENDING 1: Stop the Relay (Audience Votes NO)</h4>
-                
-                <div class="choice-option">
-                    <div class="choice-label">Immediate Consequence</div>
-                    <p>
-                        The activists, scientists, and artists win. Peter Rabbit's plan fails. The quantum relay is not activated. 
-                        No one is bombed at that location.
-                    </p>
-                </div>
-
-                <div class="choice-option">
-                    <div class="choice-label">The Genius Solution</div>
-                    <p>
-                        <strong>The Crossroads Coalition (scientists, children, artists, night god guilds) devises an alternative.</strong>
-                    </p>
-                    <p>
-                        Instead of a relay that requires total annihilation at one point, they create a 
-                        <strong>PINBALL RELAY.</strong> A system that:
-                    </p>
-                    <ul style="margin-left: 1.5rem; margin-top: 1rem;">
-                        <li>Bounces the signal from planet to planet</li>
-                        <li>Passes the freestyle in the cypher (like music, like improv)</li>
-                        <li>Allows the gravitational fields of other celestial bodies to hold it and grow it</li>
-                        <li>Builds the energy without violating any core rights</li>
-                        <li>Discovers pocket dimensions (unassuming places, like the shotgun houses in the story)</li>
-                        <li>Produces optimal outcomes without producing toxic byproducts</li>
-                    </ul>
-                </div>
-
-                <div class="choice-option">
-                    <div class="choice-label">The Future</div>
-                    <p>
-                        Elliot lives a very long life. Humanity learns to work with root vegetable sentient communities. 
-                        Intermarrying becomes fashionable. Elliot eventually becomes a Simon Says toy — almost ceremonial. 
-                        His grandchildren lead uprisings. One moderator runs off with an inspiring co-organizer of a 
-                        massage caste of root veggies. Elliot has many comments per day but misses that child.
-                    </p>
-                    <p>
-                        Elliot dies as the grandparent of the lowest caste root vegetable who leads their uprising. 
-                        The genealogy continues. <strong>Narissa is born. The root vegetables sing.</strong>
-                    </p>
-                </div>
-            </div>
-
-            <div class="choice-point">
-                <h4>🔵 ENDING 2: Allow the Relay (Audience Votes YES)</h4>
-                
-                <div class="choice-option">
-                    <div class="choice-label">Immediate Consequence</div>
-                    <p>
-                        The relay activates. The energy is released. Humanity gains access to the cosmos. 
-                        But Elliot disaffiliates from the guild.
-                    </p>
-                </div>
-
-                <div class="choice-option">
-                    <div class="choice-label">Elliot's Spiral</div>
-                    <p>
-                        Less active as a guild member. More active with earth-firsters. "The least savvy and nuanced 
-                        thinkers available in Elliot's world. The Bad News Bears full of all kinds of can't get right."
-                    </p>
-                    <p>
-                        The earth-firsters can only host a street play called <strong>"Narissa's Home"</strong> 
-                        the night before Earth's scheduled implosion. Not a distraction. Not a cover for a larger plot. 
-                        <strong>Just a beautiful, heartfelt performance of the very scenes we've been experiencing.</strong>
-                    </p>
-                </div>
-
-                <div class="choice-option">
-                    <div class="choice-label">The Irony</div>
-                    <p>
-                        They know there is no tomorrow. So being elsewhere is the same as being right here. Together. 
-                        The play happens on June 19, whatever year that is. The night before Earth's implosion. 
-                        <strong>It's a concert. A gathering. A last testimony.</strong>
-                    </p>
-                    <p>
-                        "We know there is no tomorrow. So being elsewhere is the same as being right here."
-                    </p>
-                </div>
-
-                <div class="choice-option">
-                    <div class="choice-label">Narissa's Paradox</div>
-                    <p>
-                        Narissa still exists in this ending. But as a ghost. As a possibility. As the child 
-                        that might have been born if Tyra survived Earth's implosion. The story we're telling 
-                        is the story of what would have been. The performance is a requiem.
-                    </p>
-                </div>
-            </div>
-
-            <h3>The Meta-Truth</h3>
-
-            <p>
-                <strong>This is not a story where the "right choice" is obvious.</strong> 
-                Both endings are tragic. Both are hopeful. Both require sacrifice.
-            </p>
-
-            <p>
-                The audience chooses not because they're told which is right, but because they understand 
-                the values and they vote for the world they want to inhabit. Or the world they think they deserve.
-            </p>
-
-            <p>
-                <strong>The beauty is:</strong> We experience both endings. The play IS both timelines. 
-                When you watch "Narissa's Home," you're experiencing Tyra and Jamal and Bunny and the entire 
-                circle's journey IN BOTH REALITIES SIMULTANEOUSLY.
-            </p>
-        </section>
-
-        <!-- NOTE ON PHAT TONY -->
-        <section>
-            <h2>🎭 Note on Phat Tony's Show</h2>
-
-            <p>
-                <strong>What Phat Tony does at the Montgomery Country Club:</strong> 
-                A live dramatization of the Root Veggie Tails (the vegan future they're choosing) 
-                plus elements of the high school play featuring Bertha's story.
-            </p>
-
-            <p>
-                This show happens during the penultimate convergence scene. It's a preview of the possible future. 
-                A ritual. A spell. A way of speaking things into existence.
-            </p>
-
-            <p>
-                The Night Gods (and Phat Tony) understand that you can't just kill the old world and hope a new one 
-                grows. You have to sing the new world into being while the old one is still smoking.
-            </p>
-        </section>
-
-        <!-- NOTE ON POLITICAL ANTAGONISTS -->
-        <section>
-            <h2>⚔️ The Political Antagonists (To Humanize)</h2>
-
-            <p>
-                President Gump, AG Major, Montrose, and Senator Coach are the current faces of the Christian nationalist regime. 
-                But their stories are complicated. They are people who believe they are protecting something. 
-                They are afraid. They are making choices they think are necessary.
-            </p>
-
-            <p>
-                <strong>This does not excuse their choices.</strong> But understanding their logic makes the story richer. 
-                It's not good vs. evil. It's competing visions of what humans are capable of and what we should be allowed to become.
-            </p>
         </section>
 
     </main>
 
-    <!-- FOOTER -->
     <footer>
-        <p>
-            <strong>The Crossroads: Family Bible</strong><br>
-            The genealogy of a story across 1,150+ years<br>
-            Created by evan milligan | Compiled with AI assistance
-        </p>
-
-        <p style="font-size: 0.9rem; margin-top: 2rem;">
-            This document is a living archive. It will evolve as the story develops.<br>
-            Every character owns their story. Every timeline is true.<br>
-            Every ending is possible.
-        </p>
-
-        <p style="font-size: 0.85rem; color: #666; margin-top: 1.5rem;">
-            "The 9-point Kongo cosmogram is not geography. It's a map of emotional and spiritual development 
-            that anyone can apply to their own life, their family, their community, their journey."
-        </p>
+        <p>THE CROSSROADS: FAMILY BIBLE ARCHIVE // COMPILED BY EVAN MILLIGAN © 2026</p>
+        <p style="font-size: 11px; margin-top: 10px; font-family: 'Press Start 2P', monospace; color: #4b5563;">THE SUBSTRATE IS LOCKED INTO THE ARCHITECTURE OF THIS FIELD.</p>
     </footer>
 
     <script>
-        // Smooth scrolling
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const target = document.querySelector(link.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
+        // LIVE DETONATION COUNTDOWN SIMULATOR
+        let bombActive = false;
+        let bombInterval = null;
 
-        // Active nav highlighting
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('nav a');
+        function initiateBombSequence() {
+            const btn = document.getElementById('bombTriggerBtn');
+            const ticker = document.getElementById('bombTimer');
+            
+            if (bombActive) {
+                clearInterval(bombInterval);
+                btn.textContent = "EXECUTE BOMB DETONATION WAVE";
+                ticker.textContent = "334 SECONDS OF BLOCKADE BOMBING AT RECKONING VELOCITY";
+                ticker.style.color = "#fff";
+                bombActive = false;
+                return;
+            }
 
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 100) {
-                    current = section.getAttribute('id');
-                }
-            });
+            bombActive = true;
+            let count = 334;
+            btn.textContent = "ABORT SIMULATION FEEDS";
+            ticker.style.color = "#cf2121";
 
-            navLinks.forEach(link => {
-                link.style.borderBottom = '2px solid transparent';
-                if (link.getAttribute('href') === '#' + current) {
-                    link.style.borderBottom = '2px solid #fbbf24';
+            bombInterval = setInterval(() => {
+                if (count <= 0) {
+                    clearInterval(bombInterval);
+                    ticker.textContent = "⚠️ DETONATION INTERVAL COMPLETE // RADAR SENDS TOTAL BLACKOUT";
+                    return;
                 }
-            });
-        });
+                
+                // Emulate the irregular cadence patterns of the play script
+                let strikePattern = "BOOM! ";
+                if (count % 15 === 0) strikePattern = "💥 BOOM! BOOM! BOOM! BOOM! BOOM! (PAUSE) BOOM! BOOM! 💥";
+                else if (count % 7 === 0) strikePattern = "BOOM! BOOM! ";
+                
+                ticker.innerHTML = `T-MINUS ${count}s // STRIKE ARRAY: ${strikePattern}`;
+                count--;
+            }, 1000);
+        }
+
+        // QUANTUM ENDING TOGGLE DRIVER
+        function toggleQuantumEnding(vote) {
+            const btnNo = document.getElementById('choiceNo');
+            const btnYes = document.getElementById('choiceYes');
+            const paneNo = document.getElementById('paneNo');
+            const paneYes = document.getElementById('paneYes');
+
+            if (vote === 'NO') {
+                btnNo.classList.add('active-no');
+                btnYes.classList.remove('active-yes');
+                paneNo.classList.remove('hidden-pane');
+                paneYes.classList.add('hidden-pane');
+            } else {
+                btnYes.classList.add('active-yes');
+                btnNo.classList.remove('active-no');
+                paneYes.classList.remove('hidden-pane');
+                paneNo.classList.add('hidden-pane');
+            }
+        }
     </script>
 </body>
 </html>
