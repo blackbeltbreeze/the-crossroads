@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Crossroads | Entry Portal</title>
+    <title>The Crossroads | System Boot</title>
     <style>
         * {
             margin: 0;
@@ -16,281 +16,142 @@
             background: #000;
             color: #fbbf24;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow: hidden;
-        }
-
-        .carousel-container {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .carousel-image {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            background: #000;
-            opacity: 0;
-            transition: opacity 0.6s ease-in-out;
-        }
-
-        .carousel-image.active {
-            opacity: 1;
-            z-index: 10;
-        }
-
-        .carousel-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: rgba(0, 0, 0, 0.3);
-            z-index: 20;
-            pointer-events: none;
+            min-height: 100vh;
+            padding: 20px;
+            overflow: hidden;
         }
 
-        .carousel-text {
-            text-align: center;
-            color: #fbbf24;
-            text-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
-            animation: fadeInOut 2.4s ease-in-out;
+        .terminal-container {
+            max-width: 800px;
+            width: 100%;
+            border: 1px solid #fbbf24;
+            background: #050505;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(251, 191, 36, 0.1);
         }
 
-        .carousel-text h1 {
-            font-size: 3rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-bottom: 15px;
-            animation: slideUp 0.8s ease-out;
+        .header-block {
+            border-bottom: 1px dashed #fbbf24;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
         }
 
-        .carousel-text p {
-            font-size: 1.2rem;
-            letter-spacing: 2px;
-            max-width: 600px;
-            line-height: 1.8;
-        }
-
-        @keyframes fadeInOut {
-            0% {
-                opacity: 0;
-            }
-            15% {
-                opacity: 1;
-            }
-            85% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-            }
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(30px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .stage-indicator {
-            position: fixed;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 1.5rem;
-            text-transform: uppercase;
+        h1 {
+            font-size: 2rem;
             letter-spacing: 3px;
-            z-index: 30;
-            animation: pulse 1s ease-in-out infinite;
+            text-transform: uppercase;
         }
 
-        @keyframes pulse {
-            0%, 100% {
-                opacity: 0.5;
-            }
-            50% {
-                opacity: 1;
-            }
+        .meta-text {
+            font-size: 0.85rem;
+            color: #856404;
+            margin-top: 5px;
         }
 
-        .progress-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            height: 4px;
+        p.manifesto {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* 4-Axis Cosmogram Route Matrix */
+        .grid-choices {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .choice-card {
+            border: 1px solid #fbbf24;
+            background: transparent;
+            color: #fbbf24;
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .choice-card:hover {
             background: #fbbf24;
-            z-index: 25;
-            animation: progressFill var(--duration) linear forwards;
+            color: #000;
+            box-shadow: 0 0 15px #fbbf24;
         }
 
-        @keyframes progressFill {
-            from {
-                width: 0%;
-            }
-            to {
-                width: 100%;
-            }
+        .choice-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
         }
 
-        @media (max-width: 768px) {
-            .carousel-text h1 {
-                font-size: 1.8rem;
+        .choice-card p {
+            font-size: 0.85rem;
+            line-height: 1.4;
+            opacity: 0.8;
+        }
+
+        /* Hover swap trick for text clarity */
+        .choice-card:hover p {
+            opacity: 1;
+        }
+
+        @media (max-width: 600px) {
+            .grid-choices {
+                grid-template-columns: 1fr;
             }
-            .carousel-text p {
-                font-size: 0.95rem;
-            }
+            h1 { font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
-    <div class="carousel-container">
-        <!-- Images will be inserted here by JavaScript -->
-    </div>
 
-    <div class="stage-indicator" id="stageIndicator">
-        BEGINNING
-    </div>
+    <div class="terminal-container">
+        <div class="header-block">
+            <h1>CROSSROADS SYSTEM OVERRIDE</h1>
+            <div class="meta-text">SOURCE: WZRD 77.7 FM ARCHIVE // FREQUENCY LOCKED</div>
+        </div>
 
-    <div class="progress-bar" id="progressBar"></div>
+        <p class="manifesto">
+            Time does not move in a straight line down Highway 65. The fence stands firm, the roots hold fast, and the tape logs are spinning. Select an entry coordinates node to initialize transmission.
+        </p>
+
+        <!-- Immediate engagement: The 4 major chronological exit nodes -->
+        <div class="grid-choices">
+            <button class="choice-card" onclick="routeTo('168')">
+                <h3>[EXIT 168: 1996]</h3>
+                <p>The Chalk Drawn. High school assembly, raw djembe rhythms, and ancestral warnings hidden inside the cassette deck.</p>
+            </button>
+
+            <button class="choice-card" onclick="routeTo('169')">
+                <h3>[EXIT 169: 2026]</h3>
+                <p>The Occupation. Real-time friction on the interstate asphalt. Jamal's live broadcast signal cutting through the darkness.</p>
+            </button>
+
+            <button class="choice-card" onclick="routeTo('170')">
+                <h3>[EXIT 2118]</h3>
+                <p>The Sanctuary. Old memories calcified inside the roots of the mammoth skyscraper oak. The trial begins.</p>
+            </button>
+
+            <button class="choice-card" onclick="routeTo('171')">
+                <h3>[EXIT 3176+]</h3>
+                <p>The Pillar Hall. The furthest future. Narissa hums the lineage melody to deliver the ultimate refusal to the Federation.</p>
+            </button>
+        </div>
+    </div>
 
     <script>
-        // 5-slide cascade: Black → Gold → Moonlight/Smoke/Chalk
-        // 12 seconds total = 2.4 seconds per slide
-        const cascadeSequence = [
-            {
-                image: 'cascade_01_deep.png',
-                duration: 2.4,
-                title: 'THE DEEP',
-                subtitle: 'Where all power sleeps. Ancestors watch. Roots hold fast.',
-                stage: 'ANCESTOR REALM'
-            },
-            {
-                image: 'cascade_02_gathering.png',
-                duration: 2.4,
-                title: 'THE GATHERING',
-                subtitle: 'Seven allies converge. The fence stands firm. The sword gleams.',
-                stage: 'CONVERGENCE'
-            },
-            {
-                image: 'cascade_03_night_vision.png',
-                duration: 2.4,
-                title: 'THE NIGHT VISION',
-                subtitle: 'Moonlight falls. We see what was hidden. Nocturnal knowledge blooms.',
-                stage: 'NIGHT SIGHT'
-            },
-            {
-                image: 'cascade_04_chalk.png',
-                duration: 2.4,
-                title: 'THE CHALK DRAWN',
-                subtitle: 'Smoke rises. Prayers ascending. Spirits move between worlds.',
-                stage: 'THRESHOLD'
-            },
-            {
-                image: 'cascade_05_full_naming.png',
-                duration: 2.4,
-                title: 'THE FULL NAMING',
-                subtitle: 'All allies visible. All forces gathered. The portal opens.',
-                stage: 'CONVERGENCE'
-            }
-        ];
-
-        let currentIndex = 0;
-        let isPlaying = true;
-
-        function createCarouselImages() {
-            const container = document.querySelector('.carousel-container');
+        function routeTo(exitId) {
+            // Seed the destination choices into localStorage immediately on click
+            localStorage.setItem('selected_initial_exit', exitId);
+            localStorage.setItem('portal_gate_passed', 'true');
             
-            cascadeSequence.forEach((item, index) => {
-                const img = document.createElement('img');
-                img.src = item.image;
-                img.className = 'carousel-image';
-                if (index === 0) img.classList.add('active');
-                img.alt = item.title;
-                container.appendChild(img);
-            });
+            // Send them directly to your master layout engine page
+            window.location.href = 'portal.html';
         }
-
-        function updateCarousel() {
-            const images = document.querySelectorAll('.carousel-image');
-            const stageIndicator = document.getElementById('stageIndicator');
-            const progressBar = document.getElementById('progressBar');
-            const currentItem = cascadeSequence[currentIndex];
-
-            // Update images
-            images.forEach((img, index) => {
-                img.classList.remove('active');
-                if (index === currentIndex) {
-                    img.classList.add('active');
-                }
-            });
-
-            // Update overlay text
-            const overlayContainer = document.querySelector('.carousel-overlay');
-            if (overlayContainer) overlayContainer.remove();
-
-            const newOverlay = document.createElement('div');
-            newOverlay.className = 'carousel-overlay';
-            newOverlay.innerHTML = `
-                <div class="carousel-text">
-                    <h1>${currentItem.title}</h1>
-                    <p>${currentItem.subtitle}</p>
-                </div>
-            `;
-            document.querySelector('.carousel-container').appendChild(newOverlay);
-
-            // Update stage indicator
-            stageIndicator.textContent = currentItem.stage;
-
-            // Update progress bar
-            progressBar.style.setProperty('--duration', currentItem.duration + 's');
-            progressBar.style.width = '0%';
-            void progressBar.offsetWidth; // Trigger reflow
-            progressBar.style.width = '100%';
-
-            // Schedule next image or redirect
-            const nextTimeout = setTimeout(() => {
-                currentIndex = (currentIndex + 1) % cascadeSequence.length;
-                if (currentIndex === 0 && isPlaying) {
-                    // Cascade complete—redirect to portal
-                    setTimeout(() => {
-                        window.location.href = 'portal.html';
-                    }, 2000); // 2 second pause before redirect
-                    return;
-                }
-                updateCarousel();
-            }, currentItem.duration * 1000);
-
-            return nextTimeout;
-        }
-
-        // Initialize
-        createCarouselImages();
-        updateCarousel();
-
-        // Optional: Click to pause/play
-        document.addEventListener('click', () => {
-            isPlaying = !isPlaying;
-            if (isPlaying) {
-                updateCarousel();
-            }
-        });
     </script>
 </body>
 </html>
