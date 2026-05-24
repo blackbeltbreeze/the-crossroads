@@ -75,7 +75,7 @@
             box-shadow: 3px 3px 0 #000;
         }
 
-        /* SCREEN GLITCH EFFECTS FROM EVAN MILLIGAN'S DRONES */
+        /* SCREEN GLITCH EFFECTS DURING TRANSITIONS */
         .glitch-active {
             animation: screenShake 0.15s infinite;
             filter: hue-rotate(90deg) contrast(150%);
@@ -244,7 +244,7 @@
 
     <!-- SIGNAL DISRUPTION TICKER -->
     <div class="drone-alert-ticker" id="droneTicker">
-        ⚠️ ALERT: MILLIGAN DRONE SWARM DETECTED // FREQUENCY JAMMING ACTIVE ⚠️
+        ⚠️ ALERT: ENEMY DRONES OVERHEAD // RADIO SIGNAL IS DROPPING ⚠️
     </div>
 
     <!-- AUDIO DRIVER BRIDGE -->
@@ -325,7 +325,7 @@
     </main>
 
     <script>
-        // THE RECALIBRATED 6-POINT TRANSMISSION DATA ARRAY
+        // HARMONIZED RECALIBRATED 6-POINT TRANSMISSION DATA ARRAY (CANON LOCKED)
         const corridorTransmissions = {
             'on-ramp': {
                 title: "01 // THE ON RAMP",
@@ -333,7 +333,8 @@
                 text: "The threshold vectors are spinning up. The blockade is formalized. We are building the initial line across the highway boundaries. If you don't declare your lineage right here at the marker, the system defense flags you as a target.",
                 leader: "TACTICAL HUB: PEPPAMAN",
                 desc: "Initializing the raw djembe ground loops across the network registers.",
-                actionText: "LOCK LINEAGE SIGNAL"
+                actionText: "LOCK LINEAGE SIGNAL",
+                targetUrl: "#"
             },
             'exit-168': {
                 title: "02 // EXIT 168 [1996]",
@@ -341,15 +342,17 @@
                 text: "Inside the high school assembly hall, the bass drops clean from the djembe heads. Tape decks are recording ancestral logs on hidden cassettes right under the administration's noses. The blueprints are distributed.",
                 leader: "POV: MS. ORA & YOUTH RESISTANCE",
                 desc: "Securing care networks before the state initiates physical retaliation.",
-                actionText: "EXTRACT CASSETTE TAPE LOGS"
+                actionText: "EXTRACT CASSETTE TAPE LOGS",
+                targetUrl: "#"
             },
             'exit-169': {
                 title: "03 // EXIT 169 [2026]",
                 meta: "YEAR: 2026 | THE HIGHWAY OCCUPATION",
-                text: "<strong>Tyra Washington</strong> stands dead center on the Interstate 65 asphalt[span_16](start_span)[span_16](end_span)[span_17](start_span)[span_17](end_span). Bumper to bumper cars line the village grid. <em>Evan Milligan is running corporate drone sweeps overhead</em> trying to break the perimeter. Jamal's WZRD 77.7 pirate tower is hotwired directly into the power main. Tyra is leading, but she's hiding a pregnancy, and she's visibly shaking when the community mentions the dragon bound underneath the city streets.",
+                text: "<strong>Dr. Tyra Washington</strong> stands dead center on the Interstate 65 asphalt. Bumper-to-bumper cars line the autonomous village grid. <em>Tactical drone sweeps loom overhead</em> trying to break the perimeter while Jamal's WZRD 77.7 pirate tower hotwires directly into the power main. Tyra is leading the ground orations, but she's hiding a pregnancy, and the air grows heavy as the circle prepares to descend into the tunnels where the dragon Bertha is bound.",
                 leader: "POV: JAMAL & TYRA WASHINGTON",
-                desc: "The real-time rupture. The pirate tower is blazing.",
-                actionText: "HOTWIRE THE TRANSMITTER"
+                desc: "The 72-hour operational rupture. The transmission loops are active.",
+                actionText: "ACCESS TRANSMISSION MASTER TAPES",
+                targetUrl: "jamals-story.html"
             },
             'exit-170': {
                 title: "04 // EXIT 170 [2118]",
@@ -357,15 +360,17 @@
                 text: "The concrete has crumbled but the memory stays. The skyscraper oak tree has completely grown through the core of the highway footprint. Archive files are processed directly inside the organic computing infrastructure.",
                 leader: "POV: THE MEMORY ENGINEERS",
                 desc: "Retrieval of historical records suppressed during the 2026 corporate emergency.",
-                actionText: "SYNC ORGANIC LOG RESIDUE"
+                actionText: "SYNC ORGANIC LOG RESIDUE",
+                targetUrl: "#"
             },
             'exit-171': {
                 title: "05 // EXIT 171 [FURTHEST FUTURE]",
-                meta: "YEAR: 3176+ | THE PILLAR HALL",
-                text: "Narissa stands in front of the high council guild. She hums the ancestral lineage melody perfectly, delivering a hard, absolute structural refusal to the Federation's extraction terms.",
-                leader: "POV: NARISSA (THE UNBORN FUTURE)",
-                desc: "The timeline loop seals itself completely via vocal harmonic codes.",
-                actionText: "EXECUTE THE ULTIMATE REFUSAL"
+                meta: "YEAR: 3176 | THE PILLAR HALL",
+                text: "Elliot John Henry McCall stands before the High Planning Guild. He summons the ancestral lineage tapes, using the memory of the Exit 169 ancestors to present a hard, absolute structural refusal to the Federation's extraction terms.",
+                leader: "POV: ELLIOT McCALL (THE FUTURE LINEAGE)",
+                desc: "The timeline loop seals itself completely via oral historical architecture.",
+                actionText: "EXECUTE THE ULTIMATE REFUSAL",
+                targetUrl: "#"
             },
             'off-ramp': {
                 title: "06 // THE OFF RAMP",
@@ -373,7 +378,8 @@
                 text: "The main transit vector dissolves. The database metrics are calculated. The actions you took across the 1996 blueprints and the 2026 highway blockades compile to determine your historical alignment code.",
                 leader: "SYSTEM CONTROL: THE DRAGON BERTHA",
                 desc: "The final tally of the anti-dichotomy parameters.",
-                actionText: "DEPILE DATA SUMMARY SYSTEM"
+                actionText: "COMPILE DATA SUMMARY SYSTEM",
+                targetUrl: "#"
             }
         };
 
@@ -385,13 +391,11 @@
             const status = document.getElementById('radioStatus');
             
             if (!audioActive) {
-                // Initialize Web Audio Context to legally unlock browser sounds on click
                 audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                 btn.textContent = "STATION TUNED // BLASTING 77.7";
                 btn.classList.add('active');
                 status.textContent = "RADIO: LIVE FEED CONNECTED [WZRD 77.7 FM]";
                 audioActive = true;
-                // playStream('assets/audio/narissas_home.mp3');
             } else {
                 btn.textContent = "TUNE IN TO TRANSMISSION";
                 btn.classList.remove('active');
@@ -407,12 +411,12 @@
             // Trigger visual drone glitch interference during transitions
             const viewport = document.getElementById('game-viewport');
             viewport.classList.add('glitch-active');
-            document.getElementById('droneTicker').textContent = "⚠️ WARNING: EVAN MILLIGAN SWARM OVERRIDE IN PROGRESS... SCANNING SECTOR... ⚠️";
+            document.getElementById('droneTicker').textContent = "⚠️ WARNING: DRONES BLOCKED THE FEED... SYSTEM SCANNING... ⚠️";
             
             setTimeout(() => {
                 viewport.classList.remove('glitch-active');
-                document.getElementById('droneTicker').textContent = "⚠️ ALERT: MILLIGAN DRONE SWARM DETECTED // FREQUENCY JAMMING ACTIVE ⚠️";
-            }, 4000);
+                document.getElementById('droneTicker').textContent = "⚠️ ALERT: ENEMY DRONES OVERHEAD // RADIO SIGNAL IS DROPPING ⚠️";
+            }, 1500);
 
             // Update Text Node Blocks
             document.getElementById('nodeTitle').innerHTML = data.title;
@@ -420,7 +424,11 @@
             document.getElementById('nodeText').innerHTML = data.text;
             document.getElementById('cardLeader').innerHTML = data.leader;
             document.getElementById('cardDesc').innerHTML = data.desc;
-            document.getElementById('actionBtn').innerHTML = data.actionText + " →";
+            
+            // Dynamic Button Redirection Logic
+            const actionBtn = document.getElementById('actionBtn');
+            actionBtn.innerHTML = data.actionText + " →";
+            actionBtn.setAttribute('href', data.targetUrl);
 
             // Toggle active visual highlight rings on SVG map
             document.querySelectorAll('.cosmogram-point').forEach(p => p.classList.remove('active'));
@@ -428,7 +436,6 @@
         }
 
         // Initialize state on initial execution load
-        // Automatically reads if a starting coordinate was selected from your landing index page!
         window.onload = () => {
             const initialSelection = localStorage.getItem('selected_initial_exit') || 'exit-169';
             loadNode(initialSelection);
