@@ -43,6 +43,26 @@
     </style>
 </head>
 <body>
+<!-- This is where your viewer will show up -->
+<div class="hologram-viewer" id="gallery"></div>
+
+<script>
+    // This tells your website: "Go get the list from manifest.json"
+    fetch('manifest.json')
+        .then(response => response.json())
+        .then(images => {
+            const gallery = document.getElementById('gallery');
+            // This loop creates an image for every name in your list
+            images.forEach(imgName => {
+                gallery.innerHTML += `
+                    <div class="hologram-item">
+                        <img class="lazy" data-src="images/${imgName}" alt="Archive">
+                        <div class="scanlines"></div>
+                    </div>
+                `;
+            });
+        });
+</script>
 
     <div class="launcher-frame">
         <header>
