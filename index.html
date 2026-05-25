@@ -94,45 +94,52 @@
             <div style="color: #fbbf24;">// FAMILY BIBLE ARCHIVE</div>
         </div>
     </div>
-
-    <!-- WZRD 77.7 FM SYSTEM MODULE -->
+<!-- WZRD 77.7 FM SYSTEM MODULE -->
 <audio id="radio-player" style="display:none;"></audio>
 
-<div id="wzrd-tuner" style="position:fixed; bottom:0; width:100%; background:#000; border-top:2px solid #cf2121; padding:10px; display:flex; justify-content:space-between; align-items:center; z-index:9999; font-family: 'Courier New', Courier, monospace; font-size: 12px;">
-    <div style="color:#cf2121; font-weight:bold;">WZRD 77.7 FM // LIVE</div>
-    <button style="background:transparent; border:1px solid #cf2121; color:#cf2121; padding:4px 8px; cursor:pointer; font-family:inherit;">TUNING...</button>
+<div id="wzrd-tuner" style="position:fixed; bottom:0; width:100%; background:#000; border-top:2px solid #cf2121; padding:10px; z-index:9999; font-family: 'Courier New', Courier, monospace; font-size: 11px;">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div style="color:#cf2121; font-weight:bold;">WZRD 77.7 FM</div>
+        <button id="tune-btn" style="background:transparent; border:1px solid #cf2121; color:#cf2121; padding:2px 8px; cursor:pointer; font-family:inherit;">TUNING...</button>
+    </div>
+    <!-- Track Info Label -->
+    <div id="track-info" style="color:#fbbf24; margin-top:5px; text-transform:uppercase; overflow:hidden; white-space:nowrap;">
+        STATION STANDBY...
+    </div>
 </div>
 
 <script>
     const radioMap = {
-        'index.html': '05_Advancement.mp3',
-        'contribute.html': '15_Narissa.mp3',
-        'cosmogram.html': '07_Dogon.mp3',
-        'characters_and_conflicts.html': '10_Field.mp3'
+        'index.html': { file: '05_Advancement.mp3', title: '05 ADVANCEMENT // EVAN MILLIGAN & JAMES GARDIN' },
+        'contribute.html': { file: '15_Narissa.mp3', title: '15 NARISSA\'S HOME // CARE-GIVER ROAD TRIP' },
+        'cosmogram.html': { file: '07_Dogon.mp3', title: '07 BEYOND // THE DOGON HAVE LANDED' },
+        'characters_and_conflicts.html': { file: '10_Field.mp3', title: '10 SHAKE THE FIELD // JUICCY DA MASTER' }
     };
 
     function initRadio() {
         const player = document.getElementById('radio-player');
-        const tunerBtn = document.querySelector('#wzrd-tuner button');
-        const path = window.location.pathname.split('/').pop() || 'index.html';
-        const trackShortName = radioMap[path] || radioMap['index.html'];
+        const tunerBtn = document.getElementById('tune-btn');
+        const trackDisplay = document.getElementById('track-info');
         
-        player.src = trackShortName;
-        player.loop = true;
+        const path = window.location.pathname.split('/').pop() || 'index.html';
+        const trackData = radioMap[path] || radioMap['index.html'];
+        
+        // UPDATE PATH HERE: If files are in a folder, change to 'audio/' + trackData.file
+        player.src = trackData.file; 
+        trackDisplay.innerText = "NOW PLAYING: " + trackData.title;
 
         tunerBtn.onclick = function() {
             if (player.paused) {
-                player.play();
-                tunerBtn.innerText = "SIGNAL: LIVE";
+                player.play().then(() => {
+                    tunerBtn.innerText = "SIGNAL: LIVE";
+                });
             } else {
                 player.pause();
                 tunerBtn.innerText = "TUNING // PAUSED";
             }
         };
     }
-
     window.onload = initRadio;
 </script>
-
 </body>
 </html>
