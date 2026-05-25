@@ -3,234 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE CROSSROADS // MULTI-ERA RP HUB</title>
+    <title>THE CROSSROADS // ARCHIVE</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Rubik:wght@700&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: #000; 
+            color: #d1d1d1; 
+            font-family: 'Courier New', Courier, monospace; 
+            padding: 20px; 
+            line-height: 1.4;
         }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: #0b0c16;
-            color: #fff;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 12px;
-        }
-
-        /* SANDBOX GAME INTERFACE MAIN FRAME */
         .game-container {
             max-width: 800px;
-            width: 100%;
-            background: #16192b;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.6);
-            border: 3px solid #282d47;
+            margin: 0 auto;
+            border: 1px solid #d1d1d1;
+            padding: 20px;
         }
 
-        /* HIGH-CONTRAST ARCADE BANNER */
         .banner-zone {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            padding: 2rem 1.5rem;
+            border-bottom: 2px solid #cf2121;
             text-align: center;
-            border-bottom: 3px solid #ef4444;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
         }
 
         .banner-zone h1 {
-            font-family: 'Rubik', sans-serif;
-            font-size: 1.8rem;
+            color: #fbbf24; /* Gold */
             text-transform: uppercase;
-            letter-spacing: 1px;
-            text-shadow: 0 3px 6px rgba(0,0,0,0.4);
-        }
-
-        .live-status {
-            display: inline-block;
-            background: #16a34a;
-            font-size: 0.7rem;
-            font-weight: 800;
-            padding: 4px 12px;
-            border-radius: 20px;
-            margin-top: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        /* CONTENT WRAPPER */
-        .menu-layout {
-            padding: 1.25rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
         }
 
         .section-label {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #64748b;
+            color: #cf2121; /* Red */
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-        }
-
-        /* CHARACTER ROLE CAROUSEL */
-        .role-track {
-            display: flex;
-            gap: 0.5rem;
-            overflow-x: auto;
-            padding-bottom: 6px;
-            scrollbar-width: none;
-        }
-        .role-track::-webkit-scrollbar { display: none; }
-
-        .role-card {
-            background: #22263f;
-            border: 2px solid #2e3456;
-            padding: 0.5rem 1rem;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 0.8rem;
-            color: #94a3b8;
-            white-space: nowrap;
-            cursor: pointer;
-            transition: all 0.15s ease;
-        }
-
-        .role-card:hover {
-            background: #2e3456;
-            color: #fff;
-        }
-
-        .role-card.selected {
-            background: #dc2626;
-            border-color: #dc2626;
-            color: #fff;
-            box-shadow: 0 0 10px rgba(220, 38, 38, 0.4);
-        }
-
-        /* CHOOSE TIMELINE SERVER GRID */
-        .server-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
+            margin: 15px 0 5px 0;
+            border-bottom: 1px solid #cf2121;
+            display: inline-block;
         }
 
         .zone-card {
-            background: #1c2035;
-            border: 2px solid #282d47;
-            border-radius: 12px;
-            padding: 1rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            border: 1px solid #333;
+            padding: 10px;
+            margin-bottom: 10px;
             cursor: pointer;
-            text-decoration: none;
-            transition: all 0.2s ease;
         }
 
-        .zone-card:hover {
-            border-color: #4f46e5;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(79, 70, 229, 0.15);
-        }
-
-        .zone-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-
-        .time-tag {
-            font-size: 0.65rem;
-            font-weight: 800;
-            background: #282d47;
-            color: #94a3b8;
-            padding: 2px 8px;
-            border-radius: 6px;
-            text-transform: uppercase;
-        }
-
-        .zone-card:hover .time-tag {
-            background: #4f46e5;
-            color: #fff;
-        }
-
-        .zone-title {
-            font-size: 1rem;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        .zone-desc {
-            font-size: 0.8rem;
-            color: #94a3b8;
-            line-height: 1.4;
-            margin: 0.25rem 0 1rem 0;
-        }
-
-        /* SPAWN ACTION BUTTON */
+        .zone-card:hover { border-color: #fbbf24; }
+        .zone-title { color: #fff; font-weight: bold; }
         .spawn-btn {
+            background: transparent;
+            border: 1px solid #cf2121;
+            color: #cf2121;
+            padding: 5px;
             width: 100%;
-            background: #16a34a;
-            color: #fff;
-            border: none;
-            padding: 0.6rem;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 0.85rem;
+            margin-top: 10px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
             cursor: pointer;
-            box-shadow: 0 3px 0 #15803d;
-            transition: all 0.1s ease;
-        }
-
-        .zone-card:hover .spawn-btn { background: #15803d; }
-        .spawn-btn:active { transform: translateY(3px); box-shadow: 0 0 0 #15803d; }
-
-        /* STREET LINK DESKS */
-        .panel-row {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
         }
 
         .utility-panel {
-            background: #1c2035;
-            border: 2px dashed #475569;
-            border-radius: 12px;
-            padding: 1rem;
-            text-align: center;
+            border: 1px dashed #fbbf24;
+            padding: 10px;
+            margin-top: 10px;
             cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .utility-panel:hover {
-            border-color: #ef4444;
-            background: #22263f;
-        }
-
-        .utility-heading {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #fbbf24;
-            margin-bottom: 0.25rem;
-        }
-
-        /* MOBILE OPTIMIZATION */
-        @media (max-width: 640px) {
-            .server-grid, .panel-row { grid-template-columns: 1fr; }
-            .banner-zone { padding: 1.5rem 1rem; }
-            .banner-zone h1 { font-size: 1.4rem; }
         }
     </style>
 </head>
@@ -239,115 +77,49 @@
     <div class="game-container">
         <div class="banner-zone">
             <h1>The Crossroads RP</h1>
-            <div class="live-status">● Server Online // Signal Secured</div>
+            <div style="font-size: 0.6rem; margin-top: 5px;">[SERVER: ACTIVE // COORDINATES: SOUTH MONTGOMERY]</div>
         </div>
 
-        <div class="menu-layout">
-            <!-- AVATARS -->
-            <div>
-                <div class="section-label">Choose Role Avatar:</div>
-                <div class="role-track">
-                    <div class="role-card selected" onclick="selectRole(this)">Crew Leader (Tyra)</div>
-                    <div class="role-card" onclick="selectRole(this)">Pirate Radio DJ (Jamal)</div>
-                    <div class="role-card" onclick="selectRole(this)">Block Elder (Ms. Ora)</div>
-                    <div class="role-card" onclick="selectRole(this)">Frontline Muscle (Big Kitty)</div>
-                    <div class="role-card" onclick="selectRole(this)">Future Rebel (Narissa)</div>
-                </div>
-            </div>
+        <div class="section-label">Select Era Coordinate</div>
+        <div class="zone-card" onclick="jumpToNode('east')">
+            <div class="zone-title">Exit 169 // The Blockade</div>
+            <button class="spawn-btn">Initialize Connection</button>
+        </div>
 
-            <!-- ERAS -->
-            <div class="section-label">Select Active Era Coordinate:</div>
-            <div class="server-grid">
-                
-                <div class="zone-card" onclick="jumpToNode('east')">
-                    <div>
-                        <div class="zone-meta">
-                            <div class="zone-title">Exit 169 // The Blockade</div>
-                            <span class="time-tag">2026</span>
-                        </div>
-                        <p class="zone-desc">The highway is locked down! Join Tyra's network on the asphalt and navigate the live street grid center.</p>
-                    </div>
-                    <button class="spawn-btn">Spawn In Zone</button>
-                </div>
-
-                <div class="zone-card" onclick="jumpToNode('north')">
-                    <div>
-                        <div class="zone-meta">
-                            <div class="zone-title">Exit 168 // The Sanctuary</div>
-                            <span class="time-tag">1996</span>
-                        </div>
-                        <p class="zone-desc">Trace the defensive roots layout. Step into safehouse basements, djembe structures, and hidden blueprints.</p>
-                    </div>
-                    <button class="spawn-btn">Spawn In Zone</button>
-                </div>
-
-                <div class="zone-card" onclick="jumpToNode('west')">
-                    <div>
-                        <div class="zone-meta">
-                            <div class="zone-title">Exit 170 // The Deep Vault</div>
-                            <span class="time-tag">1901</span>
-                        </div>
-                        <p class="zone-desc">Infiltrate the underground tunnels built beneath the old city lines. Search for legacy artifacts and structural evidence.</p>
-                    </div>
-                    <button class="spawn-btn">Spawn In Zone</button>
-                </div>
-
-                <div class="zone-card" onclick="jumpToNode('higher')">
-                    <div>
-                        <div class="zone-meta">
-                            <div class="zone-title">Exit 171 // The Horizon</div>
-                            <span class="time-tag">3176+</span>
-                        </div>
-                        <p class="zone-desc">Cross into the post-division future coordinates. Intercept past timeline data feeds before they wipe clean.</p>
-                    </div>
-                    <button class="spawn-btn">Spawn In Zone</button>
-                </div>
-            </div>
-
-            <!-- STREET LOGS & LINKS -->
-            <div class="section-label">Street Logs & Station Links:</div>
-            
-            <div class="panel-row" style="grid-template-columns: 1fr; margin-bottom: -0.25rem;">
-                <div class="utility-panel" style="border-style: solid; border-color: #ef4444;" onclick="routeToPage('characters_and_conflicts.html')">
-                    <div class="utility-heading" style="color: #ef4444;">🔥 NIGHT GODS AND COLLECTORS</div>
-                    <p style="font-size: 0.75rem; color: #94a3b8;">Track the Core Circle, animal aspects, and the corporate factions running the grid blocks.</p>
-                </div>
-            </div>
-
-            <div class="panel-row">
-                <div class="utility-panel" onclick="routeToPage('cosmogram.html')">
-                    <div class="utility-heading">🗺️ 9-Point Spatial Clock</div>
-                    <p style="font-size: 0.75rem; color: #94a3b8;">Execute the time warp loop choreography across all 7 historic grid eras.</p>
-                </div>
-
-                <div class="utility-panel" onclick="routeToPage('contribute.html')">
-                    <div class="utility-heading">📂 Family Bible Archive</div>
-                    <p style="font-size: 0.75rem; color: #94a3b8;">Review compiled primary sources, community asset sketches, and field tapes.</p>
-                </div>
-            </div>
-
+        <div class="section-label">System Access</div>
+        <div class="utility-panel" onclick="routeToPage('characters_and_conflicts.html')">
+            <div style="color: #fbbf24;">// NIGHT GODS & COLLECTORS</div>
+        </div>
+        <div class="utility-panel" onclick="routeToPage('contribute.html')">
+            <div style="color: #fbbf24;">// FAMILY BIBLE ARCHIVE</div>
         </div>
     </div>
 
+    <!-- WZRD 77.7 FM SYSTEM MODULE -->
+    <audio id="radio-player" style="display:none;"></audio>
+    <div id="wzrd-tuner" style="position:fixed; bottom:0; width:100%; background:#000; border-top:2px solid #cf2121; padding:10px; display:flex; justify-content:space-between; align-items:center; z-index:9999; font-family: 'Courier New', monospace; font-size: 12px;">
+        <div style="color:#cf2121; font-weight:bold;">WZRD 77.7 FM // LIVE</div>
+        <button onclick="document.getElementById('radio-player').play()" style="background:transparent; border:1px solid #cf2121; color:#cf2121; padding:4px 8px; cursor:pointer; font-family:inherit;">TUNING...</button>
+    </div>
+
     <script>
-        function selectRole(chip) {
-            document.querySelectorAll('.role-card').forEach(c => c.classList.remove('selected'));
-            chip.classList.add('selected');
-            localStorage.setItem('active_rp_role', chip.innerText);
-        }
+        const radioMap = {
+            'index.html': '05_Advancement.mp3',
+            'contribute.html': '15_Narissa.mp3',
+            'cosmogram.html': '07_Dogon.mp3',
+            'characters_and_conflicts.html': '10_Field.mp3'
+        };
 
-        function jumpToNode(nodeId) {
-            localStorage.setItem('target_cosmogram_node', nodeId);
-            window.location.href = 'cosmogram.html';
+        function initRadio() {
+            const player = document.getElementById('radio-player');
+            const path = window.location.pathname.split('/').pop() || 'index.html';
+            const trackShortName = radioMap[path] || radioMap['index.html'];
+            player.src = trackShortName;
+            player.play().catch(e => console.log("Station awaiting manual tuning."));
         }
-
-        function routeToPage(urlPath) {
-            window.location.href = urlPath;
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            localStorage.removeItem('portal_gate_passed');
-        });
+        function jumpToNode(n) { window.location.href = 'cosmogram.html'; }
+        function routeToPage(u) { window.location.href = u; }
+        window.onload = initRadio;
     </script>
 </body>
 </html>
