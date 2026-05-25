@@ -102,18 +102,19 @@
         <div style="color:#cf2121; font-weight:bold;">WZRD 77.7 FM</div>
         <button id="tune-btn" style="background:transparent; border:1px solid #cf2121; color:#cf2121; padding:2px 8px; cursor:pointer; font-family:inherit;">TUNING...</button>
     </div>
-    <!-- Track Info Label -->
-    <div id="track-info" style="color:#fbbf24; margin-top:5px; text-transform:uppercase; overflow:hidden; white-space:nowrap;">
-        STATION STANDBY...
+    
+    <!-- Scrolling Track Info Container -->
+    <div id="track-info-container">
+        <div id="track-info">STATION STANDBY...</div>
     </div>
 </div>
 
 <script>
     const radioMap = {
-        'index.html': { file: '05_Advancement.mp3', title: '05 ADVANCEMENT // EVAN MILLIGAN & JAMES GARDIN' },
-        'contribute.html': { file: '15_Narissa.mp3', title: '15 NARISSA\'S HOME // CARE-GIVER ROAD TRIP' },
+        'index.html': { file: '05_Advancement.mp3', title: '05 ADVANCEMENT // JAMES GARDIN, JUICCY DA MASTER, AND AFROFUTURE' },
+        'contribute.html': { file: '15_Narissa.mp3', title: '15 NARISSA\'S HOME // SHAKE THE FIELD, LADY K, KRISTMAS, K BLOCKS, FELT FIVE, AFROFUTURE' },
         'cosmogram.html': { file: '07_Dogon.mp3', title: '07 BEYOND // THE DOGON HAVE LANDED' },
-        'characters_and_conflicts.html': { file: '10_Field.mp3', title: '10 SHAKE THE FIELD // JUICCY DA MASTER' }
+        'characters_and_conflicts.html': { file: '10_Field.mp3', title: '10 SHAKE THE FIELD // JUICCY DA MASTER, FELT FIVE, AND AFROFUTURE' }
     };
 
     function initRadio() {
@@ -124,7 +125,7 @@
         const path = window.location.pathname.split('/').pop() || 'index.html';
         const trackData = radioMap[path] || radioMap['index.html'];
         
-        // UPDATE PATH HERE: If files are in a folder, change to 'audio/' + trackData.file
+        // Ensure this matches your actual GitHub file structure exactly
         player.src = trackData.file; 
         trackDisplay.innerText = "NOW PLAYING: " + trackData.title;
 
@@ -132,6 +133,9 @@
             if (player.paused) {
                 player.play().then(() => {
                     tunerBtn.innerText = "SIGNAL: LIVE";
+                }).catch(err => {
+                    console.error("Playback failed:", err);
+                    tunerBtn.innerText = "ERROR // CHECK CONSOLE";
                 });
             } else {
                 player.pause();
@@ -141,5 +145,6 @@
     }
     window.onload = initRadio;
 </script>
+
 </body>
 </html>
