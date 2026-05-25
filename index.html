@@ -29,14 +29,14 @@
         }
 
         .banner-zone h1 {
-            color: #fbbf24; /* Gold */
+            color: #fbbf24; 
             text-transform: uppercase;
             font-size: 1.5rem;
             letter-spacing: 2px;
         }
 
         .section-label {
-            color: #cf2121; /* Red */
+            color: #cf2121;
             font-size: 0.7rem;
             text-transform: uppercase;
             margin: 15px 0 5px 0;
@@ -70,6 +70,25 @@
             margin-top: 10px;
             cursor: pointer;
         }
+
+        /* MARQUEE SCROLLING STYLES */
+        #track-info-container {
+            width: 100%;
+            overflow: hidden;
+            margin-top: 5px;
+            border: 1px solid #333;
+            white-space: nowrap;
+        }
+        #track-info {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 20s linear infinite;
+            color: #fbbf24;
+        }
+        @keyframes marquee {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
     </style>
 </head>
 <body>
@@ -81,70 +100,65 @@
         </div>
 
         <div class="section-label">Select Era Coordinate</div>
-        <div class="zone-card" onclick="jumpToNode('east')">
+        <div class="zone-card" onclick="window.location.href='cosmogram.html'">
             <div class="zone-title">Exit 169 // The Blockade</div>
             <button class="spawn-btn">Initialize Connection</button>
         </div>
 
         <div class="section-label">System Access</div>
-        <div class="utility-panel" onclick="routeToPage('characters_and_conflicts.html')">
+        <div class="utility-panel" onclick="window.location.href='characters_and_conflicts.html'">
             <div style="color: #fbbf24;">// NIGHT GODS & COLLECTORS</div>
         </div>
-        <div class="utility-panel" onclick="routeToPage('contribute.html')">
+        <div class="utility-panel" onclick="window.location.href='contribute.html'">
             <div style="color: #fbbf24;">// FAMILY BIBLE ARCHIVE</div>
         </div>
     </div>
-<!-- WZRD 77.7 FM SYSTEM MODULE -->
-<audio id="radio-player" style="display:none;"></audio>
 
-<div id="wzrd-tuner" style="position:fixed; bottom:0; width:100%; background:#000; border-top:2px solid #cf2121; padding:10px; z-index:9999; font-family: 'Courier New', Courier, monospace; font-size: 11px;">
-    <div style="display:flex; justify-content:space-between; align-items:center;">
-        <div style="color:#cf2121; font-weight:bold;">WZRD 77.7 FM</div>
-        <button id="tune-btn" style="background:transparent; border:1px solid #cf2121; color:#cf2121; padding:2px 8px; cursor:pointer; font-family:inherit;">TUNING...</button>
+    <!-- WZRD 77.7 FM SYSTEM MODULE -->
+    <audio id="radio-player" style="display:none;"></audio>
+    <div id="wzrd-tuner" style="position:fixed; bottom:0; width:100%; background:#000; border-top:2px solid #cf2121; padding:10px; z-index:9999; font-family: 'Courier New', Courier, monospace; font-size: 11px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div style="color:#cf2121; font-weight:bold;">WZRD 77.7 FM</div>
+            <button id="tune-btn" style="background:transparent; border:1px solid #cf2121; color:#cf2121; padding:2px 8px; cursor:pointer; font-family:inherit;">TUNING...</button>
+        </div>
+        <div id="track-info-container">
+            <div id="track-info">STATION STANDBY...</div>
+        </div>
     </div>
-    
-    <!-- Scrolling Track Info Container -->
-    <div id="track-info-container">
-        <div id="track-info">STATION STANDBY...</div>
-    </div>
-</div>
 
-<script>
-    const radioMap = {
-        'index.html': { file: '05_Advancement.mp3', title: '05 ADVANCEMENT // JAMES GARDIN, JUICCY DA MASTER, AND AFROFUTURE' },
-        'contribute.html': { file: '15_Narissa.mp3', title: '15 NARISSA\'S HOME // SHAKE THE FIELD, LADY K, KRISTMAS, K BLOCKS, FELT FIVE, AFROFUTURE' },
-        'cosmogram.html': { file: '07_Dogon.mp3', title: '07 BEYOND // THE DOGON HAVE LANDED' },
-        'characters_and_conflicts.html': { file: '10_Field.mp3', title: '10 SHAKE THE FIELD // JUICCY DA MASTER, FELT FIVE, AND AFROFUTURE' }
-    };
-
-    function initRadio() {
-        const player = document.getElementById('radio-player');
-        const tunerBtn = document.getElementById('tune-btn');
-        const trackDisplay = document.getElementById('track-info');
-        
-        const path = window.location.pathname.split('/').pop() || 'index.html';
-        const trackData = radioMap[path] || radioMap['index.html'];
-        
-        // Ensure this matches your actual GitHub file structure exactly
-        player.src = trackData.file; 
-        trackDisplay.innerText = "NOW PLAYING: " + trackData.title;
-
-        tunerBtn.onclick = function() {
-            if (player.paused) {
-                player.play().then(() => {
-                    tunerBtn.innerText = "SIGNAL: LIVE";
-                }).catch(err => {
-                    console.error("Playback failed:", err);
-                    tunerBtn.innerText = "ERROR // CHECK CONSOLE";
-                });
-            } else {
-                player.pause();
-                tunerBtn.innerText = "TUNING // PAUSED";
-            }
+    <script>
+        const radioMap = {
+            'index.html': { file: 'Culture%20Lab%20from%20Western%20States%20Center%20-%20Smoke%20%26%20Mirrors%20-%2005%20Advancement%20featuring%20evan%20milligan%2C%20James%20Gardin%20and%20Juicyy%20Da%20Master.mp3', title: '05 ADVANCEMENT // JAMES GARDIN, JUICCY DA MASTER' },
+            'contribute.html': { file: 'Shake%20the%20Field%20and%20Felt%20Five%20-%20Caregiver%20Road%20Trip-%20Remix%20Edition%20-%2015%20Narissa%27s%20Home%20%28Album%20Remix%29.mp3', title: '15 NARISSA\'S HOME // LADY K, KRISTMAS, K BLOCKS, FELT FIVE' },
+            'cosmogram.html': { file: 'Shake%20the%20Field%20and%20Felt%20Five%20-%20Caregiver%20Road%20Trip-%20Remix%20Edition%20-%2007%20Beyond-%20The%20Dogon%20Have%20Landed%20Near%20Guntersville.mp3', title: '07 BEYOND // THE DOGON HAVE LANDED' },
+            'characters_and_conflicts.html': { file: 'Culture%20Lab%20from%20Western%20States%20Center%20-%20Smoke%20%26%20Mirrors%20-%2010%20Shake%20the%20Field%20featuring%20Juiccy%20Da%20Master%20and%20Felt%20Five%20with%20Brezzy%20Monroe%2C%20evan%20milligan%20and%20Zoey%20Jackson.mp3', title: '10 SHAKE THE FIELD // JUICCY DA MASTER, FELT FIVE, BREZZY MONROE, ZOEY JACKSON' }
         };
-    }
-    window.onload = initRadio;
-</script>
 
+        function initRadio() {
+            const player = document.getElementById('radio-player');
+            const tunerBtn = document.getElementById('tune-btn');
+            const trackDisplay = document.getElementById('track-info');
+            const path = window.location.pathname.split('/').pop() || 'index.html';
+            const trackData = radioMap[path] || radioMap['index.html'];
+            
+            player.src = trackData.file;
+            trackDisplay.innerText = "NOW PLAYING: " + trackData.title;
+
+            tunerBtn.onclick = function() {
+                if (player.paused) {
+                    player.play().then(() => {
+                        tunerBtn.innerText = "SIGNAL: LIVE";
+                    }).catch(err => {
+                        console.error("Playback failed:", err);
+                        tunerBtn.innerText = "ERROR // CHECK CONSOLE";
+                    });
+                } else {
+                    player.pause();
+                    tunerBtn.innerText = "TUNING // PAUSED";
+                }
+            };
+        }
+        window.onload = initRadio;
+    </script>
 </body>
 </html>
