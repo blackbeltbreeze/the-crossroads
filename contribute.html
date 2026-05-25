@@ -3,54 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contribute // The Crossroads Archive</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>THE CROSSROADS // ARCHIVE CONTRIBUTIONS</title>
     <style>
-        :root { --bg-deep: #030307; --terminal-dark: #090a15; --gold: #fbbf24; --crimson: #cf2121; --cyan: #06b6d4; --text-muted: #9ca3af; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg-deep); color: #e5e7eb; font-family: 'Space Grotesk', sans-serif; line-height: 1.7; padding: 2rem; }
-        .container { max-width: 800px; margin: 0 auto; }
-        h1 { color: #fff; text-transform: uppercase; margin-bottom: 1rem; }
-        h2 { color: var(--gold); margin-top: 2rem; margin-bottom: 1rem; border-bottom: 1px dashed var(--gold); }
-        p { margin-bottom: 1rem; color: #cbd5e1; }
-        ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
-        li { margin-bottom: 0.5rem; }
-        .box { background: var(--terminal-dark); padding: 1.5rem; border: 1px solid #1e293b; margin: 1rem 0; }
-        a { color: var(--gold); }
-        .footer { margin-top: 3rem; text-align: center; font-size: 0.9rem; }
+        body { 
+            background: #000; 
+            color: #d1d1d1; 
+            font-family: 'Courier New', Courier, monospace; 
+            padding: 20px; 
+            line-height: 1.4;
+        }
+
+        .launcher-frame {
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid #d1d1d1;
+            padding: 20px;
+        }
+
+        header { border-bottom: 2px solid #cf2121; padding-bottom: 10px; margin-bottom: 20px; }
+        header h1 { color: #fbbf24; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        h2 { color: #cf2121; font-size: 0.9rem; text-transform: uppercase; margin: 20px 0 10px 0; border-bottom: 1px solid #333; }
+        p { margin-bottom: 15px; font-size: 0.9rem; }
+        .box { border: 1px solid #333; padding: 15px; margin: 15px 0; background: #0a0a0a; }
+        
+        ul { padding-left: 20px; margin-bottom: 15px; }
+        li { margin-bottom: 5px; color: #94a3b8; }
+        
+        a { color: #fbbf24; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        footer { text-align: center; margin-top: 40px; padding: 20px; border-top: 1px solid #333; }
+
+        /* WZRD FM STYLING */
+        #track-info-container { width: 100%; overflow: hidden; margin-top: 5px; border: 1px solid #333; white-space: nowrap; }
+        #track-info { display: inline-block; padding-left: 100%; animation: marquee 20s linear infinite; color: #fbbf24; }
+        @keyframes marquee { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Building With Us</h1>
+
+    <div class="launcher-frame">
+        <header>
+            <h1>Building With Us</h1>
+            <div style="font-size: 0.6rem;">[SYSTEM STATUS: OPEN COALITION // ARCHIVE ACCESS]</div>
+        </header>
+
         <p>The Crossroads is a playground for the neighborhood. We are not a corporation looking for employees. We are a coalition of people building a shared world. If you want to help, you don’t need an application—you just need to start building.</p>
 
         <h2>Ways You Can Help</h2>
         <ul>
-            <li><strong>The Story:</strong> Add your own scenes, characters, or legends to the story world.</li>
-            <li><strong>The Sounds:</strong> Take our sounds and mix them into something new.</li>
-            <li><strong>The Art:</strong> Create new drawings, photos, or designs for the grid.</li>
-            <li><strong>The Experiments:</strong> Build new ways to play the game or test out your own version of the rules.</li>
+            <li><strong>THE STORY:</strong> Add your own scenes, characters, or legends.</li>
+            <li><strong>THE SOUNDS:</strong> Take our sounds and mix them into something new.</li>
+            <li><strong>THE ART:</strong> Create new drawings, photos, or designs for the grid.</li>
+            <li><strong>THE EXPERIMENTS:</strong> Build new ways to play the game.</li>
         </ul>
 
         <h2>Rules of the Road</h2>
         <p>Because we want this to be a community project, we use <a href="https://creativecommons.org/share-your-work/cclicenses/">Creative Commons licenses</a>.</p>
         <div class="box">
             <ul>
-                <li><strong>You keep your credit:</strong> Your name stays attached to anything you create.</li>
-                <li><strong>Keep it open:</strong> If you build on our work, your new work must also stay open for others to use (<a href="https://creativecommons.org/licenses/by-sa/4.0/">Attribution-ShareAlike</a>).</li>
-                <li><strong>Share the love:</strong> If you modify our work, you must give us credit for the original parts you used.</li>
+                <li><strong>CREDIT:</strong> Your name stays attached to your creation.</li>
+                <li><strong>OPEN SOURCE:</strong> Derivative works must remain open (<a href="https://creativecommons.org/licenses/by-sa/4.0/">Attribution-ShareAlike</a>).</li>
+                <li><strong>PROVENANCE:</strong> If you modify our work, keep the original credit chain intact.</li>
             </ul>
         </div>
 
         <h2>How to Start</h2>
-        <p>Don’t send a job application—we aren't hiring. If you have an idea or something you’ve built, just share it:</p>
         <p><strong>Build it → Post it → Attribute it → Show us.</strong></p>
-        <p>If you have a cool project, show us what you made on social media or in our community spaces. Let’s build this together.</p>
 
-        <div class="footer">
-            <p><a href="index.html">← RETURN TO CENTRAL HUB</a></p>
-        </div>
+        <footer><a href="index.html">← RETURN TO CENTRAL HUB</a></footer>
     </div>
+
+    <!-- WZRD 77.7 FM SYSTEM MODULE -->
+    <audio id="radio-player" style="display:none;"></audio>
+    <div style="position:fixed; bottom:0; left:0; width:100%; background:#000; border-top:2px solid #cf2121; padding:10px; z-index:9999;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div style="color:#cf2121; font-weight:bold; font-family: 'Courier New';">WZRD 77.7 FM</div>
+            <button id="tune-btn" style="background:transparent; border:1px solid #cf2121; color:#cf2121; padding:2px 8px; cursor:pointer; font-family:inherit;">TUNING...</button>
+        </div>
+        <div id="track-info-container"><div id="track-info">STATION STANDBY...</div></div>
+    </div>
+
+    <script>
+        const radioMap = { 'contribute.html': { file: 'Shake%20the%20Field%20and%20Felt%20Five%20-%20Caregiver%20Road%20Trip-%20Remix%20Edition%20-%2015%20Narissa%27s%20Home%20%28Album%20Remix%29.mp3', title: '15 NARISSA\'S HOME // LADY K, KRISTMAS, K BLOCKS, FELT FIVE' } };
+        
+        function initRadio() {
+            const player = document.getElementById('radio-player');
+            const tunerBtn = document.getElementById('tune-btn');
+            const trackDisplay = document.getElementById('track-info');
+            const trackData = radioMap['contribute.html'];
+            player.src = trackData.file;
+            trackDisplay.innerText = "NOW PLAYING: " + trackData.title;
+            tunerBtn.onclick = () => { player.paused ? (player.play(), tunerBtn.innerText="SIGNAL: LIVE") : (player.pause(), tunerBtn.innerText="TUNING // PAUSED"); };
+        }
+        window.onload = initRadio;
+    </script>
 </body>
 </html>
