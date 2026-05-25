@@ -43,24 +43,34 @@
     </style>
 </head>
 <body>
-<!-- This is where your viewer will show up -->
-<div class="hologram-viewer" id="gallery"></div>
+<section id="archive-preview">
+    <h2>FIELD ARCHIVES</h2>
+    <!-- The gallery container starts empty -->
+    <div class="hologram-viewer" id="gallery" style="display: flex; overflow-x: auto; gap: 20px; padding: 20px 0;">
+        <p>Loading archives...</p>
+    </div>
+</section>
 
 <script>
-    // This tells your website: "Go get the list from manifest.json"
     fetch('manifest.json')
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) throw new Error("Could not find manifest.json");
+            return response.json();
+        })
         .then(images => {
             const gallery = document.getElementById('gallery');
-            // This loop creates an image for every name in your list
+            gallery.innerHTML = ''; // Clear the "Loading..." text
+            
             images.forEach(imgName => {
                 gallery.innerHTML += `
-                    <div class="hologram-item">
-                        <img class="lazy" data-src="images/${imgName}" alt="Archive">
-                        <div class="scanlines"></div>
+                    <div class="hologram-item" style="min-width: 300px; border: 1px solid #fbbf24;">
+                        <img src="images/${imgName}" alt="Archive Fragment" style="width: 300px; display: block;">
                     </div>
                 `;
             });
+        })
+        .catch(err => {
+            document.getElementById('gallery').innerHTML = `<p style="color:red;">Error: ${err.message}</p>`;
         });
 </script>
 
