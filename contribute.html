@@ -43,37 +43,6 @@
     </style>
 </head>
 <body>
-<section id="archive-preview">
-    <h2>FIELD ARCHIVES</h2>
-    <!-- The gallery container starts empty -->
-    <div class="hologram-viewer" id="gallery" style="display: flex; overflow-x: auto; gap: 20px; padding: 20px 0;">
-        <p>Loading archives...</p>
-    </div>
-</section>
-
-<script>
-    fetch('manifest.json')
-        .then(response => {
-            if (!response.ok) throw new Error("Could not find manifest.json");
-            return response.json();
-        })
-        .then(images => {
-            const gallery = document.getElementById('gallery');
-            gallery.innerHTML = ''; // Clear the "Loading..." text
-            
-            images.forEach(imgName => {
-                gallery.innerHTML += `
-                    <div class="hologram-item" style="min-width: 300px; border: 1px solid #fbbf24;">
-                        <img src="images/${imgName}" alt="Archive Fragment" style="width: 300px; display: block;">
-                    </div>
-                `;
-            });
-        })
-        .catch(err => {
-            document.getElementById('gallery').innerHTML = `<p style="color:red;">Error: ${err.message}</p>`;
-        });
-</script>
-
     <div class="launcher-frame">
         <header>
             <h1>Building With Us</h1>
