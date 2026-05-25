@@ -96,30 +96,45 @@
     </div>
 
     <!-- WZRD 77.7 FM SYSTEM MODULE -->
-    <audio id="radio-player" style="display:none;"></audio>
-    <div id="wzrd-tuner" style="position:fixed; bottom:0; width:100%; background:#000; border-top:2px solid #cf2121; padding:10px; display:flex; justify-content:space-between; align-items:center; z-index:9999; font-family: 'Courier New', monospace; font-size: 12px;">
-        <div style="color:#cf2121; font-weight:bold;">WZRD 77.7 FM // LIVE</div>
-        <button onclick="document.getElementById('radio-player').play()" style="background:transparent; border:1px solid #cf2121; color:#cf2121; padding:4px 8px; cursor:pointer; font-family:inherit;">TUNING...</button>
-    </div>
+   <script>
+    const radioMap = {
+        'index.html': '05_Advancement.mp3',
+        'contribute.html': '15_Narissa.mp3',
+        'cosmogram.html': '07_Dogon.mp3',
+        'characters_and_conflicts.html': '10_Field.mp3'
+    };
 
-    <script>
-        const radioMap = {
-            'index.html': '05_Advancement.mp3',
-            'contribute.html': '15_Narissa.mp3',
-            'cosmogram.html': '07_Dogon.mp3',
-            'characters_and_conflicts.html': '10_Field.mp3'
-        };
+    function initRadio() {
+        const player = document.getElementById('radio-player');
+        const tunerBtn = document.querySelector('#wzrd-tuner button');
+        const path = window.location.pathname.split('/').pop() || 'index.html';
+        const trackShortName = radioMap[path] || radioMap['index.html'];
+        
+        player.src = trackShortName;
+        player.loop = true;
 
-        function initRadio() {
-            const player = document.getElementById('radio-player');
-            const path = window.location.pathname.split('/').pop() || 'index.html';
-            const trackShortName = radioMap[path] || radioMap['index.html'];
-            player.src = trackShortName;
-            player.play().catch(e => console.log("Station awaiting manual tuning."));
+        // Attempt autoplay
+        player.play().then(() => {
+            tunerBtn.innerText = "SIGNAL: LIVE";
+        }).catch(() => {
+            tunerBtn.innerText = "TUNING // PRESS TO PLAY";
+        });
+    }
+
+    // Update button text when clicked
+    document.querySelector('#wzrd-tuner button').addEventListener('click', function() {
+        const player = document.getElementById('radio-player');
+        if (player.paused) {
+            player.play();
+            this.innerText = "SIGNAL: LIVE";
+        } else {
+            player.pause();
+            this.innerText = "TUNING // PAUSED";
         }
-        function jumpToNode(n) { window.location.href = 'cosmogram.html'; }
-        function routeToPage(u) { window.location.href = u; }
-        window.onload = initRadio;
-    </script>
+    });
+
+    window.onload = initRadio;
+</script>
+ 
 </body>
 </html>
