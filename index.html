@@ -1,124 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE CROSSROADS // PREPARATION POD</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background: #0a0a0a; 
-            color: #d1d1d1; 
-            font-family: 'Courier New', Courier, monospace; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
-            margin: 0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Crossroads</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400&family=Spectral:wght@300;400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#100d0a;          /* warm near-black, not machine black */
+    --void-2:#161210;
+    --ash:#b8aa98;           /* warm grey for body text */
+    --ash-dim:#7d7264;
+    --ember:#d99a4e;         /* single deep amber — the breath */
+    --ember-soft:#caa066;
+    --clay:#8a4b3a;          /* earth red, recessed — never alarm */
+    --gold-line:#3a2f24;     /* faint warm rule */
+  }
 
-        .pod { 
-            width: 90%; 
-            max-width: 500px; 
-            padding: 40px; 
-            border: 1px solid #333; 
-            text-align: center; 
-            background: rgba(255, 255, 255, 0.02); 
-        }
+  *{margin:0;padding:0;box-sizing:border-box;}
 
-        .pulse-circle { 
-            width: 60px; 
-            height: 60px; 
-            border: 2px solid #fbbf24; 
-            border-radius: 50%; 
-            margin: 20px auto; 
-            animation: breathe 8s infinite ease-in-out; 
-        }
+  html,body{height:100%;}
 
-        @keyframes breathe { 
-            0%, 100% { transform: scale(1); opacity: 0.5; } 
-            50% { transform: scale(1.5); opacity: 1; } 
-        }
+  body{
+    background:
+      radial-gradient(ellipse 120% 90% at 50% 38%, #1c1611 0%, var(--void) 60%, #0a0807 100%);
+    color:var(--ash);
+    font-family:'Spectral', Georgia, serif;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+    overflow:hidden;
+    position:relative;
+  }
 
-        .anchor-point { 
-            padding: 20px; 
-            border: 1px solid #cf2121; 
-            cursor: pointer; 
-            transition: 0.6s ease-in-out; 
-            margin-top: 20px; 
-            color: #fff;
-        }
+  /* grain overlay — gives the dark a skin, not a screen */
+  body::after{
+    content:"";
+    position:fixed; inset:0; z-index:2; pointer-events:none;
+    opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
 
-        .anchor-point:hover { 
-            border-color: #fbbf24; 
-            background: rgba(207, 33, 33, 0.1); 
-        }
+  .field{
+    position:relative; z-index:3;
+    height:100vh;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    padding:7vh 24px 16vh;
+    text-align:center;
+    opacity:0;
+    animation:arrive 4s ease-out .3s forwards;
+  }
+  @keyframes arrive{ to{ opacity:1; } }
 
-        /* TUNER STYLES */
-        #wzrd-tuner { position:fixed; bottom:0; width:100%; background:#000; border-top:2px solid #cf2121; padding:10px; z-index:9999; font-size: 11px; }
-        #track-info { color: #fbbf24; margin-top: 5px; }
-    </style>
+  /* the four directions — faint, holding the space */
+  .compass{
+    position:fixed; inset:0; z-index:1; pointer-events:none;
+    opacity:0;
+    animation:arrive 6s ease-out 1s forwards;
+  }
+  .dir{
+    position:absolute;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px; letter-spacing:.5em;
+    color:var(--ash-dim); opacity:.35;
+  }
+  .dir.n{ top:6vh; left:50%; transform:translateX(-50%); }
+  .dir.s{ bottom:18vh; left:50%; transform:translateX(-50%); }
+  .dir.e{ right:5vw; top:50%; transform:translateY(-50%); }
+  .dir.w{ left:5vw; top:50%; transform:translateY(-50%); }
+
+  .opening{
+    font-family:'Cormorant', serif;
+    font-weight:500;
+    font-size:clamp(15px,2.2vw,19px);
+    color:var(--ash-dim);
+    letter-spacing:.02em;
+    margin-bottom:6vh;
+    max-width:34ch;
+    line-height:1.7;
+    font-style:italic;
+  }
+
+  /* THE BREATH — the center, the gift */
+  .breath-wrap{
+    position:relative;
+    width:220px; height:220px;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:5vh;
+  }
+  .breath{
+    position:absolute;
+    width:96px; height:96px;
+    border-radius:50%;
+    border:1.5px solid var(--ember);
+    box-shadow:0 0 60px -8px rgba(217,154,78,.45), inset 0 0 30px -10px rgba(217,154,78,.35);
+    animation:breathe 11s infinite cubic-bezier(.4,0,.4,1);
+  }
+  .breath.halo{
+    border-color:rgba(217,154,78,.18);
+    box-shadow:none;
+    animation:breatheHalo 11s infinite cubic-bezier(.4,0,.4,1);
+  }
+  @keyframes breathe{
+    0%,100%{ transform:scale(.85); opacity:.5; }      /* rest */
+    18%{ transform:scale(1.35); opacity:1; }           /* in (≈2s) */
+    46%{ transform:scale(1.35); opacity:1; }           /* hold */
+    78%{ transform:scale(.85); opacity:.5; }           /* out (long) */
+  }
+  @keyframes breatheHalo{
+    0%,100%{ transform:scale(1); opacity:.25; }
+    18%{ transform:scale(1.7); opacity:.5; }
+    46%{ transform:scale(1.7); opacity:.5; }
+    78%{ transform:scale(1); opacity:.25; }
+  }
+
+  .cue{
+    font-family:'JetBrains Mono', monospace;
+    font-size:10px; letter-spacing:.45em;
+    color:var(--ember-soft);
+    text-transform:uppercase;
+    min-height:1.2em;
+    opacity:.0;
+    animation:cueFade 11s infinite;
+  }
+  @keyframes cueFade{
+    0%,100%{ opacity:.25; }
+    18%,46%{ opacity:.7; }
+  }
+
+  .welcome{
+    font-family:'Cormorant', serif;
+    font-size:clamp(28px,5vw,46px);
+    font-weight:400;
+    color:var(--ash);
+    line-height:1.25;
+    max-width:20ch;
+    margin-bottom:2.5vh;
+  }
+  .welcome b{ color:var(--ember-soft); font-weight:600; }
+
+  .sub{
+    font-size:clamp(14px,1.8vw,16px);
+    color:var(--ash-dim);
+    max-width:40ch;
+    line-height:1.75;
+    margin-bottom:1vh;
+  }
+
+  /* the way deeper — small, low, optional. a held door, not a demand */
+  .threshold{
+    position:fixed;
+    bottom:11vh; left:50%; transform:translateX(-50%);
+    z-index:4;
+    opacity:0;
+    animation:arrive 4s ease-out 3s forwards;
+  }
+  .threshold a{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px; letter-spacing:.35em; text-transform:uppercase;
+    color:var(--ash-dim);
+    text-decoration:none;
+    padding:14px 4px;
+    border-bottom:1px solid var(--gold-line);
+    transition:color 1.2s ease, border-color 1.2s ease, letter-spacing 1.2s ease;
+  }
+  .threshold a:hover{
+    color:var(--ember-soft);
+    border-color:var(--ember);
+    letter-spacing:.42em;
+  }
+  .threshold .hint{
+    display:block;
+    font-family:'Cormorant',serif; font-style:italic;
+    font-size:14px; letter-spacing:0; text-transform:none;
+    color:var(--ash-dim);
+    margin-bottom:14px; opacity:.7;
+    border:none; padding:0;
+  }
+
+  /* WZRD — re-voiced. an offering, not a system module. */
+  .wzrd{
+    position:fixed; bottom:0; left:0; width:100%;
+    z-index:5;
+    display:flex; align-items:center; justify-content:center; gap:18px;
+    padding:14px 18px;
+    background:linear-gradient(to top, rgba(10,8,7,.95), transparent);
+    font-family:'JetBrains Mono', monospace;
+    font-size:10px; letter-spacing:.2em;
+  }
+  .wzrd .ident{ color:var(--clay); white-space:nowrap; }
+  .wzrd .now{ color:var(--ash-dim); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:52vw; }
+  .wzrd button{
+    background:transparent;
+    border:1px solid var(--gold-line);
+    color:var(--ash-dim);
+    font-family:inherit; font-size:10px; letter-spacing:.2em;
+    padding:6px 14px; cursor:pointer; white-space:nowrap;
+    transition:all .8s ease;
+  }
+  .wzrd button:hover{ border-color:var(--ember); color:var(--ember-soft); }
+
+  @media(max-width:520px){
+    .dir.e,.dir.w{ display:none; }
+    .opening{ margin-bottom:4vh; }
+    .wzrd .now{ max-width:40vw; }
+  }
+</style>
 </head>
 <body>
 
-    <div class="pod">
-        <h1>STATION CALIBRATION</h1>
-        <p>Grounding protocols active. Orient to your environment.</p>
-        
-        <div class="pulse-circle"></div>
-        
-        <div class="anchor-point" onclick="window.location.href='holodeck.html'">
-            <h2>ACCESS HOLODECK ARCHIVE</h2>
-        </div>
+  <!-- the four hold the room -->
+  <div class="compass" aria-hidden="true">
+    <span class="dir n">NORTH</span>
+    <span class="dir e">EAST</span>
+    <span class="dir s">SOUTH</span>
+    <span class="dir w">WEST</span>
+  </div>
+
+  <main class="field">
+    <p class="opening">You don&rsquo;t have to do anything yet. Nobody is keeping time.</p>
+
+    <div class="breath-wrap">
+      <span class="breath halo"></span>
+      <span class="breath"></span>
     </div>
+    <div class="cue" id="cue">breathe in</div>
 
-    <!-- WZRD 77.7 FM SYSTEM MODULE -->
-    <audio id="radio-player" style="display:none;"></audio>
-    <div id="wzrd-tuner">
-        <div style="display:flex; justify-content:space-between; align-items:center;">
-            <div style="color:#cf2121; font-weight:bold;">WZRD 77.7 FM</div>
-            <button id="tune-btn" style="background:transparent; border:1px solid #cf2121; color:#cf2121; padding:2px 8px; cursor:pointer; font-family:inherit;">TUNING...</button>
-        </div>
-        <div id="track-info">STATION STANDBY...</div>
-    </div>
+    <h1 class="welcome">Welcome. You made it to the <b>crossroads</b>.</h1>
+    <p class="sub">This is a place built for you to set the weight down first. Stay as long as you need. There is no wrong way to be here.</p>
+  </main>
 
-    <script>
-        const radioMap = {
-            'index.html': { 
-                file: 'Culture%20Lab%20from%20Western%20States%20Center%20-%20Smoke%20%26%20Mirrors%20-%2005%20Advancement%20featuring%20evan%20milligan%2C%20James%20Gardin%20and%20Juicyy%20Da%20Master.mp3', 
-                title: '05 ADVANCEMENT // JAMES GARDIN, JUICCY DA MASTER, AND AFROFUTURE' 
-            },
-            'holodeck.html': { 
-                file: '07_Innerstates.mp3', 
-                title: '07 INNERSTATES // CULTURE LAB, DOPE DOODIE, AND EVAN MILLIGAN' 
-            }
-        };
+  <!-- the held door: low, quiet, optional -->
+  <div class="threshold">
+    <span class="hint">when you&rsquo;re ready &mdash; not before</span>
+    <a href="cosmogram.html">step toward the center</a>
+  </div>
 
-        function initRadio() {
-            const player = document.getElementById('radio-player');
-            const tunerBtn = document.getElementById('tune-btn');
-            const trackDisplay = document.getElementById('track-info');
-            const path = window.location.pathname.split('/').pop() || 'index.html';
-            const trackData = radioMap[path] || radioMap['index.html'];
-            
-            player.src = trackData.file;
-            trackDisplay.innerText = "NOW PLAYING: " + trackData.title;
+  <!-- WZRD: an offering -->
+  <audio id="radio-player" preload="none"></audio>
+  <div class="wzrd">
+    <span class="ident">WZRD&nbsp;77.7</span>
+    <span class="now" id="now">a song is waiting, if you want it</span>
+    <button id="tune">play</button>
+  </div>
 
-            tunerBtn.onclick = function() {
-                if (player.paused) {
-                    player.play().then(() => {
-                        tunerBtn.innerText = "SIGNAL: LIVE";
-                    }).catch(err => {
-                        console.error("Playback failed:", err);
-                        tunerBtn.innerText = "ERROR // CHECK CONSOLE";
-                    });
-                } else {
-                    player.pause();
-                    tunerBtn.innerText = "TUNING // PAUSED";
-                }
-            };
-        }
-        window.onload = initRadio;
-    </script>
+<script>
+  // breath cue: in on the rise, out on the fall — synced to the 11s animation
+  const cue = document.getElementById('cue');
+  const CYCLE = 11000;
+  function runCue(){
+    cue.textContent = 'breathe in';
+    setTimeout(()=> cue.textContent = 'hold', CYCLE*0.18);
+    setTimeout(()=> cue.textContent = 'breathe out', CYCLE*0.46);
+    setTimeout(()=> cue.textContent = 'rest', CYCLE*0.90);
+  }
+  runCue();
+  setInterval(runCue, CYCLE);
+
+  // WZRD radio — per-page track map (kept from prior build, re-voiced)
+  const radioMap = {
+    'index.html': {
+      file: 'Culture%20Lab%20from%20Western%20States%20Center%20-%20Smoke%20%26%20Mirrors%20-%2005%20Advancement%20featuring%20evan%20milligan%2C%20James%20Gardin%20and%20Juicyy%20Da%20Master.mp3',
+      title: 'Advancement \u2014 James Gardin, Juicyy Da Master, AfroFuture'
+    },
+    'cosmogram.html': {
+      file: '07_Innerstates.mp3',
+      title: 'Innerstates \u2014 Culture Lab, Dope Doodie, Evan Milligan'
+    }
+  };
+
+  (function initRadio(){
+    const player = document.getElementById('radio-player');
+    const btn = document.getElementById('tune');
+    const now = document.getElementById('now');
+    const path = (window.location.pathname.split('/').pop() || 'index.html');
+    const track = radioMap[path] || radioMap['index.html'];
+
+    player.src = track.file;
+
+    btn.onclick = function(){
+      if(player.paused){
+        player.play().then(()=>{
+          btn.textContent = 'playing';
+          now.textContent = track.title;
+        }).catch(()=>{
+          btn.textContent = 'unavailable';
+          now.textContent = 'the song could not load \u2014 that&rsquo;s alright';
+        });
+      } else {
+        player.pause();
+        btn.textContent = 'play';
+        now.textContent = 'paused \u2014 take your time';
+      }
+    };
+  })();
+</script>
 </body>
 </html>
